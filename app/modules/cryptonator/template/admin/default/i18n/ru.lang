@@ -1,0 +1,11 @@
+{
+    "setting.php": {
+        "Payee Name": "",
+        "Payee Account": "",
+        "Alternate Passphrase": "",
+        "Сохранить": "",
+        "Item name": "",
+        "Merchant id": "",
+        "Secret": ""
+    }
+}

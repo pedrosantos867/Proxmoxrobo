@@ -1,0 +1,98 @@
+{
+    "bill\/new.php": {
+        "Уважаемый %client": "Dear %client",
+        "Это уведомление о том, что счет №%id создан %date.": "This  notification informs you that the account No.%id has been created %date.",
+        "Счет №%id": "Invoice #%id",
+        "Сумма: %summ": "Amount: %summ",
+        "Вы можете просмотреть и оплатить счет перейдя по ссылке ниже:": "You can view and pay your bill by clicking on the link below:",
+        "Перейти к оплате": "Go to payment",
+        "Вам выставлен счет на оплату": "You have an invoice for payment"
+    },
+    "hosting_account\/new.php": {
+        "Ваш хостинг аккаунт создан": "Your hosting account has been created",
+        "Адрес:": "URL:",
+        "Логин:": "Username:",
+        "Пароль:": "Password:",
+        "Доступ к биллинг панели:": "Access to billing panel:",
+        "Ваш хостинговый аккаунт создан": "Your hosting account has been created",
+        "Ваш хостинговый аккаунт создан и это письмо содержит всю необходимую информацию для работы с Вашим аккаунтом.": "Your hosting account has been created and this email contains all necessary information for Your account.",
+        "Детальная информация нового аккаунта:": "Detailed information of new account:",
+        "Адрес хостиг панели:": "The URL of the hosting panel:",
+        "Спасибо Вам за то, что выбрали нас!": "Thank You for choosing us!",
+        "Адрес хостинг панели:": ""
+    },
+    "client\/reminder.php": {
+        "Для смены пароля перейдите по ссылке:": "To change the password, go to:",
+        "Восстановление пароля": "Password reset"
+    },
+    "client\/reminder_password.php": {
+        "Ваш новый пароль:": "Your new password:",
+        "Восстановление пароля": "Password reset"
+    },
+    "subjects": {
+        "Ваш хостинг аккаунт создан": "Your hosting account has been created"
+    },
+    "bill\/pay.php": {
+        "Счет №%id оплачен": "Invoice # %id has been paid",
+        "Счет №%id успешно оплачен.": "Invoice # %id has been paid successfully.",
+        "Спасибо!": "Thank you!"
+    },
+    "hosting_account\/end.php": {
+        "Уважаемый, %client": "Dear, %client",
+        "Напоминание об оплате счета": "Notification about paying the bills",
+        "Осталось меньше %days {%days|%words} до блокировки хостинг аккаунта.": "Less than %days {%days|%words} till blocking your hosting account.",
+        "дня|дней|дней": "day|days",
+        "Это напоминание о том, что Ваш хостинг аккаунт # %id будет заблокирован": "This notification informs you that your hosting account # %id will be blocked"
+    },
+    "hosting_account\/suspend.php": {
+        "Ваш хостинг аккаунт отключен": "Your hosting account has been disabled",
+        "Уважаемый, %client": "Dear, %client",
+        "Ваш хостинг аккаунт №%id отключен.": "Your hosting account # %id has been disabled",
+        "Пожалуйста, свяжитесь с нами если у Вас возникли вопросы.": "Please contact us if You have any questions."
+    },
+    "hosting_account\/unsuspend.php": {
+        "Ваш хостинг аккаунт активирован": "Your hosting account has been activated",
+        "Уважаемый, %client": "Dear, %client",
+        "Ваш хостинг аккаунт №%id активирован.": "Your hosting account # %id has been activated.",
+        "Пожалуйста, свяжитесь с нами если у Вас возникли вопросы.": "Please contact us if You have any questions."
+    },
+    "employee\/reminder.php": {
+        "Восстановление пароля": "Password reset",
+        "Для смены пароля перейдите по ссылке:": "To change the password, go to:"
+    },
+    "employee\/reminder_password.php": {
+        "Восстановление пароля": "Password reset",
+        "Ваш новый пароль:": "Your new password:"
+    },
+    "client\/reg.php": {
+        "Регистрация": "Registration",
+        "Здравствуйте,": "Hello,",
+        "Вы успешно зарегистрировались в биллинг системе.": "You have been successfully registered in the billing system.",
+        "Ваш логин:": "Your username:",
+        "Ваш пароль:": "Your password:",
+        "Спасибо": "Thank you"
+    },
+    "bill\/multi_pay.php": {
+        "Оплата счетов": "Payment of invoices",
+        "Счета № %bills были успешно оплачены.": "Invoices # %of bills have been paid successfully."
+    },
+    "ticket\/new.php": {
+        "Ваш тикет отправлен": "Your ticket has been sent",
+        "Обращение № %ticket отправлено в службу поддержки.": "Ticket # %ticket has been sent to support."
+    },
+    "ticket\/new_answer.php": {
+        "К Вашему тикету получен новй ответ": "Received a new reply to the ticket.",
+        "Получен новый ответ к тикету.": "Received a new reply to the ticket.",
+        "Посмотреть ответ можно по ссылке:": "See the answer at the link:"
+    },
+    "ticket\/change_status.php": {
+        "Статус тикета был изменен": "The ticket status has been changed",
+        "Статус тикета №%id изменен администратором.": "The status of the ticket # %id changed by the administrator.",
+        "Посмотреть тикет можно по ссылке:": "See ticket here:"
+    },
+    "ticket\/change_priority.php": {
+        "Приоритет тикета был изменен": "The ticket priority has been changed",
+        "Приоритет тикета № %id изменен администратором.": "Priority of the ticket # %id changed by the administrator.",
+        "Посмотреть тикет можно по ссылке:": "See ticket here:"
+    }
+}

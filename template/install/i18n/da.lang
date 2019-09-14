@@ -1,0 +1,60 @@
+{
+    "index.php": {
+        "Параметр": "Parameter",
+        "Рекомендуемое значение": "Anbefalet værdi",
+        "Текущее значение": "Den nuværende værdi",
+        "Версия PHP": "PHP version",
+        "Включено": "Enable",
+        "Да": "Ja",
+        "Файл %file доступен на запись": "Filen %file skrivbar",
+        "Далее": "Yderligere",
+        "Директория %dir доступна на запись": "Mappe %dir er skrivbar",
+        "Нет": "Ingen"
+    },
+    "carcase.php": {
+        "Проверка параметров": "Kontroller indstillingerne",
+        "Лицензия": "Licens",
+        "Настройки": "Indstillinger",
+        "Установка базы данных": "Database setup",
+        "Выбор языка": "Valg af sprog",
+        "Установщик биллинг системы HopeBilling": "HopeBilling installer "
+    },
+    "license.php": {
+        "Ваш лицензионный ключ": "Din licens nøgle",
+        "Получить бесплатный ключ": "Få en gratis nøgle",
+        "Купить лицензию": "Køb en licens",
+        "Я прочитал, далее": "Næste skridt",
+        "Активация бесплатной лицензии": "Aktiver gratis licens",
+        "Закрыть": "Luk",
+        "Отправить": "Send",
+        "Ваша лицензия активированна": "Din licens er aktiveret",
+        "Лицензионный ключ был отправлен на Ваш Email, указанный при активации лицензии.": "Licensnøglen er blevet sendt til Din e-Mail-adresse, der bruges under licens aktivering.",
+        "Если у Вас возникли вопросы, напишите нам": "Hvis Du har spørgsmål, bedes du kontakte os",
+        "Передать $пасибо! нашему сайту": "Tak",
+        "ФИО": "Navn",
+        "Фамилия Имя Отчество": "Fulde navn",
+        "Лицензионный ключ недействительный!": "Licensnøglen er ugyldigt!",
+        "Далее": "Yderligere"
+    },
+    "db.php": {
+        "Сервер": "Server host",
+        "Имя пользователя": "Brugernavn",
+        "Пароль": "Password",
+        "Название базы данных": "Navnet på databasen",
+        "Далее": "Yderligere",
+        "Нет соединения с базой даных!": "Ingen forbindelse til MySQL",
+        "Название базы даных": "Navnet på databasen"
+    },
+    "settings.php": {
+        "Внимание! Для правильного функционирования биллинг системы, нужно создать следующую cron запись:": "For et velfungerende faktureringssystem, skal du oprette følgende cron rekord:",
+        "Создать администратора": "Opret administrator",
+        "Логин": "Log ind",
+        "Email": "Email",
+        "Пароль": "Password",
+        "Создать валюту": "Opret valuta",
+        "Название": "Navn",
+        "Краткое название": "Korte navn",
+        "Символ": "Symbol",
+        "Завершить установку": "Fuldfør installationen"
+    }
+}

@@ -1,0 +1,79 @@
+/*Notyfications*/
+#noty-holder{
+    width: 100%;
+    top: 0;
+    font-weight: bold;
+    z-index: 1031; /* Max Z-Index in Fixed Nav Menu is 1030*/
+    text-align: center;
+    position: fixed;
+}
+.alert-popup{
+    border-radius: 0;
+
+}
+.alert-popup>span.message {
+    position: relative;
+    text-align: center;
+    /* color: #fff; */
+    font-size: 16px;
+    font-family: "Segoe UI",Frutiger,"Frutiger Linotype","Dejavu Sans","Helvetica Neue",Arial,sans-serif;
+}
+
+
+@-webkit-keyframes heightChange {
+    0%, 40%, 100% {
+        -webkit-transform: scaleY(0.4)
+    }
+    20% {
+        -webkit-transform: scaleY(1.0)
+    }
+}
+
+@keyframes heightChange {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+    }
+    20% {
+        transform: scaleY(1.0);
+    }
+}
+
+.pre-loader > div {
+    height: 100%;
+    width: 15px;
+    margin-right: 2px;
+    display: inline-block;
+    background-color: #000;
+    -webkit-animation: heightChange 1s infinite ease-in-out;
+    animation: heightChange 1s infinite ease-in-out;
+}
+
+.pre-loader .box2 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.pre-loader .box3 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+.pre-loader .box4 {
+    -webkit-animation-delay: -0.7s;
+    animation-delay: -0.7s;
+}
+
+.pre-loader .box5 {
+    -webkit-animation-delay: -0.6s;
+    animation-delay: -0.6s;
+}
+
+.pre-loader .box6 {
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s;
+}
+
+.pre-loader .box7 {
+    -webkit-animation-delay: -0.4s;
+    animation-delay: -0.4s;
+}

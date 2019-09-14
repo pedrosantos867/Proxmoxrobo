@@ -1,0 +1,59 @@
+{ 
+    "index.php": {
+        "Параметр": "Parameter",
+        "Рекомендуемое значение": "Empfohlener Wert",
+        "Текущее значение": "Aktueller Wert",
+        "Версия PHP": "PHP Version",
+        "Включено": "Aktivieren",
+        "Да": "Ja",
+        "Файл %file доступен на запись": "Datei% Datei ist beschreibbar",
+        "Далее": "Nächster Schritt",
+        "Директория %dir доступна на запись": "Dir% dir ist beschreibbar",
+        "Нет": "Nein"
+    },
+    "carcase.php": {
+        "Проверка параметров": "Überprüfung von Parameter",
+        "Лицензия": "Lizenz",
+        "Настройки": "Einstellungen",
+        "Установка базы данных": "DB installieren",
+        "Выбор языка": "Sprache auswählen",
+        "Установщик биллинг системы HopeBilling": "HopeBilling Installer "
+    },
+    "license.php": {
+        "Ваш лицензионный ключ": "Ihr Lizenzsode",
+        "Получить бесплатный ключ": "Freie Lizenz bekommen",
+        "Купить лицензию": "Lizenz kaufen",
+        "Я прочитал, далее": "Nächster Schritt",
+        "Активация бесплатной лицензии": "Aktivierung der freien Lizenz",
+        "Закрыть": "Schließen",
+        "Отправить": "Senden",
+        "Ваша лицензия активированна": "Ihre Lizenz wurde aktiviert",
+        "Лицензионный ключ был отправлен на Ваш Email, указанный при активации лицензии.": "Der Lizenzsode wurde auf Ihrer E-Mail gesendet",
+        "Если у Вас возникли вопросы, напишите нам": "Wenn Sie Fragen haben, schreiben Sie uns eine Email",
+        "Передать $пасибо! нашему сайту": "überbringen Ihren Dank unsere Webseite",
+        "ФИО": "Name (Vorname, Nachname)",
+        "Фамилия Имя Отчество": "Name (Vorname, Nachname)",
+        "Лицензионный ключ недействительный!": "Der Lizenzschlüssel ist ungültig."
+    },
+    "db.php": {
+        "Сервер": "Server-Host",
+        "Имя пользователя": "Benutzername",
+        "Пароль": "Password",
+        "Название базы данных": "DB Тame",
+        "Далее": "Nächster Schritt",
+        "Нет соединения с базой даных!": "Keine Verbindung mitMySQL",
+        "Название базы даных": "Name von DB"
+    },
+    "settings.php": {
+        "Внимание! Для правильного функционирования биллинг системы, нужно создать следующую cron запись:": "Achtung! Für das ordnungsgemäße Funktionieren des Abrechnungssystems müssen Sie den folgenden Cron-Datensatz anlegen:",
+        "Создать администратора": "Erstellen Sie Administrator",
+        "Логин": "Username",
+        "Email": "Benutzername",
+        "Пароль": "Password",
+        "Создать валюту": "Währung erstellen",
+        "Название": "Name",
+        "Краткое название": "Kurzer Name",
+        "Символ": "Symbol",
+        "Завершить установку": "Finish"
+    }
+}

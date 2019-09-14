@@ -1,0 +1,18 @@
+# php_flag zlib.output_compression off
+# php_value max_execution_time 3000
+# php_value max_input_time 3000
+# php_flag xcache.size 0
+# php_flag xcache.cacher off
+# php_flag xcache.stat off
+
+Options -Indexes
+
+RewriteEngine on
+
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+RewriteRule . index.php

@@ -1,0 +1,63 @@
+{
+    "index.php": {
+        "Параметр": "Param",
+        "Рекомендуемое значение": "Recommended value",
+        "Текущее значение": "Current value",
+        "Версия PHP": "PHP version",
+        "Включено": "Enable",
+        "Да": "Yes",
+        "Файл %file доступен на запись": "File %file is writable",
+        "Далее": "Next step",
+        "Директория %dir доступна на запись": "Dir %dir is writable",
+        "Нет": "No"
+    },
+    "carcase.php": {
+        "Проверка параметров": "Checking  Param",
+        "Лицензия": "License",
+        "Настройки": "Settings",
+        "Установка базы данных": "DB install",
+        "Выбор языка": "Select language",
+        "Установщик биллинг системы HopeBilling": "HopeBilling installer "
+    },
+    "license.php": {
+        "Ваш лицензионный ключ": "Your license key",
+        "Получить бесплатный ключ": "Get free license",
+        "Купить лицензию": "Buy license",
+        "Я прочитал, далее": "Next step",
+        "Активация бесплатной лицензии": "Activation of free license",
+        "Закрыть": "Close",
+        "Отправить": "Send",
+        "Ваша лицензия активированна": "Your license has been activated",
+        "Лицензионный ключ был отправлен на Ваш Email, указанный при активации лицензии.": "The license key has been sent on your email",
+        "Если у Вас возникли вопросы, напишите нам": "If you have questions, mail us",
+        "Передать $пасибо! нашему сайту": "Thanks",
+        "ФИО": "Full name",
+        "Фамилия Имя Отчество": "Ful name",
+        "Лицензионный ключ недействительный!": "The license key is not valid.",
+        "Для продолжения вы должны согласиться с условиями лицензии": "To continue you must agree to the terms of the license",
+        "Условия лицензии": "The license terms",
+        "Я согласен с условиями лицензии": "I agree to the terms of the license",
+        "Далее": "Next"
+    },
+    "db.php": {
+        "Сервер": "Server host",
+        "Имя пользователя": "Username",
+        "Пароль": "Password",
+        "Название базы данных": "DB name",
+        "Далее": "Next step",
+        "Нет соединения с базой даных!": "No connectin with MySQL",
+        "Название базы даных": "Name of DB"
+    },
+    "settings.php": {
+        "Внимание! Для правильного функционирования биллинг системы, нужно создать следующую cron запись:": "Attention! For the proper functioning of the billing system, you need to create the following cron record:",
+        "Создать администратора": "Create administrator",
+        "Логин": "Username",
+        "Email": "Email",
+        "Пароль": "Password",
+        "Создать валюту": "Create currency",
+        "Название": "Name",
+        "Краткое название": "Short name",
+        "Символ": "Symbol",
+        "Завершить установку": "Finish"
+    }
+}

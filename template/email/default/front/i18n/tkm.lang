@@ -1,0 +1,73 @@
+{
+    "hosting_account\/new.php": {
+        "Ваш хостинг аккаунт создан": "siz taze salgyda ",
+        "Адрес:": "salgy",
+        "Логин:": "Login",
+        "Пароль:": "acar soz",
+        "Доступ к биллинг панели:": "ygtyyar ucin billing panelleri",
+        "Ваш хостинговый аккаунт создан": "siz taze salgyda ",
+        "Ваш хостинговый аккаунт создан и это письмо содержит всю необходимую информацию для работы с Вашим аккаунтом.": "siz taze salgyda we bu yazgylan  hemmesini duruzmak sizim akkawuntynyzda  ",
+        "Детальная информация нового аккаунта:": "sonky maglumatlara cenli sizin akkawuntynyzda ",
+        "Адрес хостиг панели:": "salgy hosting paneller",
+        "Спасибо Вам за то, что выбрали нас!": "sagbolun ayytyarys size.siz bizi saylanynyza "
+    },
+    "subjects": {
+        "Ваш хостинг аккаунт создан": "siz taze salgyda "
+    },
+    "bill\/new.php": {
+        "Вам выставлен счет на оплату": "siz goydunyz hasabynyza pul",
+        "Уважаемый %client": "hormatly  %client",
+        "Это уведомление о том, что счет №%id создан %date.": "bu barada duydrmak,hasam ",
+        "Счет №%id": "hasap №%id",
+        "Сумма: %summ": "jem %summ",
+        "Вы можете просмотреть и оплатить счет перейдя по ссылке ниже:": "mumkun siz seredersiniz tolonen hasaba belgi ustu bilen",
+        "Перейти к оплате": "eline gecmek ucin talegi hasaplan"
+    },
+    "client\/reg.php": {
+        "Регистрация": "duzolutmoler",
+        "Здравствуйте,": "salawmaleykim",
+        "Вы успешно зарегистрировались в биллинг системе.": "siz sowly taze duzelmede we billing ulgamynda",
+        "Ваш логин:": "sizin logeniniz",
+        "Ваш пароль:": "sizin acar sozuniz",
+        "Спасибо": "sagbolun"
+    },
+    "employee\/reminder.php": {
+        "Восстановление пароля": "acar sozu tazeden dikelitmek",
+        "Для смены пароля перейдите по ссылке:": "semeni ucin acar sozi salgylanys bilen tapyn"
+    },
+    "employee\/reminder_password.php": {
+        "Восстановление пароля": "acar sozu tazeden dikelitmek",
+        "Ваш новый пароль:": "sizin taze acar sozuniz"
+    },
+    "ticket\/new.php": {
+        "Ваш тикет отправлен": "sizin tiketiniz ugradylan",
+        "Обращение № %ticket отправлено в службу поддержки.": "ýüztutma № %ticket ugtadylan gulluk komegine "
+    },
+    "ticket\/new_answer.php": {
+        "К Вашему тикету получен новй ответ": "sizin taze tiktiniz taze soraglara bilen",
+        "Получен новый ответ к тикету.": "tikete taze soraglar gelli",
+        "Посмотреть ответ можно по ссылке:": "salgylanmadaky jogaplara seretmek"
+    },
+    "bill\/pay.php": {
+        "Счет №%id оплачен": "hasap №%id  tolonen",
+        "Счет №%id успешно оплачен.": "hasap №%id  onat tolonen",
+        "Спасибо!": "sagbolun!"
+    },
+    "ticket\/change_status.php": {
+        "Статус тикета был изменен": "belgi tiketda uyutgoshmeler bolly",
+        "Статус тикета №%id изменен администратором.": "belgi tiketada №%id  uyutgodu dolandyrjyda",
+        "Посмотреть тикет можно по ссылке:": "salgylanmadaky jogaplara seretmek"
+    },
+    "client\/reminder.php": {
+        "Восстановление пароля": "acar sozu dikelitmek",
+        "Для смены пароля перейдите по ссылке:": "semeni ucin acar sozi salgylanys bilen tapyn"
+    },
+    "client\/reminder_password.php": {
+        "Восстановление пароля": "acar sozu dikelitmek",
+        "Ваш новый пароль:": "sizin taze acar sozuniz"
+    },
+    "bill\/multi_pay.php": {
+        "Оплата счетов": "tolog hasapda",
+        "Счета № %bills были успешно оплачены.": "hasap  № %bills onat tolenen"
+    }
+}

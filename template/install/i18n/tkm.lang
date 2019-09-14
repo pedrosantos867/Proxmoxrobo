@@ -1,0 +1,21 @@
+{
+    "index.php": {
+        "Параметр": "ähli tarapdan",
+        "Рекомендуемое значение": "maslahatlar bermek ",
+        "Текущее значение": "gündelikbaha",
+        "Версия PHP": "wariant  PHP",
+        "Да": "hawwa",
+        "Включено": "yakmak",
+        "Директория %dir доступна на запись": "direktoriýa %dir tapylan yazgylar ",
+        "Файл %file доступен на запись": "faýl %file tapylan yazgylar ",
+        "Далее": "dowam etmek"
+    },
+    "carcase.php": {
+        "Выбор языка": "dil sayla",
+        "Проверка параметров": "ähli tarapdanlary barlamak",
+        "Установка базы данных": "bazany kabulunyn maglumatlary",
+        "Лицензия": "rugsatnama",
+        "Настройки": "duzeltmeler",
+        "Установщик биллинг системы HopeBilling": "stanowka ediji billing HopeBilling"
+    }
+}

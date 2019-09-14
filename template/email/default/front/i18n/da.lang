@@ -1,0 +1,126 @@
+{
+    "bill\/new.php": {
+        "Уважаемый %client": "Kære %client",
+        "Это уведомление о том, что счет №%id создан %date.": "Dette er en meddelelse om, at Faktura #%id er oprettet %date.",
+        "Счет №%id": "Faktura №%id",
+        "Сумма: %summ": "Beløb: %summ",
+        "Вы можете просмотреть и оплатить счет перейдя по ссылке ниже:": "Du kan se og betale din regning ved at klikke på linket nedenfor:",
+        "Перейти к оплате": "Betal",
+        "Вам выставлен счет на оплату": "Du har faktura til betaling"
+    },
+    "hosting_account\/new.php": {
+        "Ваш хостинг аккаунт создан": " Dit webhotel er blevet oprettet",
+        "Адрес:": "URL:",
+        "Логин:": "Brugernavn:",
+        "Пароль:": "Password:",
+        "Доступ к биллинг панели:": "Adgang til fakturering panel:",
+        "Ваш хостинговый аккаунт создан": "Dit webhotel er blevet oprettet",
+        "Ваш хостинговый аккаунт создан и это письмо содержит всю необходимую информацию для работы с Вашим аккаунтом.": "Dit webhotel er blevet oprettet, og denne e-mail indeholder alle nødvendige oplysninger om dit webhotel.",
+        "Детальная информация нового аккаунта:": "Nærmere oplysninger om den nye konto:",
+        "Адрес хостиг панели:": "URL til hosting panel:",
+        "Спасибо Вам за то, что выбрали нас!": "Mange tak!",
+        "Адрес хостинг панели:": "Hosting panel:"
+    },
+    "client\/reminder.php": {
+        "Для смены пароля перейдите по ссылке:": "For at ændre adgangskoden, skal du gå til:",
+        "Восстановление пароля": "Gendan adgangskode"
+    },
+    "client\/reminder_password.php": {
+        "Ваш новый пароль:": "Dit nye password:",
+        "Восстановление пароля": "Gendan adgangskode"
+    },
+    "subjects": {
+        "Ваш хостинг аккаунт создан": " Din hosting-konto er blevet oprettet"
+    },
+    "bill\/pay.php": {
+        "Счет №%id оплачен": "Faktura №%id er betalt",
+        "Счет №%id успешно оплачен.": "Faktura №%id er betalt.",
+        "Спасибо!": "Mange tak!"
+    },
+    "hosting_account\/end.php": {
+        "Уважаемый, %client": "Kære, %client",
+        "Напоминание об оплате счета": "Betalingspåmindelse",
+        "Осталось меньше %days {%days|%words} до блокировки хостинг аккаунта.": "Mindre end %days {%days|%words} for deaktivering af din hosting-konto.",
+        "дня|дней|дней": "dag|dage",
+        "Это напоминание о том, что Ваш хостинг аккаунт # %id будет заблокирован": "Dette er en påmindelse om, at dit webhotel #%id vil blive blokeret"
+    },
+    "hosting_account\/suspend.php": {
+        "Ваш хостинг аккаунт отключен": "Dit webhotel er blevet deaktiveret",
+        "Уважаемый, %client": "Kære, %client",
+        "Ваш хостинг аккаунт №%id отключен.": "Dit webhotel #%id er blevet deaktiveret",
+        "Пожалуйста, свяжитесь с нами если у Вас возникли вопросы.": "Kontakt os, hvis du har spørgsmål."
+    },
+    "hosting_account\/unsuspend.php": {
+        "Ваш хостинг аккаунт активирован": "Dit webhotel er blevet aktiveret",
+        "Уважаемый, %client": "Kære, %client",
+        "Ваш хостинг аккаунт №%id активирован.": "Dit webhotel #%id er blevet aktiveret",
+        "Пожалуйста, свяжитесь с нами если у Вас возникли вопросы.": "Kontakt os, hvis du har spørgsmål."
+    },
+    "employee\/reminder.php": {
+        "Восстановление пароля": "Gendan adgangskode",
+        "Для смены пароля перейдите по ссылке:": "For at ændre adgangskoden, skal du gå til:"
+    },
+    "employee\/reminder_password.php": {
+        "Восстановление пароля": "Gendan adgangskode",
+        "Ваш новый пароль:": "Dit nye password:"
+    },
+    "client\/reg.php": {
+        "Регистрация": "Registrering",
+        "Здравствуйте,": "Velkommen,",
+        "Вы успешно зарегистрировались в биллинг системе.": "Du har tilmeldt dig til faktureringssystemet.",
+        "Ваш логин:": "Dit brugernavn:",
+        "Ваш пароль:": "Dit password:",
+        "Спасибо": "Mange tak"
+    },
+    "bill\/multi_pay.php": {
+        "Оплата счетов": "Betaling af fakturaer",
+        "Счета № %bills были успешно оплачены.": "Fakturaer # %bills regninger er betalt med succes."
+    },
+    "ticket\/new.php": {
+        "Ваш тикет отправлен": "Din ticket er sendt",
+        "Обращение № %ticket отправлено в службу поддержки.": "Ticket # %ticket er sendt til support."
+    },
+    "ticket\/new_answer.php": {
+        "К Вашему тикету получен новй ответ": "Modtaget nyt svar på ticket.",
+        "Получен новый ответ к тикету.": "Modtaget nyt svar på ticket.",
+        "Посмотреть ответ можно по ссылке:": "Se svaret på linket:"
+    },
+    "ticket\/change_status.php": {
+        "Статус тикета был изменен": "Ticket status er ændret",
+        "Статус тикета №%id изменен администратором.": "Status for ticket # %id ændret af administratoren.",
+        "Посмотреть тикет можно по ссылке:": "Se ticket her:"
+    },
+    "ticket\/change_priority.php": {
+        "Приоритет тикета был изменен": "Ticket prioritet er blevet ændret",
+        "Приоритет тикета № %id изменен администратором.": "Prioritet af ticket # %id ændret af administratoren.",
+        "Посмотреть тикет можно по ссылке:": "Se ticket her:"
+    },
+    "admin\/ticket\/new.php": {
+        "Получен тикет": "Modtaget ny ticket",
+        "Получено новое обращение в службу поддержки № %ticket.": "En ny supportsag # %ticket.",
+        "Тема: ": "Emne",
+        "Сообщение: ": "Besked:"
+    },
+    "admin\/ticket\/new_answer.php": {
+        "К тикету получен новй ответ": "Svar på ticket",
+        "Получен новый ответ к тикету.": "Du har modtaget nyt svar på ticket",
+        "Посмотреть ответ можно по ссылке:": "Se svaret på følgende link:"
+    },
+    "admin\/hosting\/order\/new.php": {
+        "Новый заказ хостинга": "Ny hosting ordre",
+        "Новый хостинг аккаунт создан": "Der er oprettet ny hosting-konto",
+        "Детальная информация о заказе:": "Oplysninger om ordren:",
+        "Клиент:": "Kunde:",
+        "Сервер:": "Server:",
+        "Логин:": "Brugernavn:",
+        "Пароль:": "Password:"
+    },
+    "admin\/service\/order\/new.php": {
+        "Новый заказ услуги": "Ny ordre af tjenesten",
+        "Новый заказ услуги: ": "Ny ordre: ",
+        "Детальная информация о заказе:": "Detaljerede oplysninger om:",
+        "Заказ:": "For:",
+        "Номер заказа:": "Ordre nummer:",
+        "Клиент:": "Kunde:"
+    }
+}

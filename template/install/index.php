@@ -30,19 +30,7 @@
                 </td>
             </tr>
             <?php $extensions = get_loaded_extensions(); ?>
-            <?php $ok = $ok&&  (in_array('ionCube Loader', $extensions) && ioncube_loader_version() >= 5) ? $ok : false ?>
-            <tr <?php echo(in_array('ionCube Loader', $extensions) && ioncube_loader_version() >= 5 ? 'class="success"' : 'class="danger"') ?> >
 
-                <td>
-                    ionCube Loader
-                </td>
-                <td>
-                    >= 5.0
-                </td>
-                <td>
-                    <?php echo in_array('ionCube Loader', $extensions) ? ioncube_loader_version() : 'Not install' ?>
-                </td>
-            </tr>
             <?php $ok = $ok&& (in_array('zip', $extensions) ? $ok : false) ?>
             <tr <?php echo(in_array('zip', $extensions) ? 'class="success"' : 'class="danger"') ?> >
 
@@ -264,34 +252,7 @@
                      <?php if( is_writable(\System\Path::getRoot('app/config/sms-gateway.config')) ) {?> <?=$_->l('Да')?> <?} else {?> <?=$_->l('Нет')?> <?}?>
                 </td>
             </tr>
-            <?php $ok = $ok&& (is_writable(\System\Path::getRoot('key.lic')) ? $ok : false) ?>
-            <tr <?php echo(is_writable(\System\Path::getRoot('key.lic')) ? 'class="success"' : 'class="danger"') ?> >
-
-                <td>
-                    <?= $_->l('Файл %file доступен на запись', array('file' => 'key.lic')) ?>
-                </td>
-                <td>
-                    <?= $_->l('Да') ?>
-                </td>
-                <td>
-
-                    <?php if( is_writable(\System\Path::getRoot('key.lic')) ) {?> <?=$_->l('Да')?> <?} else {?> <?=$_->l('Нет')?> <?}?>
-                </td>
-            </tr>
-            <?php $ok = $ok&& (is_writable(\System\Path::getRoot('key.lic')) ? $ok : false) ?>
-            <tr <?php echo(is_writable(\System\Path::getRoot('tmp.lic')) ? 'class="success"' : 'class="danger"') ?> >
-
-                <td>
-                    <?= $_->l('Файл %file доступен на запись', array('file' => 'tmp.lic')) ?>
-                </td>
-                <td>
-                    <?= $_->l('Да') ?>
-                </td>
-                <td>
-
-                    <?php if( is_writable(\System\Path::getRoot('tmp.lic')) ) {?> <?=$_->l('Да')?> <?} else {?> <?=$_->l('Нет')?> <?}?>
-                </td>
-            </tr>
+             
 
             <?php
             $cf = @file_put_contents(\System\Path::getRoot('storage/chmodtest.tmp'), '');

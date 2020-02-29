@@ -8,3 +8,5 @@ The free billing system for hosting providers
  - Domain registrars (reseller club, resello, 2domains, freenom, r01, DRS, REG.ru, ukrnames, Recenter, TLD24.ru and other)
  - Any other billing services
  
+
+<a href="https://www.liqpay.ua/en/checkout/card/hopebilling">Donate</a>

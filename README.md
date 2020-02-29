@@ -1,6 +1,7 @@
 # hopebilling
-Official site https://hopebilling.com
-The free billing system for hosting providers
+Official site <a href="https://hopebilling.com">https://hopebilling.com</a>
+<br />
+<b>The free billing system for hosting providers</b>
 
 
  - Web hosting  (vestacp, cpanel, ispmanager, cpanel, plask, ispconfig, directadmin)

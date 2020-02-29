@@ -52,8 +52,8 @@ if(!defined('_SITE_DOMINE_')) {
 }
 
 define('_SITE_URL_', _SITE_PROTOCOL_ . _SITE_DOMINE_ );
-
-function __autoload($namespace_class)
+spl_autoload_register('core_autoload');
+function core_autoload($namespace_class)
 {
 
     $class_data = explode('\\', $namespace_class);

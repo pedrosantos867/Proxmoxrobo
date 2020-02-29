@@ -39,11 +39,9 @@
                     <a href="#"> <span class="badge alert-warning">3</span> <?=$_->l('Установка базы данных')?>
                     </a>
                 </li>
-                <li <?php echo \System\Tools::rGET('step') == 3 ? 'class="active"' : '' ?>>
-                    <a href="#"> <span class="badge alert-info">4</span> <?=$_->l('Лицензия')?></a>
-                </li>
+
                 <li <?php echo \System\Tools::rGET('step') == 4 ? 'class="active"' : '' ?>>
-                    <a href="#"> <span class="badge alert-success">5</span> <?=$_->l('Настройки')?></a>
+                    <a href="#"> <span class="badge alert-success">4</span> <?=$_->l('Настройки')?></a>
                 </li>
 
             </ul>

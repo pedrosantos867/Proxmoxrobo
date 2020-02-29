@@ -60,18 +60,18 @@
                     <?php if( in_array('pdo_mysql', $extensions) ) {?> <?=$_->l('Да')?> <?} else {?> <?=$_->l('Нет')?> <?}?>
                 </td>
             </tr>
-            <?php $ok = $ok&& (in_array('mcrypt', $extensions) ? $ok : false) ?>
-            <tr <?php echo(in_array('mcrypt', $extensions) ? 'class="success"' : 'class="danger"') ?> >
+            <?php $ok = $ok&& (in_array('openssl', $extensions) ? $ok : false) ?>
+            <tr <?php echo(in_array('openssl', $extensions) ? 'class="success"' : 'class="danger"') ?> >
 
                 <td>
-                    Mcrypt Support
+                    Openssl Support
                 </td>
                 <td>
                     <?=$_->l('Да')?>
                 </td>
                 <td>
 
-                    <?php if( in_array('mcrypt', $extensions) ) {?> <?=$_->l('Да')?> <?} else {?> <?=$_->l('Нет')?> <?}?>
+                    <?php if( in_array('openssl', $extensions) ) {?> <?=$_->l('Да')?> <?} else {?> <?=$_->l('Нет')?> <?}?>
                 </td>
             </tr>
 

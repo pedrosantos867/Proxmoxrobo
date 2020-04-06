@@ -6,8 +6,8 @@
     "views\/layout.php": {
         "Сообщение об ошибке": "Bug report",
         "Ваш Email": "Your email",
-        "Расскажите нам об обнаруженной ошибке. Вы можете прикрепить скриншот, нажмите на изображение фотоаппарата.": "Your error description. Click on icon for create screen. ",
-        "Сделать скриншот": "Take screen",
+        "Расскажите нам об обнаруженной ошибке. Вы можете прикрепить скриншот, нажмите на изображение фотоаппарата.": "Your error description. Click on icon for screenshot. ",
+        "Сделать скриншот": "Take screenshot",
         "Отправить отчет": "Send report",
         "Клиенты": "Clients",
         "Счета": "Invoices",
@@ -88,8 +88,8 @@
         "Создание клиента": "New client",
         "Редактирование клиента": "Edit client",
         "Пароль": "Password",
-        "Комментарий": "",
-        "Включить доступ к API": ""
+        "Комментарий": "Comment",
+        "Включить доступ к API": "Enable API Access"
     },
     "views\/settings.php": {
         "Основные": "Main",
@@ -103,7 +103,7 @@
         "Модули": "Modules"
     },
     "views\/setting\/global.php": {
-        "Название сайта": "Sitename",
+        "Название сайта": "Site Name",
         "Email-адрес": "Admin Email ",
         "Принудительно использовать SSL": "Use only SSL connection",
         "Внимание, перед этим убедитесь, что сайт доступен по протоколу https": "Attention! Сheck access to site via the https protocol",
@@ -133,24 +133,24 @@
         "Номер телефона в формате +380631235476": "Phone number in the format +380631235476",
         "Включить возможность авторизации и регистрации через социальные сети": "Activate the ability of authorization and registration via social networks",
         "Общие настройки": "General settings",
-        "Настройки почты": "",
-        "Использовать php функцию mail()": "",
+        "Настройки почты": "Main Settings",
+        "Использовать php функцию mail()": "Use php mail () function",
         "Использовать SMTP сервер": "",
-        "SMTP сервер": "",
-        "SMTP порт": "",
-        "Email отправителя": "",
-        "Имя пользователя": "",
-        "Пароль": "",
+        "SMTP сервер": "Use SMTP server",
+        "SMTP порт": "SMTP port",
+        "Email отправителя": "Sender Email",
+        "Имя пользователя": "Username",
+        "Пароль": "Password",
         "CRON": "",
-        "Внимание, CRON запись действует только для локального запуска": "",
-        "или": "",
-        "Персонализация": "",
-        "Шаблон EMAIL уведомлений": "",
-        "SMTP протокол": "",
-        "TLS": "",
-        "SSL": "",
-        "Отправить тестовое сообщение": "",
-        "Не использовать": "",
+        "Внимание, CRON запись действует только для локального запуска": "Attention, CRON record is valid only for local launch.",
+        "или": "or",
+        "Персонализация": "Personalization",
+        "Шаблон EMAIL уведомлений": "EMAIL Notification Template",
+        "SMTP протокол": "SMTP protocol",
+        "TLS": "TLS",
+        "SSL": "SSL",
+        "Отправить тестовое сообщение": "Send test message",
+        "Не использовать": "Do not use",
         "NS1:": "",
         "NS2:": "",
         "NS3:": "",
@@ -164,7 +164,7 @@
         "Название": "Name",
         "Курс": "Rate",
         "Изменить": "Change",
-        "Удалить": ""
+        "Удалить": "Delete"
     },
     "views\/setting\/translate_manager.php": {
         "Сохранить": "Save",
@@ -194,15 +194,15 @@
         "Коэффициент по отношению к валюте по-умолчанию": "Rate",
         "Символ": "Symbol",
         "Сохранить": "Save",
-        "Формат отражения": ""
+        "Формат отражения": "Reflection format"
     },
     "views\/setting\/currencies_setting.php": {
         "Сервер для получения курса валют": "Rates update server",
         "Основная валюта": "Default currency",
         "Сохранить": "Save",
-        "Приват24": "",
-        "НБУ": "",
-        "Центральный банк Российской Федерации": "",
+        "Приват24": "Private24",
+        "НБУ": "NBU",
+        "Центральный банк Российской Федерации": "Central Bank of the Russian Federation",
         "European Central Bank": ""
     },
     "views\/domain\/order\/list.php": {
@@ -284,8 +284,8 @@
         "Введите доменное имя": "Enter  domain name",
         "Поле заполнено правильно!": "Field is entered correctly!",
         "Панель администратора": "Admin panel",
-        "Дата в формате: 18-06-2015": "",
-        "Введите число больше нуля": ""
+        "Дата в формате: 18-06-2015": "Date in the format: MM/DD/YYYY",
+        "Введите число больше нуля": "Enter a number greater than zero"
     },
     "views\/setting\/language\/edit.php": {
         "Название": "Name",
@@ -337,8 +337,8 @@
         "Изменить заказ": "Edit order",
         "Удалить заказ": "Delete order",
         "Результаты не найдены.": "The results are not found.",
-        "Отключен": "",
-        "Активный": ""
+        "Отключен": "Disconnected",
+        "Активный": "Active"
     },
     "views\/hosting\/order\/edit.php": {
         "Логин": "Login",
@@ -376,7 +376,6 @@
         "Закрыть": "Close",
         "Сохранить": "Save",
         "Сервер": "Server",
-        "Ссылка доступа к пенели клиента": "Link to access the customer panel",
         "Ссылка доступа к панели клиента": "Link to access the customer panel",
         "URL адрес хостинг панели (ссылка будет доступная клиентам в подробностях о заказе). Например: https:\/\/mypanel.com:8080": "URL hosting panel (link will be available to clients in detail about the order). For example: https:\/\/mypanel.com:8080",
         "Чтобы использовать адрес панели по умолчанию, оставьте это поле пустым.": "To use address panel by default, leave this field blank."
@@ -499,7 +498,7 @@
         "ФИО": "Full name",
         "Номер телефона": "Phone number",
         "Закрыть": "Close",
-        "Войти": ""
+        "Войти": "To come in"
     },
     "views\/domain\/edit.php": {
         "Редактировать домен": "Edit domain",
@@ -589,7 +588,7 @@
         "Редактировать": "Edit",
         "Удалить": "Delete",
         "Результаты не найдены.": "The results are not found.",
-        "Продолжить удаление?": ""
+        "Продолжить удаление?": "Continue removal?"
     },
     "views\/vps\/server\/list.php": {
         "Добавить": "Add",
@@ -695,8 +694,8 @@
         "Отключение услуги": "Deactivate services",
         "Закрыть": "Close",
         "Сохранить": "Save",
-        "Добавить": "",
-        "Ползунок (rangepicker)": ""
+        "Добавить": "Add",
+        "Ползунок (rangepicker)": "Slider"
     },
     "views\/service\/category\/list.php": {
         "Добавить": "Add",
@@ -718,15 +717,15 @@
         "Конец": "End",
         "Статус": "Status",
         "Результаты не найдены.": "Results not found",
-        "Категория": "",
-        "Не оплачено": "",
-        "Управление": "",
-        "Изменить": "",
-        "Счета": "",
-        "Посмотреть детали": "",
-        "Добавить информацию": "",
-        "Удалить заказ": "",
-        "Оплачено": ""
+        "Категория": "Category",
+        "Не оплачено": "Not paid",
+        "Управление": "Management",
+        "Изменить": "Edit",
+        "Счета": "Accounts",
+        "Посмотреть детали": "View Details",
+        "Добавить информацию": "Add information",
+        "Удалить заказ": "Delete order",
+        "Оплачено": "Paid"
     },
     "views\/client\/edit-balance.php": {
         "Пользователь": "User",
@@ -736,9 +735,9 @@
         "Тип операции": "The type of operation",
         "Пополнение": "Account credit",
         "Вычет": "Deduction",
-        "Сумма": "",
-        "Закрыть": "",
-        "Сохранить": ""
+        "Сумма": "Amount",
+        "Закрыть": "Close",
+        "Сохранить": "Save"
     },
     "views\/page\/edit.php": {
         "Услуга": "Service",
@@ -797,7 +796,7 @@
         "Результаты не найдены.": "Results not found"
     },
     "views\/service\/order\/show.php": {
-        "Нет дополнительной информации": "",
-        "Закрыть": ""
+        "Нет дополнительной информации": "No further information",
+        "Закрыть": "Close"
     }
 }

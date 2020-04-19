@@ -39,6 +39,7 @@ class Languages extends ObjectModel
 
     public static function translate($word, $folder, $template, $params=null,  $id_lang = null){
 
+
         if($id_lang){
             $Lang = new Languages($id_lang);
             if($Lang->isLoadedObject()){
@@ -51,14 +52,19 @@ class Languages extends ObjectModel
         }
 
         if (_TRANSLATE_MODE_ENABLE_ && isset($lang) ) {
+
             if($lang->id >= 1) {
                 $languageDB = new LanguageDictionary($lang->iso_code, $folder, $template);
+
                 if (($languageDB->{$word}) === null) {
                     $languageDB->set($word, '');
                     $languageDB->save();
+
+
                 }
             }
         }
+
 
         if (isset($lang) && $lang->id >1) {
             $languageDB = new LanguageDictionary($lang->iso_code, $folder, $template);
@@ -66,6 +72,7 @@ class Languages extends ObjectModel
             $word = ($languageDB->{$word} ? $languageDB->{$word} : $word);
 
         }
+
 
         if (isset($params) && is_array($params)) {
                 foreach ($params as $key => $value) {

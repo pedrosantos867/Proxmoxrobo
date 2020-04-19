@@ -7,7 +7,8 @@
         <optgroup label="System">
         <option <?=($_->rget('type') == 1 ? 'selected="selected"' : '')?> value="1"><?=$_->l('Панель клиента')?></option>
         <option <?=($_->rget('type') == 2 ? 'selected="selected"' : '')?> value="2"><?=$_->l('Панель администратора')?></option>
-        <option <?=($_->rget('type') == 4 ? 'selected="selected"' : '')?> value="4"><?=$_->l('Email сообщения')?></option>
+        <option <?=($_->rget('type') == 4 ? 'selected="selected"' : '')?> value="4"><?=$_->l('Email сообщения клиенту')?></option>
+        <option <?=($_->rget('type') == 5 ? 'selected="selected"' : '')?> value="5"><?=$_->l('Email сообщения администратору')?></option>
         <option <?=($_->rget('type') == 3 ? 'selected="selected"' : '')?> value="3"><?=$_->l('Установщик')?></option>
         </optgroup>
         <optgroup label="Modules">
@@ -49,8 +50,9 @@
         </div>
     </form>
 
+
 <form method="post">
-<?  if(count($translates)>0){$i=0; foreach ($translates as $file => $translate) { ?>
+<?  if(is_array($translates) && count($translates)>0){$i=0; foreach ($translates as $file => $translate) { ?>
 
     <div><?= $file ?></div>
 

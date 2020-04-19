@@ -98,7 +98,7 @@ class Notifier
         if ($clientObject->isNotifyEnabled('new_ticket')) {
             $Email          = new Email();
             $Email->to = $clientObject->email;
-            $eview = $Email->getView('front/ticket/new.php', $clientObject->getDefaultLang());
+            $eview = $Email->getView('ticket/new.php', $clientObject->getDefaultLang());
             $eview->ticket  = $Ticket;
             $eview->site_name = Config::factory()->sitename;
             $eview->site_email = Config::factory()->site_email;
@@ -120,7 +120,7 @@ class Notifier
         if(isset($config->email_notifications['new_ticket'])){
             $Email          = new Email();
             $Email->to      = $config->site_email;
-            $eview = $Email->getView('admin/ticket/new.php', $clientObject->getDefaultLang());
+            $eview = $Email->getView('ticket/new.php', $clientObject->getDefaultLang(), 'admin');
             $eview->ticket  = $Ticket;
             $eview->site_name = Config::factory()->sitename;
             $eview->site_email = Config::factory()->site_email;
@@ -143,7 +143,7 @@ class Notifier
             $Email          = new Email();
             $Email->to = $clientObject->email;
 
-            $eview = $Email->getView('front/ticket/new_answer.php', $clientObject->getDefaultLang());
+            $eview = $Email->getView('ticket/new_answer.php', $clientObject->getDefaultLang());
             $eview->ticket  = $Ticket;
 
             $eview->client = $clientObject;

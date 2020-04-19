@@ -20,6 +20,7 @@ class LanguageDictionary
         //TODO need remove str replace and fix // problem
         $this->filepath = str_replace('//', '/',  $dir. '/i18n/' . $lang . '.lang' );
 
+
         if (!file_exists($this->filepath)) {
             $h = @fopen($this->filepath, "w");
             @fclose($h);
@@ -85,7 +86,7 @@ class LanguageDictionary
 
     public function getAll()
     {
-        return $this->options;
+        return (array)$this->options;
     }
 
     public function setArray($array)

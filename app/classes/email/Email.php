@@ -22,8 +22,9 @@ class Email extends \System\Mail
         $this->template = Config::factory()->email_template;
     }
 
-    public function getView($name, $id_lang = null){
-        $view = new View('email/'.$this->template, $name);
+    public function getView($name, $id_lang = null, $panel = 'front'){
+        $view = new View('email/'.$this->template.'/'.$panel, $name);
+
         if($id_lang){
             $view->setDataToHelper('force_lang', $id_lang);
         }

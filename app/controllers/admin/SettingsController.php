@@ -274,7 +274,9 @@ class SettingsController extends FrontController
         } else if(Tools::rGET('type') == 3) {
             $dir = _BASE_DIR_TEMPLATE_ .'install';
         } else if(Tools::rGET('type') == 4) {
-            $dir = _BASE_DIR_TEMPLATE_ .'email/default';
+            $dir = _BASE_DIR_TEMPLATE_ .'email/default/front';
+        } else if(Tools::rGET('type') == 5) {
+            $dir = _BASE_DIR_TEMPLATE_ .'email/default/admin';
         } else if(strpos(Tools::rGET('type'), 'm') !== false){
             $module_id = str_replace('m', '', Tools::rGET('type'));
             $ModuleObject = new \model\Module($module_id);
@@ -291,6 +293,7 @@ class SettingsController extends FrontController
         $view->modules = \model\Module::factory()->getRows();
 
         $LD = new LanguageDictionary($Language->iso_code, $dir);
+
         if(Tools::rPOST('copy_from')){
             if(!HB_DEMO_MODE){
                 $Languagef = new Languages(Tools::rPOST('copy_from'));

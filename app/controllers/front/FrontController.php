@@ -77,7 +77,7 @@ class FrontController extends \GeneralController
             $us      = new ClientSession();
             $session = $us->where('client_id', $id_user)->where('hash', $hash)->getRow();
 
-            if (count($session) && $session) {
+            if (isset($session) && $session) {
                 $this->client = new Client($session->client_id);
 
                 if (!$this->client->isLoadedObject()) {

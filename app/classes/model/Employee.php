@@ -9,6 +9,7 @@
 namespace model;
 
 
+use System\Config;
 use System\ObjectModel;
 use System\Validation;
 
@@ -37,6 +38,13 @@ class Employee extends ObjectModel
     public function remove(){
         EmployeeSession::factory()->where('employee_id', $this->id)->removeRows();
         return parent::remove();
+
+    }
+
+    public function getDefaultLang(){
+        $config = Config::factory();
+
+        return $config->admin_default_lang;
 
     }
 } 

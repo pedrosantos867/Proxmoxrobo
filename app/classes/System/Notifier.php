@@ -7,6 +7,7 @@ use email\Email;
 use model\Bill;
 use model\Client;
 use model\DomainOrder;
+use model\Employee;
 use model\HostingAccount;
 use model\HostingPlan;
 use model\HostingServer;
@@ -25,7 +26,7 @@ class Notifier
         if ($clientObject->isNotifyEnabled('new_bill')) {
             $email          = new Email();
             $email->to = $clientObject->email;
-            $vemail = $email->getView('front/bill/new.php', $clientObject->getDefaultLang());
+            $vemail = $email->getView('bill/new.php', $clientObject->getDefaultLang(), 'front');
             $vemail->bill   = $billObject;
             $vemail->client = $clientObject;
             $vemail->site_name = Config::factory()->sitename;
@@ -53,7 +54,7 @@ class Notifier
         if ($clientObject->isNotifyEnabled('suspend_hosting_order')) {
             $email = new Email();
             $email->to = $clientObject->email;
-            $vemail = $email->getView('front/hosting_account/suspend.php', $clientObject->getDefaultLang());
+            $vemail = $email->getView('hosting_account/suspend.php', $clientObject->getDefaultLang(), 'front');
             $vemail->account = $Account;
             $vemail->client = $clientObject;
             $vemail->site_name = Config::factory()->sitename;
@@ -76,7 +77,7 @@ class Notifier
         if ($clientObject->isNotifyEnabled('unsuspend_hosting_order')) {
             $email = new Email();
             $email->to = $clientObject->email;
-            $vemail = $email->getView('front/hosting_account/unsuspend.php', $clientObject->getDefaultLang());
+            $vemail = $email->getView('hosting_account/unsuspend.php', $clientObject->getDefaultLang(), 'front');
             $vemail->account = $Account;
             $vemail->client = $clientObject;
             $email->msg = $vemail->fetch();
@@ -157,7 +158,7 @@ class Notifier
         if(isset($config->email_notifications['ticket_answer'])){
             $Email          = new Email();
             $Email->to      = $config->site_email;
-            $eview = $Email->getView('admin/ticket/new_answer.php', $clientObject->getDefaultLang());
+            $eview = $Email->getView('ticket/new_answer.php',  $config->admin_default_lang , 'admin');
             $eview->ticket  = $Ticket;
             $eview->client = $clientObject;
             $eview->site_name = Config::factory()->sitename;
@@ -186,7 +187,7 @@ class Notifier
             $email          = new Email();
             $email->to = $clientObject->email;
 
-            $vemail = $email->getView('front/hosting_account/end.php', $clientObject->getDefaultLang());
+            $vemail = $email->getView('hosting_account/end.php', $clientObject->getDefaultLang(), 'front');
             $vemail->client = $clientObject;
             $vemail->account = $Account;
             $vemail->days   = $days;
@@ -209,7 +210,7 @@ class Notifier
             $email = new Email();
             $email->to = $clientObject->email;
 
-            $vemail = $email->getView('front/service/order/new_message.php', $clientObject->getDefaultLang());
+            $vemail = $email->getView('service/order/new_message.php', $clientObject->getDefaultLang(), 'front');
             $vemail->client = $clientObject;
             $vemail->order = $ServiceOrder;
             $vemail->site_name = Config::factory()->sitename;
@@ -233,7 +234,7 @@ class Notifier
             $email = new Email();
             $email->to = $clientObject->email;
 
-            $vemail = $email->getView('front/service/order/change_message.php', $clientObject->getDefaultLang());
+            $vemail = $email->getView('service/order/change_message.php', $clientObject->getDefaultLang(), 'front');
             $vemail->client = $clientObject;
             $vemail->order = $ServiceOrder;
             $vemail->site_name = Config::factory()->sitename;
@@ -254,7 +255,7 @@ class Notifier
     public static function NewRegistration(Client $clientObject, $pass)
     {
         $Email      = new Email();
-        $eview = $Email->getView('front/client/reg.php', $clientObject->getDefaultLang());
+        $eview = $Email->getView('client/reg.php', $clientObject->getDefaultLang(), 'front');
         $eview->client = $clientObject;
         $eview->password = $pass;
 
@@ -274,7 +275,7 @@ class Notifier
     {
         $Email          = new Email();
         $Email->to = $clientObject->email;
-        $eview = $Email->getView('front/bill/pay.php', $clientObject->getDefaultLang());
+        $eview = $Email->getView('bill/pay.php', $clientObject->getDefaultLang(), 'front');
         $eview->bill    = $Bill;
         $eview->client = $clientObject;
         $eview->site_name = Config::factory()->sitename;
@@ -291,7 +292,7 @@ class Notifier
     {
         $Email = new Email();
         $Email->to = $clientObject->email;
-        $eview = $Email->getView('front/bill/multi_pay.php', $clientObject->getDefaultLang());
+        $eview = $Email->getView('bill/multi_pay.php', $clientObject->getDefaultLang(), 'front');
         $eview->bill = $Bill;
         $eview->client = $clientObject;
         $eview->site_name = Config::factory()->sitename;
@@ -314,7 +315,7 @@ class Notifier
         //Send email notify to client
         $email = new Email();
         $email->to = $clientObject->email;
-        $vemail = $email->getView('front/hosting_account/new.php', $clientObject->getDefaultLang());
+        $vemail = $email->getView('hosting_account/new.php', $clientObject->getDefaultLang(), 'front');
         $vemail->link = $Server->ip ? $Server->ip : $Server->host;
         $vemail->login = $Order->login;
         $vemail->pass = Tools::rPOST('pass');
@@ -336,7 +337,7 @@ class Notifier
         if (isset($config->email_notifications['new_order'])) {
             $email = new Email();
             $email->to = $config->site_email;
-            $vemail = $email->getView('admin/hosting/order/new.php');
+            $vemail = $email->getView('hosting/order/new.php',  $config->admin_default_lang , 'admin');
             $vemail->order = $Order;
             $vemail->server = $Server;
             $vemail->client = $clientObject;
@@ -356,7 +357,7 @@ class Notifier
         $email = new Email();
         $email->to = $clientObject->email;
 
-        $eview = $email->getView('front/client/reminder.php', $clientObject->getDefaultLang());
+        $eview = $email->getView('client/reminder.php', $clientObject->getDefaultLang(), 'front');
         $eview->code = $code->code;
         $eview->client = $clientObject;
         $eview->site_name = Config::factory()->sitename;
@@ -370,7 +371,7 @@ class Notifier
     {
         $email = new Email();
         $email->to = $clientObject->email;
-        $vemail = $email->getView('front/service/end.php', $clientObject->getDefaultLang());
+        $vemail = $email->getView('service/end.php', $clientObject->getDefaultLang(), 'front');
         $vemail->client = $clientObject;
         $vemail->service = $serviceObject;
         $vemail->days = $days;
@@ -385,7 +386,7 @@ class Notifier
         $client = new Client($ticketObject->client_id);
         $Email = new Email();
         $Email->to = $client->email;
-        $eview = $Email->getView('front/ticket/change_priority.php', $client->getDefaultLang());
+        $eview = $Email->getView('ticket/change_priority.php', $client->getDefaultLang(), 'front');
         $eview->ticket = $ticketObject;
         $eview->client = $client;
         $eview->site_name = Config::factory()->sitename;
@@ -399,7 +400,7 @@ class Notifier
         $client = new Client($ticket->client_id);
         $Email = new Email();
         $Email->to = $client->email;
-        $eview = $Email->getView('front/ticket/change_status.php', $client->getDefaultLang());
+        $eview = $Email->getView('ticket/change_status.php', $client->getDefaultLang(), 'front');
         $eview->ticket = $ticket;
         $eview->client = $client;
         $eview->site_name = Config::factory()->sitename;
@@ -413,7 +414,7 @@ class Notifier
     {
         $Email = new Email();
         $Email->to = $clientObject->email;
-        $eview = $Email->getView('front/client/reminder_password.php', $clientObject->getDefaultLang());
+        $eview = $Email->getView('client/reminder_password.php', $clientObject->getDefaultLang(), 'front');
         $eview->client     = $clientObject;
         $eview->password   = $password;
 
@@ -424,11 +425,11 @@ class Notifier
         $Email->send();
     }
 
-    public static function AdminRemindPasswordNew($employeeObject, $password)
+    public static function AdminRemindPasswordNew( $employeeObject, $password)
     {
         $email = new Email();
         $email->to = $employeeObject->email;
-        $eview = $email->getView('admin/employee/reminder_password.php');
+        $eview = $email->getView('employee/reminder_password.php', $employeeObject->getDefaultLang() ,'admin');
         $eview->password = $password;
         $eview->site_name = Config::factory()->sitename;
         $eview->site_email = Config::factory()->site_email;
@@ -441,7 +442,7 @@ class Notifier
     {
         $email = new Email();
         $email->to = $employeeObject->email;
-        $eview = $email->getView('admin/employee/reminder.php');
+        $eview = $email->getView('admin/employee/reminder.php', $employeeObject->getDefaultLang() ,'admin');
         $eview->code = $code;
 
         $eview->site_name = Config::factory()->sitename;
@@ -459,7 +460,7 @@ class Notifier
 
             $email = new Email();
             $email->to = $config->site_email;
-            $vemail = $email->getView('admin/domain/order/new.php');
+            $vemail = $email->getView('domain/order/new.php', $config->admin_default_lang ,'admin');
             $vemail->client = $config->client;
             $vemail->site_name = Config::factory()->sitename;
             $vemail->site_email = Config::factory()->site_email;
@@ -487,7 +488,7 @@ class Notifier
         if (isset($config->email_notifications['new_order'])) {
             $email = new Email();
             $email->to = $config->site_email;
-            $vemail = $email->getView('admin/service/order/new.php');
+            $vemail = $email->getView('service/order/new.php', $config->admin_default_lang ,'admin');
             $vemail->Service = $serviceObject;
             $vemail->ServiceOrder = $serviceOrderObject;
             $vemail->client = $clientObject;

@@ -824,5 +824,33 @@
         "Пароль": "Password",
         "Закрыть": "Close",
         "Сохранить": "Save"
+    },
+    "views\/vps\/param\/edit.php": {
+        "Параметр": "Parameter",
+        "Название": "Name",
+        "Закрыть": "Close",
+        "Сохранить": "Save"
+    },
+    "views\/vps\/plan\/edit.php": {
+        "Название": "Name",
+        "Тип": "Type",
+        "Установка из ISO": "Installation from ISO",
+        "Установка из шаблона ОС (LXC)": "Installation from OS template",
+        "Не использовать": "Do not use",
+        "Цена": "Price",
+        "Кол-во дней для тестирования": "Number of days for testing",
+        "Доступные для выбора сервера": "Available for server selection",
+        "Доступные ноды сервера": "Available server nodes",
+        "ОЗУ (Мб)": "RAM (MB)",
+        "HDD (Гб)": "HDD (GB)",
+        "Количество ядер процессора": "Number of processor cores",
+        "Номер сокета процессора": "Processor socket number",
+        "Подключение к сети": "Connecting to the network",
+        "Доступные образы": "Available images",
+        "Рецепт установки": "Installation Recipe",
+        "Добавить": "Add",
+        "Параметр": "Parameter",
+        "Значение": "Value",
+        "Сохранить": "Save"
     }
 }

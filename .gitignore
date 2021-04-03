@@ -2,5 +2,5 @@
 /app/config
 /app/logs
 /app/config/
-app/config/global.config
-app/config/sms-gateway.config
+/app/config/global.config
+/app/config/sms-gateway.config

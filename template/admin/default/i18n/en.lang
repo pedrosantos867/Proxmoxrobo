@@ -819,7 +819,7 @@
         "Название": "Name",
         "Адрес": "Address",
         "URL адрес хостинг панели. Например: https:\/\/mypanel.com:8080": "Hosting panel URL. for example: https:\/\/mypanel.com:8080",
-        "VPS панель": "VPS панель",
+        "VPS панель": "VPS Panel",
         "Логин": "Login",
         "Пароль": "Password",
         "Закрыть": "Close",

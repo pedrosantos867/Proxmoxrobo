@@ -813,5 +813,16 @@
         "Файлы": "Files",
         "Отправить": "Submit",
         "К списку тикетов": "Back to Tickets"
+    },
+    "views\/vps\/server\/edit.php": {
+        "Сервер": "Server",
+        "Название": "Name",
+        "Адрес": "Address",
+        "URL адрес хостинг панели. Например: https:\/\/mypanel.com:8080": "Hosting panel URL. for example: https:\/\/mypanel.com:8080",
+        "VPS панель": "VPS панель",
+        "Логин": "Login",
+        "Пароль": "Password",
+        "Закрыть": "Close",
+        "Сохранить": "Save"
     }
 }

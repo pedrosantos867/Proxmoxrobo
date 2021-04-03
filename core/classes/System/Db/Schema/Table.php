@@ -44,7 +44,7 @@ class Table
 
     public function date($field)
     {
-        $this->fields[$field] = array('type' => 'date', 'nullable' => false, 'default' => "'0000-00-00'");
+        $this->fields[$field] = array('type' => 'date', 'nullable' => false, 'default' => "'1970-01-01 00:00:01'");
 
         return $this;
     }

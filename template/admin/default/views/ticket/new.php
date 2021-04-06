@@ -9,7 +9,7 @@
 
 
     <div class="form-group">
-        <label class="control-label" for="subject">Тема</label>
+        <label class="control-label" for="subject">Subject</label>
         <input type="text" id="subject" name="subject" data-validate="required" placeholder=""
                class="input-xlarge form-control">
     </div>

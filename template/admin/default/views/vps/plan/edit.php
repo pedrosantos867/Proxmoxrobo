@@ -25,10 +25,10 @@
     <form method="POST">
         <div class="top-tabs">
             <ul class="nav nav-tabs">
-                <li role="presentation" id="tab_home" class="tb active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Основные</a></li>
+                <li role="presentation" id="tab_home" class="tb active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Main</a></li>
                 <?/* <li role="presentation" id="tab_prices" class="tb "><a href="#prices" aria-controls="options" role="tab" data-toggle="tab">Цены</a></li>*/?>
-                <li role="presentation" id="tab_options" class="tb "><a href="#params" aria-controls="options" role="tab" data-toggle="tab">Параметры</a></li>
-                <li role="presentation" id="tab_options" class="tb "><a href="#options" aria-controls="options" role="tab" data-toggle="tab">Опции</a></li>
+                <li role="presentation" id="tab_options" class="tb "><a href="#params" aria-controls="options" role="tab" data-toggle="tab">Parameters</a></li>
+                <li role="presentation" id="tab_options" class="tb "><a href="#options" aria-controls="options" role="tab" data-toggle="tab">Options</a></li>
 
 
             </ul>
@@ -211,7 +211,7 @@
 
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" <?= $plan->test_days != 0 ? 'checked="checked"':'' ?> name="test_enabled" value="1" onchange="$('#test_period').toggle()"> Включить возможность заказа тестового периода
+                        <input type="checkbox" <?= $plan->test_days != 0 ? 'checked="checked"':'' ?> name="test_enabled" value="1" onchange="$('#test_period').toggle()"> Activate the ability to  order test period
                     </label>
                 </div>
                 <div id="test_period" class="form-group" <?= $plan->test_days == 0 ? 'style="display: none"': '' ?>>

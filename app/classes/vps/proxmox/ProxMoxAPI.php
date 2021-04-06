@@ -96,9 +96,17 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         if(!$this->is_logged){
             return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
         }
-        // list templates
+
+        //Get images from NAS 
+        $storage_list = array();
+        $storage_list = $this->pve->get('nodes/'.$node.'/storage')
+
+        console.log($storage_list)
+
+
+        //Get images from Local Storage
         $images_list = array();
-        $images =  $this->pve->get('nodes/'.$node.'/storage/iso/content');
+        $images =  $this->pve->get('nodes/'.$node.'/storage/local/content');
         foreach($images['data'] as $image){
 
             if($image['content'] == 'iso') {
@@ -112,7 +120,8 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         if(!$this->is_logged){
             return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
         }
-        // list templates
+
+        //Get images from Local Storage
         $images_list = array();
         $images =  $this->pve->get('nodes/'.$node.'/storage/iso/content');
 

@@ -62,7 +62,8 @@
         "Удалить": "Remove",
         "Ручная оплата": "Make as paid",
         "Смена хостинг тарифа": "Change hosting plan",
-        "VPS": "VPS"
+        "VPS": "VPS",
+        "Возврат": "Return"
     },
     "views\/client\/list.php": {
         "Добавить": "Add new",
@@ -322,7 +323,8 @@
         "Редактировать": "Edit",
         "Удалить": "Delete",
         "Опции тарифа": "Options",
-        "Добавить тариф": "Add plan"
+        "Добавить тариф": "Add plan",
+        "Результаты не найдены.": ""
     },
     "views\/hosting\/order\/list.php": {
         "Добавить": "Add",
@@ -365,7 +367,8 @@
         "Проверить соединение": "Check connection",
         "Редактировать": "Edit",
         "Удалить": "Delete",
-        "Вы уверенны что хотите удалить этот сервер? Удаление сервера приведет к удалению всех заказов связанных с данным сервером!": "Do you want to delete this server? Removing a server will delete all orders related with this server!"
+        "Вы уверенны что хотите удалить этот сервер? Удаление сервера приведет к удалению всех заказов связанных с данным сервером!": "Do you want to delete this server? Removing a server will delete all orders related with this server!",
+        "Результаты не найдены.": "No results found."
     },
     "views\/hosting\/server\/edit.php": {
         "Пользователь": "User",
@@ -460,7 +463,9 @@
         "Опции": "Options",
         "Цены": "Prices",
         "Включить возможность заказа тестового периода": "Activate the ability to  order test period",
-        "Список шаблонов хостинг панели пуст.": "The list of templates of  hosting panel is empty."
+        "Список шаблонов хостинг панели пуст.": "The list of templates of  hosting panel is empty.",
+        "Кол-во дней для тестирования": "Number of days for testing",
+        "Ссылка для заказа тарифного плана": "Link to request a rate plan"
     },
     "views\/hosting\/plan\/property\/add.php": {
         "Свойство": "Settings",
@@ -493,7 +498,8 @@
         "Информация о администраторе успешно сохранена!": "Successfully saved!",
         "Свойство уже существует!": "The option already exists!",
         "Соединение установленно!": "The connection is established!",
-        "Сервер не отвечает!": "The server doesn't not respond!"
+        "Сервер не отвечает!": "The server doesn't not respond!",
+        "Тариф был успешно удален": "A tarifa foi excluída com sucesso"
     },
     "views\/client\/info.php": {
         "Информация о клиенте": "Info about client",
@@ -784,7 +790,11 @@
         "Конец": "End",
         "Сервер": "Server",
         "Статус": "Status",
-        "Результаты не найдены.": "Results not found"
+        "Результаты не найдены.": "Results not found",
+        "Активный": "Active",
+        "Управление": "Managing",
+        "Счета": "Accounts",
+        "Удалить заказ": "Delete order"
     },
     "views\/vps\/param\/list.php": {
         "Добавить": "Add",
@@ -795,14 +805,17 @@
         "Добавить": "Add",
         "Название": "Name",
         "Цена": "Price",
-        "Результаты не найдены.": "Results not found"
+        "Результаты не найдены.": "Results not found",
+        "Редактировать": "Edit",
+        "Удаление тарифного плана приведет к удалению всех заказов оформленных на данный тариф! Продолжить удаление?": "Deleting a tariff plan will delete all orders placed for this tariff! Continue deleting?",
+        "Удалить": "Delete"
     },
     "views\/service\/order\/show.php": {
         "Нет дополнительной информации": "No more information",
         "Закрыть": "Close"
     },
     "views\/ticket\/new.php": {
-        "Клиент": "",
+        "Клиент": "Client",
         "Загрузка...": "Loading...",
         "Введите логин, ФИО, телефон или Email": "Enter login, name, phone or Email",
         "Приоритет": "Priority",
@@ -852,5 +865,13 @@
         "Параметр": "Parameter",
         "Значение": "Value",
         "Сохранить": "Save"
+    },
+    "views\/vps\/server\/ip\/list.php": {
+        "Список серверов": "List of servers",
+        "Добавить": "Add",
+        "Тип": "Type",
+        "VLAN": "VLAN",
+        "IP Адрес": "IP Address",
+        "Результаты не найдены.": "No results were found."
     }
 }

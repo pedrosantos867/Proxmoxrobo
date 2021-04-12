@@ -99,10 +99,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
 
         //Get images from NAS 
         $storage_list = array();
-        $storage_list = $this->pve->get('nodes/'.$node.'/storage')
-
-        console.log($storage_list)
-
+        $storage_list = $this->pve->get('nodes/'.$node.'/storage');
 
         //Get images from Local Storage
         $images_list = array();

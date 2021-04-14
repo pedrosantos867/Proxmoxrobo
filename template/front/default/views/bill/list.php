@@ -10,8 +10,6 @@
     <?= $_->JS('daterangepicker.js') ?>
     <?= $_->CSS('daterangepicker.css') ?>
 
-
-
 <script>
     $(function () {
 
@@ -73,9 +71,6 @@
                 }
             })
         })
-
-
-
     })
 </script>
 
@@ -246,6 +241,7 @@
                     ---
                 <? } ?>
                 </td>
+
                 <td>
                 <? if ($bill->type == \model\Bill::TYPE_CHANGE_PLAN) { ?>
                     <?= $bill->login ?>
@@ -264,7 +260,9 @@
                 </td>
 
                 <td><?= $currency->displayPrice($bill->price) ?> </td>
+
                 <td><?= $currency->displayPrice($bill->total) ?> </td>
+                
                 <td><?= date('d-m-Y', strtotime($bill->date) + (86400 * 2)) ?></td>
                 <td class="text-center">
                     <? if ($bill->is_paid == 1) { ?>
@@ -278,16 +276,20 @@
                     <? } ?>
                 </td>
 
-                <td class="text-center"><? if (!$bill->is_paid) { ?>
-                        <div class="btn-group-vertical" role="group" aria-label="...">
-                        <a href="<?= $_->link('bill/' . $bill->id) ?>"
-                           class="btn btn-primary btn-xs"><span
-                                class="glyphicon glyphicon-shopping-cart"></span> <?= $_->l('Оплатить') ?></a>
-                            <a href="<?= $_->link('bill/off/' . $bill->id) ?>"
-                               class="btn btn-danger btn-xs ajax-action"><span
-                                    class="glyphicon glyphicon-remove"></span> <?= $_->l('Отменить') ?></a>
-                        </div>
-                    <? } ?></td>
+                <td class="text-center">
+                    <? if (!$bill->is_paid) { ?>
+                            <div class="btn-group-vertical" role="group" aria-label="...">
+                                <a href="<?= $_->link('bill/' . $bill->id) ?>"
+                                class="btn btn-primary btn-xs"><span
+                                        class="glyphicon glyphicon-shopping-cart"></span> <?= $_->l('Оплатить') ?></a>
+                                    <a href="<?= $_->link('bill/off/' . $bill->id) ?>"
+                                    class="btn btn-danger btn-xs ajax-action"><span
+                                            class="glyphicon glyphicon-remove"></span> <?= $_->l('Отменить') ?></a>
+                            </div>
+                    <? }else { ?>
+                        <a href="<?=$_->link('bill/savepdf/' . $bill->id)?>" class="btn btn-primary btn-xs"><?= $_->l('Download invoice') ?></a>
+                    <?} ?> 
+                </td>
             </tr>
         <? } ?>
         </tbody>

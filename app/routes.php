@@ -227,11 +227,11 @@ return array(
     'bill/pay/balance/([0-9]{1,})'                                      => 'front|bills|payBalance|id_bill=$1',
     'bill/off/([0-9]{1,})'                                              => 'front|bills|off|id_bill=$1',
 
-    'bill/pay/([0-9]{1,})' => 'front|bill|pay|$1',
+    'bill/pay/([0-9]{1,})'                                              => 'front|bill|pay|$1',
 
 
     'bill/([0-9]{1,})'                                                  => 'front|bills|bill|$1',
-
+    'bill/savepdf/([0-9]{1,})'                                          => 'front|bills|savepdf|id_bill=$1',
 
     'domain-orders'                    => 'front|domainOrders|list',
 

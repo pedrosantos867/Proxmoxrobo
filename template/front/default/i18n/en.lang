@@ -24,7 +24,9 @@
         "Счета по заказу №%id": "Invoice of order #%id",
         "Действие": "Action",
         "VPS": "VPS",
-        "Возврат": "Returns"
+        "Возврат": "Returns",
+        "Download Invoice": "",
+        "Download invoice": ""
     },
     "views\/carcase.php": {
         "Billing Panel": "Billing Panel",
@@ -423,7 +425,8 @@
         "Возникла ошибка.": "An error occurred.",
         "Копия успешно создана": "A copy was successfully created",
         "Владелец был удален": "The owner was deleted",
-        "Владелец не был удален. Он используется в заказе.": "The owner was not deleted. It is used in the order."
+        "Владелец не был удален. Он используется в заказе.": "The owner was not deleted. It is used in the order.",
+        "asd": ""
     },
     "views\/setting\/owner\/list.php": {
         "Добавить": "Add",

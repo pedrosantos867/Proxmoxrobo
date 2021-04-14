@@ -3,3 +3,8 @@
  on line: 158
  in func: createUser
  in class vps\proxmox\ProxMoxAPI
+2021-04-13 10:56:56 ProxMox createUser error: 
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 158
+ in func: createUser
+ in class vps\proxmox\ProxMoxAPI

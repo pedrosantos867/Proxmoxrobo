@@ -250,6 +250,4 @@ class BillsController extends FrontController
             echo json_encode(array('result' => 0));
         }
     }
-
-
 }

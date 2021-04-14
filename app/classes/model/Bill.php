@@ -189,6 +189,4 @@ class Bill extends \System\ObjectModel
 
         return true;
     }
-
-
 }

@@ -21,6 +21,7 @@ use System\Notifier;
 use System\Router;
 use System\Tools;
 
+use Dompdf\Dompdf;
 
 class BillsController extends FrontController
 {
@@ -354,8 +355,6 @@ class BillsController extends FrontController
 
     public function actionBill()
     {
-
-
         $bill_id = Router::getParam(0);
         $bill = new Bill($bill_id);
 
@@ -436,5 +435,61 @@ class BillsController extends FrontController
     }
 
 
+    public function actionSavepdf(){
+        require_once ($_SERVER['DOCUMENT_ROOT'] . "\app\modules\banktransfer\dompdf\autoload.inc.php");
+        
+        $id_bill = Router::getParam('id_bill');
+        
+        $bill = new Bill($id_bill);
+        $client = new Client($bill->client_id);
 
+        $billing_type_name = 
+
+        $dompdf = new Dompdf();
+       
+        $html = '';
+
+        $html .= '<h1>Client name: '.$client->name.'</h1>';
+        $html .= '<h3>E-mail: '.$client->email.'</h3>';
+        
+        $html .= '<h3>Invoice No: '.$bill->id.'</h3>';
+        $html .= '<h3>Billing type: '.$bill->type.'</h3>';
+
+        $table .= '<table class="bordered">' ;
+
+        $header = '<tr><th>Hosting account</th><th>Order No</th><th>Hosting plan</th><th>Hosting plaan 2</th><th>Domain order No.</th><th>Period</th><th>Price</th><th>Total</th></tr>';
+        $table .= $header;
+        
+        $table.= '<tr>';
+
+        $table .= '<td>'.$bill->hosting_account_id.'</td>';
+        $table .= '<td>'.$bill->service_order_id.'</td>';
+        $table .= '<td>'.$bill->hosting_plan_id.'</td>';
+        $table .= '<td>'.$bill->hosting_plan_id2.'</td>';
+        $table .= '<td>'.$bill->domain_order_id.'</td>';
+        $table .= '<td>'.$bill->pay_period.'</td>';
+        $table .= '<td>'.$bill->price.'</td>';
+        $table .= '<td>'.$bill->total.'</td>';
+
+        $table.= '</tr>';
+
+        $table .= '</table>';
+
+        $html .= $table;
+
+        $dompdf->load_html($html);
+
+        $dompdf->render();
+
+        ob_end_clean();
+
+        $dompdf->stream(
+            'bill-' . $bill->id . "-". $client->name, 
+            array(
+                "Attachment" => false //Change to true to download PDF instead of show in browser
+            )
+        );
+
+        echo ("Successfully downloaded invoice PDF");
+    }
 }

@@ -148,8 +148,7 @@
             </div>
         </div>
     <?}?>
-    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-play-circle"></span> <?= $_->l('Сформировать заказ') ?>
-    </button>
+    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-play-circle"></span> <?= $_->l('Сформировать заказ') ?></button>
 </form>
 
 <!-- Modal -->

@@ -376,6 +376,8 @@
                 </div>
 
             </div>
+
+            <!-- Tab Options --> 
             <div role="tabpanel" class="tab-pane" id="options">
                 <? if (isset($details)) { ?>
 

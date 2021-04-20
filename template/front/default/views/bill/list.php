@@ -287,7 +287,8 @@
                                             class="glyphicon glyphicon-remove"></span> <?= $_->l('Отменить') ?></a>
                             </div>
                     <? }else { ?>
-                        <a href="<?=$_->link('bill/savepdf/' . $bill->id)?>" class="btn btn-primary btn-xs"><?= $_->l('Download invoice') ?></a>
+                        <a href="<?=$_->link('bill/savepdf/' . $bill->id)?>" class="btn btn-primary btn-xs " ><span
+                                            class="glyphicon glyphicon-download-alt"></span><?= $_->l('Download invoice') ?></a>
                     <?} ?> 
                 </td>
             </tr>

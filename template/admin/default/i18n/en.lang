@@ -34,7 +34,10 @@
         "От": "From",
         "Тема": "Subject",
         "Новоее сообщение в тикете": "New message in the ticket",
-        "Тема тикета": "Subject"
+        "Тема тикета": "Subject",
+        "Backup service": "",
+        "Orders": "",
+        "Servers": ""
     },
     "views\/bill\/list.php": {
         "Дата": "Date",
@@ -324,7 +327,7 @@
         "Удалить": "Delete",
         "Опции тарифа": "Options",
         "Добавить тариф": "Add plan",
-        "Результаты не найдены.": ""
+        "Результаты не найдены.": "Nenhum resultado encontrado."
     },
     "views\/hosting\/order\/list.php": {
         "Добавить": "Add",
@@ -499,7 +502,8 @@
         "Свойство уже существует!": "The option already exists!",
         "Соединение установленно!": "The connection is established!",
         "Сервер не отвечает!": "The server doesn't not respond!",
-        "Тариф был успешно удален": "A tarifa foi excluída com sucesso"
+        "Тариф был успешно удален": "A tarifa foi excluída com sucesso",
+        "Услуга успешно добавлена": ""
     },
     "views\/client\/info.php": {
         "Информация о клиенте": "Info about client",
@@ -708,7 +712,10 @@
     "views\/service\/category\/list.php": {
         "Добавить": "Add",
         "Название": "Name",
-        "Результаты не найдены.": "Results not found"
+        "Результаты не найдены.": "Results not found",
+        "Редактировать": "",
+        "Продолжить удаление?": "",
+        "Удалить": ""
     },
     "views\/service\/category\/edit.php": {
         "Категория": "Category",

@@ -364,8 +364,8 @@
         "Возникла ошибка с регистрацией владельца для домена %domain": "There was an error with the owner registration for the %domain",
         "Дата рождения владельца указана не верно!": "The owner's date of birth is not correct!",
         "Номер паспорта владельца не указан или указан не верно!": "The owner's passport number is missing or incorrect!",
-        "Поля \"Номер паспорта\", \"Дата выдачи\" или \"Кем выдан паспорт\" не указаны или указаны не верно!": "The fields \"Passport number\", \"Date issued\" or \"Who issued the passport\" are missing or incorrect!",
-        "Поля \"Серия и номер паспорта\", \"Дата выдачи\" или \"Кем выдан паспорт\" не указаны или указаны не верно!": "The fields \"Passport series and number\", \"Date issued\" or \"Who issued the passport\" are missing or incorrect!"
+        "Поля \"Номер паспорта\", \"Дата выдачи\" или \"Кем выдан паспорт\" не указаны или указаны не верно!": "The fields ",
+        "Поля \"Серия и номер паспорта\", \"Дата выдачи\" или \"Кем выдан паспорт\" не указаны или указаны не верно!": "The fields "
     },
     "views\/domain\/order\/add_owner.php": {
         "Добавить владельца": "Add new owner",
@@ -487,7 +487,12 @@
         "Вы уверены что хотите удалить заказ ?": "Are you sure you want to delete the order ?",
         "Удалить заказ": "Delete the order",
         "Результаты не найдены.": "The results are not found.",
-        "Активный": "Active"
+        "Активный": "Active",
+        "Actions": "",
+        "Backup now": "",
+        "Access vm by SSH": "",
+        "SSH to machine": "",
+        "SSH into the machine": ""
     },
     "views\/vps\/order\/new.php": {
         "месяц": "month",
@@ -569,7 +574,10 @@
         "Информация о заказе": "Ordering information",
         "Посмотреть детали": "View Details",
         "Вы уверенны что хотите удалить заказ ?": "Are you sure you want to delete the order?",
-        "Удалить заказ": "Delete order"
+        "Удалить заказ": "Delete order",
+        "Активный": "",
+        "Продлить": "",
+        "Отключен": ""
     },
     "views\/vps\/order\/prolong.php": {
         "Период оплаты": "Payment period",
@@ -578,5 +586,16 @@
         "месяцев": "months",
         "Отмена": "Cancellation",
         "Сформировать заказ": "Place an order"
+    },
+    "views\/service\/order\/show.php": {
+        "Закрыть": "Perto"
+    },
+    "views\/service\/order\/prolong.php": {
+        "Период оплаты": "Período de pagamento",
+        "месяц": "Mês",
+        "месяца": "meses",
+        "месяцев": "meses",
+        "Отмена": "Cancelamento",
+        "Сформировать заказ": "Fazer um pedido"
     }
 }

@@ -135,6 +135,22 @@
                                 </ul>
 
                             </li>
+                            <li class="dropdown-submenu">
+                                <a><span class="glyphicon glyphicon-duplicate"></span>
+                                        <?=$_->l('Backup service')?>  </a>
+                                <ul class="dropdown-menu">
+                                    <li <?= ($_->link($request) == $_->link('admin/backups') ? 'class="active"' : '') ?>>
+                                        <a href="<?= $_->link('admin/backups') ?>"><span
+                                                class="glyphicon glyphicon-shopping-cart"
+                                                aria-hidden="true"></span><?=$_->l('Orders')?></a>
+                                    </li>
+                                    <li <?= ($_->link($request) == $_->link('admin/vps-orders') ? 'class="active"' : '') ?>>
+                                        <a href="<?= $_->link('admin/vps-orders') ?>"><span
+                                                class="glyphicon glyphicon-hdd"
+                                                aria-hidden="true"></span><?=$_->l('Servers')?></a>
+                                    </li>
+                                </ul> 
+                            </li>
                             <li <?= ($_->link($request) == $_->link('admin/promocodes') ? 'class="active"' : '') ?>>
                                 <a href="<?= $_->link('admin/promocodes') ?>"><span class="glyphicon glyphicon-info-sign"></span><span><?=$_->l('Промокоды')?></span></a>
                             </li>

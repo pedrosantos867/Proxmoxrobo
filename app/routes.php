@@ -191,6 +191,10 @@ return array(
 
     'admin/vps-params/remove'                    => 'admin|VpsParams|remove',
 
+    'admin/backups'                              => 'admin|Backups|list',
+    'admin/backups/edit'                         => 'admin|Backups|edit',
+    'admin/backups/remove'                       => 'admin|Backups|remove',
+
     'checker/menu' => 'front|front|checker',
 
     'reg'                                                               => 'front|user|reg',
@@ -231,7 +235,7 @@ return array(
 
 
     'bill/([0-9]{1,})'                                                  => 'front|bills|bill|$1',
-    'bill/savepdf/([0-9]{1,})'                                          => 'front|bills|savepdf|id_bill=$1',
+    'bill/savepdf/([0-9]{1,})'                                          => 'front|bills|savepdf|id_bill=$1',//New 
 
     'domain-orders'                    => 'front|domainOrders|list',
 
@@ -252,6 +256,9 @@ return array(
     'vps-order/plan/([0-9]{1,})'   => 'front|VpsOrder|plan|plan_id=$1',
     'vps-orders/prolong'           => 'front|VpsOrder|prolong',
     'vps-orders/remove' => 'front|VpsOrder|remove',
+    
+    
+    'vps-actions/backup-now/([0-9]{1,})'                                => '', //New
 
 
     'order/plan/([0-9]{1,})'                                            => 'front|order|plan|plan=$1',

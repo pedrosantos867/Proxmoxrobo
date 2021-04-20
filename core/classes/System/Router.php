@@ -3,6 +3,7 @@
 class Router
 {
     // Хранит конфигурацию маршрутов.
+    //Guarda as rotas num array
     public $routes = array();
 
     private $uri = '';

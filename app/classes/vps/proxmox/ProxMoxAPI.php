@@ -183,7 +183,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         $vmid = $this->pve->get('cluster/nextid');
         $vmid = $vmid['data'];
 
-        if($type == 0) {
+        if($type == 0) { //if is a vm
             $res_create_disk = $this->pve->post('/nodes/' . $node . '/storage/local/content', array(
                 'filename' => 'vm-' . $vmid . '-disk-1.qcow2',
                 'format' => 'qcow2',
@@ -198,7 +198,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
 
         if($type == 0 && !isset($res_create_disk['errors']) || $type==1) {
 
-            if($type == 0) {
+            if($type == 0) { //If is a vm
                 $new_container_settings = array();
                 $new_container_settings['ide0'] = 'local:' . $vmid . '/vm-' . $vmid . '-disk-1.qcow2';
 
@@ -215,7 +215,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
                     $new_container_settings['net0'] = 'e1000,bridge=vmbr0,tag=' .$net;
                 }
                 $res = $this->pve->post("/nodes/$node/qemu", $new_container_settings);
-            } else {
+            } else { //If is a container
                 $new_container_settings = array();
                 $new_container_settings['storage'] = 'local';
                 $new_container_settings['rootfs'] = $hdd;

@@ -51,6 +51,7 @@
             <th> <?= $_->l('Осталось') ?></th>
             <th> <?= $_->l('Сервер') ?></th>
             <th> <?= $_->l('Статус') ?></th>
+            <th><?= $_->l('Actions') ?></th>
             <th></th>
         </tr>
         </thead>
@@ -93,7 +94,22 @@
                     <? } ?>
                 </td>
 
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <button type="submit" class="btn btn-sm "><span class="glyphicon glyphicon-play-circle"></span> <?= $_->l('Backup now') ?></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" class="btn btn-sm"><span class="glyphicon"></span> <?= $_->l('SSH into the machine') ?></button>    
+                            </td>
+                        </tr>
+                    </table>                        
+                </td>
 
+                <!--Dropdown Settings -->
                 <td class="text-center"><!-- Single button -->
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown"
@@ -109,7 +125,6 @@
                                 </a></li>
                             <li><a href="<?= $_->link('bills?id_vps_order=' . $order->id) ?>"><span
                                         class="glyphicon glyphicon-list-alt"></span>&nbsp;<?= $_->l('Счета') ?></a></li>
-
                             <? if (!$order->active) { ?>
                                 <li><a href="<?= $_->link('vps-orders/remove?id_order=' . $order->id) ?>"
                                        class="ajax-action"

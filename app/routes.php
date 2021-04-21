@@ -191,9 +191,9 @@ return array(
 
     'admin/vps-params/remove'                    => 'admin|VpsParams|remove',
 
-    'admin/backups'                              => 'admin|Backups|list',
-    'admin/backups/edit'                         => 'admin|Backups|edit',
-    'admin/backups/remove'                       => 'admin|Backups|remove',
+    'admin/backup-servers'                              => 'admin|BackupServers|list',
+    'admin/backup-servers/edit'                         => 'admin|BackupServers|edit',
+    'admin/backup-servers/remove'                       => 'admin|BackupServers|remove',
 
     'checker/menu' => 'front|front|checker',
 

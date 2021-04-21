@@ -880,5 +880,28 @@
         "VLAN": "VLAN",
         "IP Адрес": "IP Address",
         "Результаты не найдены.": "No results were found."
+    },
+    "views\/backup\/order\/list.php": {
+        "Название": "",
+        "Адрес": "",
+        "Соединение": "",
+        "Результаты не найдены.": "",
+        "Nº": "",
+        "Name": "",
+        "Address": "",
+        "ID": "",
+        "Retention": "",
+        "Datastore": "",
+        "No results found.": "",
+        "Проверить соединение": "",
+        "Редактировать": "",
+        "IP адреса": "",
+        "Вы уверенны что хотите удалить этот сервер? Удаление сервера приведет к удалению всех заказов связанных с данным сервером!": "",
+        "Удалить": "",
+        "Check connection": "",
+        "Edit": "",
+        "IP address": "",
+        "Are you sure you want to delete this server? Deleting a server will delete all orders associated with this server!": "",
+        "Delete": ""
     }
 }

@@ -139,15 +139,15 @@
                                 <a><span class="glyphicon glyphicon-duplicate"></span>
                                         <?=$_->l('Backup service')?>  </a>
                                 <ul class="dropdown-menu">
-                                    <li <?= ($_->link($request) == $_->link('admin/backups') ? 'class="active"' : '') ?>>
-                                        <a href="<?= $_->link('admin/backups') ?>"><span
+                                    <li <?= ($_->link($request) == $_->link('admin/backup-servers') ? 'class="active"' : '') ?>>
+                                        <a href="<?= $_->link('admin/backup-servers') ?>"><span
                                                 class="glyphicon glyphicon-shopping-cart"
-                                                aria-hidden="true"></span><?=$_->l('Orders')?></a>
-                                    </li>
-                                    <li <?= ($_->link($request) == $_->link('admin/vps-orders') ? 'class="active"' : '') ?>>
-                                        <a href="<?= $_->link('admin/vps-orders') ?>"><span
-                                                class="glyphicon glyphicon-hdd"
                                                 aria-hidden="true"></span><?=$_->l('Servers')?></a>
+                                    </li>
+                                    <li <?= ($_->link($request) == $_->link('admin/backup-orders') ? 'class="active"' : '') ?>>
+                                        <a href="<?= $_->link('admin/backup-orders') ?>"><span
+                                                class="glyphicon glyphicon-hdd"
+                                                aria-hidden="true"></span><?=$_->l('Orders')?></a>
                                     </li>
                                 </ul> 
                             </li>

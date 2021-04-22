@@ -740,7 +740,9 @@
         "Посмотреть детали": "View Details",
         "Добавить информацию": "Add information",
         "Удалить заказ": "Delete order",
-        "Оплачено": "Paid"
+        "Оплачено": "Paid",
+        "Отключен": "",
+        "Активный": ""
     },
     "views\/client\/edit-balance.php": {
         "Пользователь": "User",
@@ -902,6 +904,30 @@
         "Edit": "",
         "IP address": "",
         "Are you sure you want to delete this server? Deleting a server will delete all orders associated with this server!": "",
-        "Delete": ""
+        "Delete": "",
+        "Backup Server ID ": "",
+        "VPS order ID": "",
+        "Client ID": "",
+        "Day(s) of the week": "",
+        "Time of the day": "",
+        "Client name": "",
+        "Client": "",
+        "Day of the week": "",
+        "VPS  ID": "",
+        "VPS ID": "",
+        "Backup Server": ""
+    },
+    "views\/backup\/server\/list.php": {
+        "ID": "",
+        "Name": "",
+        "Address": "",
+        "Retention": "",
+        "Datastore": "",
+        "Check connection": "",
+        "Edit": "",
+        "IP address": "",
+        "Are you sure you want to delete this server? Deleting a server will delete all orders associated with this server!": "",
+        "Delete": "",
+        "No results found.": ""
     }
 }

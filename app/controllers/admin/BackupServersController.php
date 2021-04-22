@@ -15,7 +15,7 @@ class BackupServersController extends FrontController{
 
     public function actionListAjax()
     {
-        $view = $this->getView('backup/order/list.php');
+        $view = $this->getView('backup/server/list.php');
         
         $backupServerObject = new BackupServer();
         

@@ -195,6 +195,11 @@ return array(
     'admin/backup-servers/edit'                         => 'admin|BackupServers|edit',
     'admin/backup-servers/remove'                       => 'admin|BackupServers|remove',
 
+    'admin/backup-orders'                              => 'admin|BackupOrders|list',
+    'admin/backup-orders/edit'                         => 'admin|BackupOrders|edit',
+    'admin/backup-orders/remove'                       => 'admin|BackupOrders|remove',
+
+
     'checker/menu' => 'front|front|checker',
 
     'reg'                                                               => 'front|user|reg',

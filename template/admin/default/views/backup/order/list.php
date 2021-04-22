@@ -2,61 +2,84 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>№</th>
-                <th><?=$_->l('ID')?>
-                </th>
-                <th><?=$_->l('Name')?></th>
-                <th><?=$_->l('Address')?></th>
-                <th><?=$_->l('Retention')?></th>
-                <th><?=$_->l('Datastore')?></th>
-                <!--
-                <th></th> 
-                <th></th>
-                -->
+                <th rowspan="2"><?=$_->l('ID')?></th>
+                <th rowspan="2"><?=$_->l('Backup Server')?></th>
+                <th rowspan="2"><?=$_->l('VPS ID')?></th>
+                <th rowspan="2"><?=$_->l('Client name')?></th>
+                <th colspan="7" ><?=$_->l('Day of the week')?></th>
+                <th rowspan="2"><?=$_->l('Time of the day')?></th>
+            </tr>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wen</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
             </tr>
         </thead>
         <tbody>
-
-            <? if (count($backupServers) == 0) { ?>
+            <? if (count($backupOrders) == 0) { ?>
             <tr>
-                <td colspan="6"><?=$_->l('No results found.')?></td>
+                <td colspan="100%"><?=$_->l('No results found.')?></td>
             </tr>
             <? } ?>
 
-            <? foreach ($backupServers as $backupServer) { ?>
+            <? foreach ($backupOrders as $backupOrder) { ?>
             <tr>
-                <th scope="row"><?= $backupServer->id ?></th>
-                <td><?= $backupServer->id ?></td>
-                <td><?= $backupServer->name ?></td>
-                <td><?= $backupServer->address ?></td>
-                <td><?= $backupServer->retention ?></td>
-                <td><?= $backupServer->datastore ?></td>
+                <th scope="row"><?= $backupOrder->id ?></th>
+                <td><?= $backupOrder->backup_server_name ?></td>
+                <td><?= $backupOrder->vmid ?></td>
+                <td><a href="<?= $_->link('admin/client/info/' . $backupOrder->client_id) ?>"
+                        class="ajax-modal"><?= $backupOrder->name ?></a></td>
 
-                <!--
-                <td><a class="btn btn-warning btn-xs ajax-action"
-                        href="<?= $_->link('admin/vps-servers/check?server_id=' . $server->id) ?>">
-                        <span class="glyphicon glyphicon-transfer"></span> &nbsp;
-                        <?=$_->l('Check connection')?></a></td>
-                <td>
-                    <a class="btn btn-default btn-xs ajax-modal"
-                        href="<?= $_->link('admin/vps-servers/edit?server_id=' . $server->id) ?>"><span
-                            class="glyphicon glyphicon-cog" aria-hidden="true"></span><?=$_->l('Edit')?></a>
-                    <a class="btn btn-info btn-xs"
-                        href="<?= $_->link('admin/vps-ips?server_id=' . $server->id) ?>"><span
-                            class="glyphicon glyphicon-menu-hamburger"
-                            aria-hidden="true"></span><?=$_->l('IP address')?></a>
+                <? if($backupOrder->sunday){ ?>
+                    <td class="dow">X</td>
+                <? }else{?>
+                <td></td>
+                <?}?>
+                <? if($backupOrder->monday){ ?>
+                <td class="dow">X</td>
+                <? }else{?>
+                <td></td>
+                <?}?>
+                <? if($backupOrder->tuesday){ ?>
+                    <td class="dow">X</td>
+                <? }else{?>
+                <td></td>
+                <?}?>
+                <? if($backupOrder->wednesday){ ?>
+                    <td class="dow">X</td>
+                <? }else{?>
+                <td></td>
+                <?}?>
+                <? if($backupOrder->thursday){ ?>
+                    <td class="dow">X</td>
+                <? }else{?>
+                <td></td>
+                <?}?>
+                <? if($backupOrder->friday){ ?>
+                    <td class="dow">X</td>
+                <? }else{?>
+                <td></td>
+                <?}?>
+                <? if($backupOrder->saturday){ ?>
+                    <td class="dow">X</td>
+                <? }else{?>
+                <td></td>
+                <?}?>
 
-                    <a class="btn btn-danger btn-xs ajax-action"
-                        href="<?= $_->link('admin/vps-servers/remove?server_id=' . $server->id) ?>"
-                        data-confirm="<?=$_->l('Are you sure you want to delete this server? Deleting a server will delete all orders associated with this server!')?>">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span><?=$_->l('Delete')?></a>
-                </td>
-                -->
+                <td><?= date ('H:i', strtotime($backupOrder->time)) ?>h</td>
             </tr>
             <? } ?>
+
+
         </tbody>
     </table>
-
-
-
+    <style>
+        dow, th, td{
+            text-align: center;
+        }
+    </style>
 </div>

@@ -2,11 +2,11 @@
 return array(
 
     /*API Routes*/
-    'api/test' => 'api|test|test',
-    'api/checkDomain' => 'api|domain|checkDomain',
-    'api/getDomains' => 'api|domain|getDomains',
-    'api/createProfile' => 'api|domain|createProfile',
-    'api/registerDomain' => 'api|domain|registerDomain',
+    'api/test'                                                          => 'api|test|test',
+    'api/checkDomain'                                                   => 'api|domain|checkDomain',
+    'api/getDomains'                                                    => 'api|domain|getDomains',
+    'api/createProfile'                                                 => 'api|domain|createProfile',
+    'api/registerDomain'                                                => 'api|domain|registerDomain',
     /* --- */
 
     'login'                                                             => 'front|user|login',
@@ -53,14 +53,14 @@ return array(
     'admin/orders'                                                      => 'admin|orders',
     'admin/domain-orders'                                               => 'admin|domainOrders|list',
 
-    'admin/domain-orders/ns-change'                                           => 'admin|domainOrders|changeNS',
-    'admin/domain-orders/prolong'                                             => 'admin|domainOrders|prolong',
-    'admin/domain-orders/rereg'                                             => 'admin|domainOrders|rereg',
-    'admin/domain-orders/remove'                                              => 'admin|domainOrders|remove',
-    'admin/domain-orders/order'                                               => 'admin|domainOrders|order',
-    'admin/domain-orders/order/([0-9,]{1,})'                                  => 'admin|domainOrders|order|ids=$1',
+    'admin/domain-orders/ns-change'                                     => 'admin|domainOrders|changeNS',
+    'admin/domain-orders/prolong'                                       => 'admin|domainOrders|prolong',
+    'admin/domain-orders/rereg'                                         => 'admin|domainOrders|rereg',
+    'admin/domain-orders/remove'                                        => 'admin|domainOrders|remove',
+    'admin/domain-orders/order'                                         => 'admin|domainOrders|order',
+    'admin/domain-orders/order/([0-9,]{1,})'                            => 'admin|domainOrders|order|ids=$1',
 
-    'admin/domain-orders/change-owner'                                 => 'admin|domainOrders|changeOwner',
+    'admin/domain-orders/change-owner'                                  => 'admin|domainOrders|changeOwner',
 
     'admin/domain-owners/edit'                                          => 'admin|domainOwners|edit',
 
@@ -72,7 +72,7 @@ return array(
     'admin/employee/add'                                                => 'admin|employees|edit',
 
     'admin/bill/remove/([0-9]{1,})'                                     => 'admin|bills|remove|id_bill=$1',
-    'admin/bill/refund/([0-9]{1,})' => 'admin|bills|refund|id_bill=$1',
+    'admin/bill/refund/([0-9]{1,})'                                     => 'admin|bills|refund|id_bill=$1',
     'admin/bill/off/([0-9]{1,})'                                        => 'admin|bills|off|id_bill=$1',
     'admin/bill/pay/([0-9]{1,})'                                        => 'admin|bills|pay|id_bill=$1',
 
@@ -87,7 +87,7 @@ return array(
     'admin/settings/currencies/setting'                                 => 'admin|settings|currenciesSetting',
     'admin/settings/currencies'                                         => 'admin|settings|currencies',
 
-    'admin/settings/notifications/setting'                             => 'admin|settings|notificationsSetting',
+    'admin/settings/notifications/setting'                              => 'admin|settings|notificationsSetting',
 
 
     'admin/settings/language/add'                                       => 'admin|settings|addLanguage',
@@ -95,10 +95,10 @@ return array(
     'admin/settings/languages/settings'                                 => 'admin|settings|languageSettings',
     'admin/settings/languages/translate-manager'                        => 'admin|settings|translateManager',
 
-    'admin/modules/install'                                    => 'admin|modules|install',
-    'admin/modules/uninstall'                                  => 'admin|modules|uninstall',
-    'admin/modules/setting/([A-Za-z0-9/]{0,})'                 => 'admin|modules|setting|module=$1',
-    'admin/modules'                                           => 'admin|modules|list',
+    'admin/modules/install'                                             => 'admin|modules|install',
+    'admin/modules/uninstall'                                           => 'admin|modules|uninstall',
+    'admin/modules/setting/([A-Za-z0-9/]{0,})'                          => 'admin|modules|setting|module=$1',
+    'admin/modules'                                                     => 'admin|modules|list',
 
 
 
@@ -113,8 +113,8 @@ return array(
     'admin/settings/notifications'                                      => 'admin|settings|notifications',
     'admin/settings/([A-Za-z0-9/]{0,})'                                 => 'admin|settings|$1',
     'admin/settings'                                                    => 'admin|settings',
-    'admin/settings/social-auth' => 'admin|settings|socialAuthSettings',
-    'admin/settings/send-text-message' => 'admin|settings|sendTextMessage',
+    'admin/settings/social-auth'                                        => 'admin|settings|socialAuthSettings',
+    'admin/settings/send-text-message'                                  => 'admin|settings|sendTextMessage',
 
 
 
@@ -125,8 +125,8 @@ return array(
     'admin/ticket/remove/([0-9]{1,})'                                   => 'admin|tickets|remove|id_ticket=$1',
     'admin/ticket/close/([0-9]{1,})'                                    => 'admin|tickets|close|id_ticket=$1',
 
-    'admin/ticket/download/answer/file/([0-9]{1,})/(.*)'          => 'admin|tickets|downloadAnswerFile|id_answer=$1|filename=$2',
-    'admin/ticket/download/file/([0-9]{1,})/(.*)'         => 'admin|tickets|downloadFile|id_ticket=$1|filename=$2',
+    'admin/ticket/download/answer/file/([0-9]{1,})/(.*)'                => 'admin|tickets|downloadAnswerFile|id_answer=$1|filename=$2',
+    'admin/ticket/download/file/([0-9]{1,})/(.*)'                       => 'admin|tickets|downloadFile|id_ticket=$1|filename=$2',
     'admin/ticket/([0-9]{1,})'                                          => 'admin|tickets|ticket|id_ticket=$1',
     'admin/ticket/new'                                                  => 'admin|tickets|newTicket',
     'admin/ticket/checker/get-count'                                    => 'admin|tickets|checkerGetTicketsCount',
@@ -137,67 +137,67 @@ return array(
     'admin/domain/add'                                                  => 'admin|domains|edit',
     'admin/domains'                                                     => 'admin|domains',
 
-    'admin/domain-registrars'                     => 'admin|domainRegistrars|list',
-    'admin/domain-registrars/remove/([0-9]{1,})'  => 'admin|domainRegistrars|remove|id_registrar=$1',
-    'admin/domain-registrars/([0-9]{1,})'         => 'admin|domainRegistrars|edit|id_registrar=$1',
-    'admin/domain-registrars/add'                 => 'admin|domainRegistrars|edit',
+    'admin/domain-registrars'                                           => 'admin|domainRegistrars|list',
+    'admin/domain-registrars/remove/([0-9]{1,})'                        => 'admin|domainRegistrars|remove|id_registrar=$1',
+    'admin/domain-registrars/([0-9]{1,})'                               => 'admin|domainRegistrars|edit|id_registrar=$1',
+    'admin/domain-registrars/add'                                       => 'admin|domainRegistrars|edit',
 
-    'admin/promocodes/edit'                   => 'admin|promocodes|edit',
-    'admin/promocodes/remove'                     => 'admin|promocodes|remove',
-    'admin/promocodes'                            => 'admin|promocodes|list',
-
-
-
-    'admin/services'                              => 'admin|services|list',
-    'admin/services/edit'                         => 'admin|services|edit',
-    'admin/services/remove'                       => 'admin|services|remove',
-
-    'admin/service-categories'                    => 'admin|serviceCategories|list',
-    'admin/service-categories/edit'               => 'admin|serviceCategories|edit',
-    'admin/service-categories/remove'             => 'admin|serviceCategories|remove',
-
-    'admin/service-orders'                        => 'admin|ServiceOrders|list',
-    'admin/service-orders/show'                   => 'admin|ServiceOrders|show',
-    'admin/service-orders/remove'                 => 'admin|ServiceOrders|remove',
-    'admin/service-orders/info'                 => 'admin|ServiceOrders|info',
-    'admin/service-orders/edit' => 'admin|ServiceOrders|edit',
+    'admin/promocodes/edit'                                             => 'admin|promocodes|edit',
+    'admin/promocodes/remove'                                           => 'admin|promocodes|remove',
+    'admin/promocodes'                                                  => 'admin|promocodes|list',
 
 
-    'admin/pages'                                 => 'admin|pages|list',
-    'admin/pages/edit'                            => 'admin|pages|edit',
-    'admin/pages/remove'                          => 'admin|pages|remove',
 
-    'admin/vps-servers'                           => 'admin|VpsServers|list',
-    'admin/vps-servers/edit'                      => 'admin|VpsServers|edit',
-    'admin/vps-servers/remove'                    => 'admin|VpsServers|remove',
-    'admin/vps-servers/check'                    => 'admin|VpsServers|check',
+    'admin/services'                                                    => 'admin|services|list',
+    'admin/services/edit'                                               => 'admin|services|edit',
+    'admin/services/remove'                                             => 'admin|services|remove',
 
-    'admin/vps-ips'                                 => 'admin|VpsServerIps|list',
-    'admin/vps-ips/edit'                            => 'admin|VpsServerIps|edit',
-    'admin/vps-ips/remove'                          => 'admin|VpsServerIps|remove',
+    'admin/service-categories'                                          => 'admin|serviceCategories|list',
+    'admin/service-categories/edit'                                     => 'admin|serviceCategories|edit',
+    'admin/service-categories/remove'                                   => 'admin|serviceCategories|remove',
 
-    'admin/vps-plans'                           => 'admin|VpsPlans|list',
-    'admin/vps-plans/edit'                      => 'admin|VpsPlans|edit',
-    'admin/vps-plans/remove'                    => 'admin|VpsPlans|remove',
+    'admin/service-orders'                                              => 'admin|ServiceOrders|list',
+    'admin/service-orders/show'                                         => 'admin|ServiceOrders|show',
+    'admin/service-orders/remove'                                       => 'admin|ServiceOrders|remove',
+    'admin/service-orders/info'                                         => 'admin|ServiceOrders|info',
+    'admin/service-orders/edit'                                         => 'admin|ServiceOrders|edit',
 
 
-    'admin/vps-orders'                           => 'admin|VpsOrders|list',
-    'admin/vps-orders/edit'                      => 'admin|VpsOrders|edit',
-    'admin/vps-orders/remove'                    => 'admin|VpsOrders|remove',
+    'admin/pages'                                                       => 'admin|pages|list',
+    'admin/pages/edit'                                                  => 'admin|pages|edit',
+    'admin/pages/remove'                                                => 'admin|pages|remove',
+
+    'admin/vps-servers'                                                 => 'admin|VpsServers|list',
+    'admin/vps-servers/edit'                                            => 'admin|VpsServers|edit',
+    'admin/vps-servers/remove'                                          => 'admin|VpsServers|remove',
+    'admin/vps-servers/check'                                           => 'admin|VpsServers|check',
+
+    'admin/vps-ips'                                                     => 'admin|VpsServerIps|list',
+    'admin/vps-ips/edit'                                                => 'admin|VpsServerIps|edit',
+    'admin/vps-ips/remove'                                              => 'admin|VpsServerIps|remove',
+
+    'admin/vps-plans'                                                   => 'admin|VpsPlans|list',
+    'admin/vps-plans/edit'                                              => 'admin|VpsPlans|edit',
+    'admin/vps-plans/remove'                                            => 'admin|VpsPlans|remove',
 
 
-    'admin/vps-params'                           => 'admin|VpsParams|list',
-    'admin/vps-params/edit'                      => 'admin|VpsParams|edit',
+    'admin/vps-orders'                                                  => 'admin|VpsOrders|list',
+    'admin/vps-orders/edit'                                             => 'admin|VpsOrders|edit',
+    'admin/vps-orders/remove'                                           => 'admin|VpsOrders|remove',
 
-    'admin/vps-params/remove'                    => 'admin|VpsParams|remove',
 
-    'admin/backup-servers'                              => 'admin|BackupServers|list',
-    'admin/backup-servers/edit'                         => 'admin|BackupServers|edit',
-    'admin/backup-servers/remove'                       => 'admin|BackupServers|remove',
+    'admin/vps-params'                                                  => 'admin|VpsParams|list',
+    'admin/vps-params/edit'                                             => 'admin|VpsParams|edit',
 
-    'admin/backup-orders'                              => 'admin|BackupOrders|list',
-    'admin/backup-orders/edit'                         => 'admin|BackupOrders|edit',
-    'admin/backup-orders/remove'                       => 'admin|BackupOrders|remove',
+    'admin/vps-params/remove'                                           => 'admin|VpsParams|remove',
+
+    'admin/backup-servers'                                              => 'admin|BackupServers|list',
+    'admin/backup-servers/edit'                                         => 'admin|BackupServers|edit',
+    'admin/backup-servers/remove'                                       => 'admin|BackupServers|remove',
+
+    'admin/backup-orders'                                               => 'admin|BackupOrders|list',
+    'admin/backup-orders/edit'                                          => 'admin|BackupOrders|edit',
+    'admin/backup-orders/remove'                                        => 'admin|BackupOrders|remove',
 
 
     'checker/menu' => 'front|front|checker',
@@ -242,38 +242,40 @@ return array(
     'bill/([0-9]{1,})'                                                  => 'front|bills|bill|$1',
     'bill/savepdf/([0-9]{1,})'                                          => 'front|bills|savepdf|id_bill=$1',//New 
 
-    'domain-orders'                    => 'front|domainOrders|list',
+    'domain-orders'                                                     => 'front|domainOrders|list',
 
-    'domain-orders/ns-change'          => 'front|domainOrders|changeNS',
-    'domain-orders/prolong'            => 'front|domainOrders|prolong',
-    'domain-orders/remove'             => 'front|domainOrders|remove',
-    'domain-orders/order'              => 'front|domainOrders|order',
-    'domain-orders/order/([0-9,]{1,})' => 'front|domainOrders|order|ids=$1',
-    'domain-orders/order/(.*)'          => 'front|domainOrders|order|domains=$1',
+    'domain-orders/ns-change'                                           => 'front|domainOrders|changeNS',
+    'domain-orders/prolong'                                             => 'front|domainOrders|prolong',
+    'domain-orders/remove'                                              => 'front|domainOrders|remove',
+    'domain-orders/order'                                               => 'front|domainOrders|order',
+    'domain-orders/order/([0-9,]{1,})'                                  => 'front|domainOrders|order|ids=$1',
+    'domain-orders/order/(.*)'                                          => 'front|domainOrders|order|domains=$1',
 
 
-    'hosting-orders'                   => 'front|order|list',
-    'hosting-orders/open-server-panel' => 'front|order|openServerPanel',
-    'hosting-orders/new'               => 'front|order|hosting',
+    'hosting-orders'                                                    => 'front|order|list',
+    'hosting-orders/open-server-panel'                                  => 'front|order|openServerPanel',
+    'hosting-orders/new'                                                => 'front|order|hosting',
 
-    'vps-orders'                   => 'front|VpsOrder|list',
-    'vps-orders/new'               => 'front|VpsOrder|new',
-    'vps-order/plan/([0-9]{1,})'   => 'front|VpsOrder|plan|plan_id=$1',
-    'vps-orders/prolong'           => 'front|VpsOrder|prolong',
-    'vps-orders/remove' => 'front|VpsOrder|remove',
+    'vps-orders'                                                        => 'front|VpsOrder|list',
+    'vps-orders/new'                                                    => 'front|VpsOrder|new',
+    'vps-order/plan/([0-9]{1,})'                                        => 'front|VpsOrder|plan|plan_id=$1',
+    'vps-orders/prolong'                                                => 'front|VpsOrder|prolong',
+    'vps-orders/remove'                                                 => 'front|VpsOrder|remove',
     
     
     'vps-actions/backup-now/([0-9]{1,})'                                => '', //New
     
     
-    'backup-orders'                                                     => 'front|backupOrders|list',
+    'backup-orders'                                                     => 'front|backupOrders|list', //new
+    'backup-orders/edit'                                                => 'front|backupOrders|edit', //new
+    
 
     'order/plan/([0-9]{1,})'                                            => 'front|order|plan|plan=$1',
     'order/(A-Za-z+){0,}'                                               => 'front|order|$1',
 
 
-    'support/download/answer/file/([0-9]{1,})/(.*)'      => 'front|support|downloadAnswerFile|id_answer=$1|filename=$2',
-    'support/download/file/([0-9]{1,})/(.*)'             => 'front|support|downloadFile|id_ticket=$1|filename=$2',
+    'support/download/answer/file/([0-9]{1,})/(.*)'                     => 'front|support|downloadAnswerFile|id_answer=$1|filename=$2',
+    'support/download/file/([0-9]{1,})/(.*)'                            => 'front|support|downloadFile|id_ticket=$1|filename=$2',
 
     'support/ticket/new'                                                => 'front|support|new',
     'support/ticket/close'                                              => 'front|support|close',
@@ -288,20 +290,20 @@ return array(
     'setting/notifications'                                             => 'front|setting|notifications',
 
 
-    'setting/domain-owners'                                            => 'front|domainOwner|list',
-    'setting/domain-owner/copy'                                        => 'front|domainOwner|copy',
-    'setting/domain-owner/remove'                                      => 'front|domainOwner|remove',
+    'setting/domain-owners'                                             => 'front|domainOwner|list',
+    'setting/domain-owner/copy'                                         => 'front|domainOwner|copy',
+    'setting/domain-owner/remove'                                       => 'front|domainOwner|remove',
 
 
-    'setting/remove-social-account'                                      => 'front|setting|removeSocialAccount',
+    'setting/remove-social-account'                                     => 'front|setting|removeSocialAccount',
 
-    'service-order/category-([0-9]{1,})'                               => 'front|serviceOrder|select|$1',
-    'service-order/new/service-([0-9]{1,})'                            => 'front|serviceOrder|order|service_id=$1',
-    'service-orders/category-([0-9]{1,})'                              => 'front|serviceOrder|list|category_id=$1',
-    'service-orders/show'                                              => 'front|serviceOrder|show',
-    'service-orders/info'                                              => 'front|serviceOrder|info',
-    'service-orders/prolong'                                           => 'front|serviceOrder|prolong',
-    'service-orders/remove'                                            => 'front|serviceOrder|remove',
+    'service-order/category-([0-9]{1,})'                                => 'front|serviceOrder|select|$1',
+    'service-order/new/service-([0-9]{1,})'                             => 'front|serviceOrder|order|service_id=$1',
+    'service-orders/category-([0-9]{1,})'                               => 'front|serviceOrder|list|category_id=$1',
+    'service-orders/show'                                               => 'front|serviceOrder|show',
+    'service-orders/info'                                               => 'front|serviceOrder|info',
+    'service-orders/prolong'                                            => 'front|serviceOrder|prolong',
+    'service-orders/remove'                                             => 'front|serviceOrder|remove',
 
     'bug-report'                                                        => 'admin|bugReport',
     'install'                                                           => '|install',

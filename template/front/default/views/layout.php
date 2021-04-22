@@ -75,6 +75,14 @@
                                     </a>
                                 </li>
                             <?}?>
+                            <?if($config->enable_component_vps){?>
+                                <li <?= ($_->link($request) == $_->link('backup-orders') ? 'class="active"' : '') ?>><a
+                                        href="<?= $_->link('backup-orders') ?>"><span class="glyphicon glyphicon-duplicate"
+                                                                                       aria-hidden="true"></span>
+                                        &nbsp;<?= $_->l('Backups') ?>
+                                    </a>
+                                </li>
+                            <?}?>
 
                             <?foreach($menu['orders'] as $item){?>
 
@@ -141,7 +149,7 @@
 
                             <?if($config->enable_component_backup){?>
                                 <li <?= ($_->link($request) == $_->link('backup-orders/new') ? 'class="active"' : '') ?>><a
-                                        href="<?= $_->link('backup-orders/new') ?>"><span class="fa fa-codepen"
+                                        href="<?= $_->link('backup-orders/new') ?>"><span class="glyphicon glyphicon-duplicate"
                                                                                        aria-hidden="true"></span>
                                         &nbsp;<?= $_->l('Backup service') ?>
                                     </a>
@@ -160,8 +168,6 @@
                                 </li>
 
                             <? } ?>
-                            
-
 
                             <?if($service_categories){?>
                                 <?=$_->css('font-awesome.min.css')?>

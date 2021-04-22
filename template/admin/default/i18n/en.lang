@@ -505,7 +505,8 @@
         "Соединение установленно!": "The connection is established!",
         "Сервер не отвечает!": "The server doesn't not respond!",
         "Тариф был успешно удален": "A tarifa foi excluída com sucesso",
-        "Услуга успешно добавлена": ""
+        "Услуга успешно добавлена": "",
+        "Услуга успешно удалена": ""
     },
     "views\/client\/info.php": {
         "Информация о клиенте": "Info about client",

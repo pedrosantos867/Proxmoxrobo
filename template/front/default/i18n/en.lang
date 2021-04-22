@@ -469,7 +469,8 @@
         "Выход": "Logout",
         "Новоее сообщение": "New message",
         "Тикет": "Ticket",
-        "Backup service": ""
+        "Backup service": "",
+        "Backups": ""
     },
     "views\/vps\/order\/list.php": {
         "Дата": "Date",
@@ -598,5 +599,14 @@
         "месяцев": "meses",
         "Отмена": "Cancelamento",
         "Сформировать заказ": "Fazer um pedido"
+    },
+    "views\/backup\/order\/list.php": {
+        "ID": "",
+        "Backup Server": "",
+        "VPS ID": "",
+        "Client name": "",
+        "Day of the week": "",
+        "Time of the day": "",
+        "No results found.": ""
     }
 }

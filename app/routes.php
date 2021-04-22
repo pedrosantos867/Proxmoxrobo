@@ -264,7 +264,9 @@ return array(
     
     
     'vps-actions/backup-now/([0-9]{1,})'                                => '', //New
-
+    
+    
+    'backup-orders'                                                     => 'front|backupOrders|list',
 
     'order/plan/([0-9]{1,})'                                            => 'front|order|plan|plan=$1',
     'order/(A-Za-z+){0,}'                                               => 'front|order|$1',

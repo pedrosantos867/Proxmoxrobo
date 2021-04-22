@@ -298,7 +298,6 @@
         </div>
     </div>
 
-
     <h4><?=$_->l('VPS')?></h4>
     <div class="checkbox">
         <label>
@@ -307,7 +306,13 @@
         </label>
     </div>
 
-    
+    <h4><?=$_->l('Backup service')?></h4>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" <?= ($config->enable_component_backup == 1 ? 'checked="checked"' : '') ?>
+                   name="enable_component_backup" value="1"> <?=$_->l('Enable the ability to order a backup')?>
+        </label>
+    </div>
 
     <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span> <?=$_->l('Сохранить')?></button>
 </form>

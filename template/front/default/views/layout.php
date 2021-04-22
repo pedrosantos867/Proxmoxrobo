@@ -138,6 +138,16 @@
                                     </a>
                                 </li>
                             <?}?>
+
+                            <?if($config->enable_component_backup){?>
+                                <li <?= ($_->link($request) == $_->link('backup-orders/new') ? 'class="active"' : '') ?>><a
+                                        href="<?= $_->link('backup-orders/new') ?>"><span class="fa fa-codepen"
+                                                                                       aria-hidden="true"></span>
+                                        &nbsp;<?= $_->l('Backup service') ?>
+                                    </a>
+                                </li>
+                            <?}?>
+
                             <?foreach($menu['create_orders'] as $item){?>
 
                                 <li >
@@ -150,6 +160,9 @@
                                 </li>
 
                             <? } ?>
+                            
+
+
                             <?if($service_categories){?>
                                 <?=$_->css('font-awesome.min.css')?>
                                 <?foreach($service_categories as $category){?>

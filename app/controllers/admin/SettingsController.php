@@ -606,6 +606,10 @@ class SettingsController extends FrontController
                 $this->config->enable_component_vps  = Tools::rPOST('enable_component_vps');
                 $this->config->enable_social_auth  = Tools::rPOST('enable_social_auth');
 
+
+                //Backup component
+                $this->config->enable_component_backup = Tools::rPOST('enable_component_backup');
+
                 $this->config->save();
             }
             else $this->layout->demo_mode = true;

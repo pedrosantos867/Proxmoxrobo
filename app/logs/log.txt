@@ -33,3 +33,18 @@
  on line: 8
  in func: __construct
  in class System\Exception
+2021-04-20 09:43:45 Exception in file C:\laragon\www\hopebilling\app\classes\System\ControllerFactory.php: Controller not exist. Please create Controller or configure route! 
+ in file: C:\laragon\www\hopebilling\core\classes\System\Exception.php
+ on line: 8
+ in func: __construct
+ in class System\Exception
+2021-04-20 09:48:05 Exception in file C:\laragon\www\hopebilling\app\classes\System\ControllerFactory.php: Controller not exist. Please create Controller or configure route! 
+ in file: C:\laragon\www\hopebilling\core\classes\System\Exception.php
+ on line: 8
+ in func: __construct
+ in class System\Exception
+2021-04-20 09:48:49 Exception in file C:\laragon\www\hopebilling\app\classes\System\ControllerFactory.php: Controller not exist. Please create Controller or configure route! 
+ in file: C:\laragon\www\hopebilling\core\classes\System\Exception.php
+ on line: 8
+ in func: __construct
+ in class System\Exception

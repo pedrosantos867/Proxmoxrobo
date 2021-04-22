@@ -158,7 +158,9 @@
         "NS1:": "",
         "NS2:": "",
         "NS3:": "",
-        "NS4:": ""
+        "NS4:": "",
+        "Backup service": "",
+        "Enable the ability to order a backup": ""
     },
     "views\/setting\/currencies.php": {
         "Добавить": "Add",

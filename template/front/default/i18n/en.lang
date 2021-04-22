@@ -468,7 +468,8 @@
         "Партнерская программа": "Affiliate program",
         "Выход": "Logout",
         "Новоее сообщение": "New message",
-        "Тикет": "Ticket"
+        "Тикет": "Ticket",
+        "Backup service": ""
     },
     "views\/vps\/order\/list.php": {
         "Дата": "Date",

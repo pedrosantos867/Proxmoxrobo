@@ -8,6 +8,7 @@ use Model\Client;
 use Model\VpsServer;
 use Model\VpsOrder;
 use Model\BackupServer;
+use System\Tools;
 
 class BackupOrdersController extends FrontController {
     public function actionListAjax()
@@ -49,8 +50,50 @@ class BackupOrdersController extends FrontController {
     }
 
     public function actionNew(){
-        
+        $view = $this->getView('backup/order/new.php');
+
+         //Get all user vps's 
+         $vpsOrderObject = new VpsOrder();
+
+         $vpsOrderObject->select('vmid')
+                         ->where(VpsOrder::getInstance(), 'client_id', $this->client->id)
+                         ->where(VpsOrder::getInstance(), 'has_backup_configured', 0);
+ 
+         $vps_list = $vpsOrderObject->getRows();
+ 
+         $view->vps_list = $vps_list;
+         $this->layout->import('content', $view);
+
+        if (Tools::rPOST()) {
+            if(!empty($_POST['check_list_vps']) && count($_POST['check_list_days']) > 0){
+                foreach($_POST['check_list_vps'] as $vmid){
+                    $vpsOrderAux = new VpsOrder();
+                    $vpsOrderAux->select('*')->where('vmid', '=', $vmid);
+                    
+                    $row = $vpsOrderAux->getRow();
+                    
+                    $vpsOrderToChange = new VpsOrder($row->id);
+
+                    $vpsOrderToChange->has_backup_configured = 1;
+                    $vpsOrderToChange->save();
+                            
+                    $backupOrder = new BackupOrder();
+                    $backupOrder->backup_server_id = 1; //alterar para ser dinâmico
+                    $backupOrder->vps_order_id = $row->id;
+                    $backupOrder->client_id = $this->client->id;
+                    $backupOrder->time = Tools::rPOST('time');
+                    $backupOrder->paid_to = '1970-01-01';
+                    $backupOrder->date = date('Y-m-d H:m:s');
+                    
+                    foreach($_POST['check_list_days'] as $day){
+                        if($day){
+                            $backupOrder->$day = 1;
+                        }
+                    }
+
+                    $backupOrder->save();
+                }
+            }
+        }
     }
-
-
 }

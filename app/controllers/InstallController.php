@@ -561,6 +561,7 @@ class InstallController
                         ->int('active')
                         ->date('paid_to')
                         ->timestamp('date')
+                        ->bool('has_backup_configured')
                     ;
                     $table->create();
                 });

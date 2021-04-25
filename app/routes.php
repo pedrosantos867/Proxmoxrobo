@@ -263,12 +263,11 @@ return array(
     'vps-orders/remove'                                                 => 'front|VpsOrder|remove',
     
     
+    //Backups
     'vps-actions/backup-now/([0-9]{1,})'                                => '', //New
     
-    
     'backup-orders'                                                     => 'front|backupOrders|list', //new
-    'backup-orders/edit'                                                => 'front|backupOrders|edit', //new
-    
+    'backup-orders/new'                                                 => 'front|backupOrders|new', //new
 
     'order/plan/([0-9]{1,})'                                            => 'front|order|plan|plan=$1',
     'order/(A-Za-z+){0,}'                                               => 'front|order|$1',

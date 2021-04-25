@@ -811,7 +811,9 @@
     "views\/vps\/param\/list.php": {
         "Добавить": "Add",
         "Название": "Name",
-        "Результаты не найдены.": "Results not found"
+        "Результаты не найдены.": "Results not found",
+        "Изменить": "",
+        "Удалить": ""
     },
     "views\/vps\/plan\/list.php": {
         "Добавить": "Add",

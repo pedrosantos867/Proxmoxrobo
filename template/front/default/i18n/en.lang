@@ -608,5 +608,16 @@
         "Day of the week": "",
         "Time of the day": "",
         "No results found.": ""
+    },
+    "views\/backup\/order\/new.php": {
+        "Название": "",
+        "Periodicity": "",
+        "Days of the week": "",
+        "VPS available to backup ": "",
+        "Time of the day": "",
+        "Close": "",
+        "Save": "",
+        "Order": "",
+        "Create": ""
     }
 }

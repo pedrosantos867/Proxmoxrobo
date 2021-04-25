@@ -82,4 +82,13 @@ interface IVPSAPI
 
 
     public function checkConnection();
+
+    /**
+     * Creates backup job to an Proxmox Backup Server
+     * @param $node string Node 
+     * @param $vmid string VM ID 
+     * @param $server string server to backup to 
+     * @return object result 
+     */
+    public function createBackupJobForPBS($starttime, $dow, $vmid);
 }

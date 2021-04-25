@@ -313,4 +313,79 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
 
     }
 
+    public function createBackupJobForPBS($starttime, $dow, $vmid){ //TODO: add mode (snapshot, suspend or stop)
+        if($starttime == null || $dow == null || $vmid == null){
+            return;
+        }
+
+        $days = "";
+        foreach($dow as $day){
+            $days . $day;
+        }
+
+        $storage = $this->getPBSWithMostStorageAvailable();
+
+        $payload = [
+            'starttime' => $starttime,
+            'dow' => $days,
+            'storage' => $storage,
+            'enabled' => 1,
+            'mode' => 'snapshot',
+            'vmid' => $vmid
+        ];
+
+        $this->pve->post("/cluster/backup", $payload);
+    }
+
+    public function getPBSWithMostStorageAvailable(){
+        //Get all available storages
+        $array = $this->pve->get('/cluster/resources?type=storage')["data"];
+
+        //Get only storages with plugintype pbs (são servidores pbs)
+        $pbs_server_list = array_filter($array, function($obj){
+            if(strstr($obj['plugintype'], 'pbs', 1) !== false){
+                return true;
+            }
+        });
+        
+        if(count($pbs_server_list) == 0){
+            return;
+        }
+
+        $chosen_server = array_values($pbs_server_list)[0]; //array_values() to reorder indexes 
+
+        foreach($pbs_server_list as $server){
+            if(($server["disk"] / $server["maxdisk"]) < ($chosen_server["disk"] / $chosen_server["maxdisk"])){
+                $chosen_server = $server;
+            }
+        }
+
+        return $chosen_server["storage"]; 
+    }
+
+    public function getNFSWithMostStorageAvailable(){
+        
+        $array = $this->pve->get('/cluster/resources?type=storage')["data"];
+
+        //Gets only NFS servers
+        $nfs_server_list = array_filter($array, function($obj){
+            if(strpos($obj['plugintype'], 'nfs', 1) !== false){
+                return true;
+            }
+        });
+
+        if(count($nfs_server_list) == 0){
+            return;
+        }
+
+        $chosen_server = array_values($nfs_server_list)[0]; //array_values() to reorder indexes 
+
+        foreach($nfs_server_list as $server){
+            if(($server["disk"] / $server["maxdisk"]) < ($chosen_server["disk"] / $chosen_server["maxdisk"])){
+                $chosen_server = $server;
+            }
+        }
+
+        return $nfs_server_list->storage; 
+    }
 }

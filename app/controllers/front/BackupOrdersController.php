@@ -9,6 +9,7 @@ use Model\VpsServer;
 use Model\VpsOrder;
 use Model\BackupServer;
 use System\Tools;
+use vps\VPSAPI;
 
 class BackupOrdersController extends FrontController {
     public function actionListAjax()
@@ -71,10 +72,11 @@ class BackupOrdersController extends FrontController {
                     $vpsOrderAux->select('*')->where('vmid', '=', $vmid);
                     
                     $row = $vpsOrderAux->getRow();
+                    $dow = array();
                     
                     $vpsOrderToChange = new VpsOrder($row->id);
 
-                    $vpsOrderToChange->has_backup_configured = 1;
+                    $vpsOrderToChange->has_backup_configured = 0; //TODO: CHANGE TO 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     $vpsOrderToChange->save();
                             
                     $backupOrder = new BackupOrder();
@@ -88,10 +90,21 @@ class BackupOrdersController extends FrontController {
                     foreach($_POST['check_list_days'] as $day){
                         if($day){
                             $backupOrder->$day = 1;
+                            array_push($dow, $day);
                         }
                     }
 
                     $backupOrder->save();
+
+                    //Create backup job via Proxmox API 
+
+                    //Get the first Proxmox server available so we can make API requests
+                    $VpsServerObject = new VpsServer();
+                    $server = $VpsServerObject->select('*')->limit(1)->getRow();
+
+                    $api = VPSAPI::selectServer($server->id);
+
+                    $api->createBackupJobForPBS($backupOrder->time, $dow, $vmid);
                 }
             }
         }

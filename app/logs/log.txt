@@ -53,3 +53,8 @@
  on line: 8
  in func: __construct
  in class System\Exception
+2021-04-25 10:32:44 Exception in file C:\laragon\www\hopebilling\app\classes\vps\VPSAPI.php: Server not found
+ in file: C:\laragon\www\hopebilling\core\classes\System\Exception.php
+ on line: 8
+ in func: __construct
+ in class System\Exception

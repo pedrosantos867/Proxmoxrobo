@@ -494,7 +494,9 @@
         "Backup now": "",
         "Access vm by SSH": "",
         "SSH to machine": "",
-        "SSH into the machine": ""
+        "SSH into the machine": "",
+        "Manage backups": "",
+        "Secure shell into machine": ""
     },
     "views\/vps\/order\/new.php": {
         "месяц": "month",
@@ -618,6 +620,19 @@
         "Close": "",
         "Save": "",
         "Order": "",
-        "Create": ""
+        "Create": "",
+        "Backup type": "",
+        "Incremental": "",
+        "Full backup": "",
+        "Backup mode": "",
+        "Maximum number of stored backups": ""
+    },
+    "views\/backup\/order\/manage.php": {
+        "Data": "",
+        "Status": "",
+        "Action": "",
+        "Backup Data": "",
+        "Revert to": "",
+        "No results found": ""
     }
 }

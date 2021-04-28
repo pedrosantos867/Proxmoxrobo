@@ -15,19 +15,13 @@ class Bill extends \System\ObjectModel
 
     const TYPE_ORDER            = 0;
     const TYPE_CHANGE_PLAN      = 1;
-
     const TYPE_BALANCE          = 2;
-
     const TYPE_INC              = 3;
-
     const TYPE_DOMAIN_ORDER     = 4;
     const TYPE_DOMAIN_PROLONG   = 5;
-
     const TYPE_SERVICE_ORDER    = 6;
-
-
     const TYPE_VPS              = 7;
-
+    const TYPE_BACKUP           = 8; 
 
     public function pay()
     {

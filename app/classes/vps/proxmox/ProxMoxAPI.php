@@ -313,7 +313,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
 
     }
 
-    public function createBackupJobForPBS($starttime, $dow, $vmid){ //TODO: add mode (snapshot, suspend or stop)
+    public function createBackupJobForPBS($starttime, $dow, $vmid, $storage, $mode, $retention){ //TODO: add mode (snapshot, suspend or stop)
         if($starttime == null || $dow == null || $vmid == null){
             return;
         }
@@ -323,15 +323,14 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
             $days . $day;
         }
 
-        $storage = $this->getPBSWithMostStorageAvailable();
-
         $payload = [
             'starttime' => $starttime,
             'dow' => $days,
             'storage' => $storage,
             'enabled' => 1,
             'mode' => 'snapshot',
-            'vmid' => $vmid
+            'vmid' => $vmid,
+            //'prune-backups' => "keep-last".$retention
         ];
 
         $this->pve->post("/cluster/backup", $payload);
@@ -387,5 +386,23 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         }
 
         return $nfs_server_list->storage; 
+    }
+
+    public function getBackupsByVMID($vmid){
+        $tasks = $this->pve->get("/cluster/tasks")["data"];
+
+        $jobs = array();
+
+        foreach($tasks as $task){
+            if($task["type"] == "vzdump" && $task["id"] == $vmid && $task["status"] == "OK" ){
+                array_push($jobs, $task);
+            }
+        }
+
+        return $jobs;
+    }
+
+    public function restoreBackup($vmid, $path){
+        return 1;
     }
 }

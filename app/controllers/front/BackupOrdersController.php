@@ -137,7 +137,18 @@ class BackupOrdersController extends FrontController {
         $this->layout->import('content', $view);
     }
 
-    public function actionRevertToAjax($job){
+    public function actionRevertToAjax(){
+        $job = Tools::rPOST('job');
+        $job = urldecode($job[0]);
+        $job = explode(',', $job);
+
+        $jobAux = array();
+        foreach($job as $j){
+            $splited = explode('=', $j);
+            $jobAux[$splited[0]]  = $splited[1];
+        }
+        $job = $jobAux;
+
         $VpsServerObject = new VpsServer();
         $server = $VpsServerObject->select('*')->limit(1)->getRow();
 
@@ -148,6 +159,6 @@ class BackupOrdersController extends FrontController {
             'archive' => $job["upid"] 
         ];
 
-        $api->post("/nodes". $job["node"]."/qemu", $paramenters);
+        $this->pve->post("/nodes". $job["node"]."/qemu", $paramenters);
     }
 }

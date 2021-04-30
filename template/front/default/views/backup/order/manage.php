@@ -1,19 +1,19 @@
 <script>
 $(document).ready(function() {
     $('#revert_button').click(function() {
-        alert("olasda");
+        //alert($(this).attr("value")); 
+
         $.ajax({
-            type: 'post',
+            method: 'post',
             dataType: 'json',
             data: {
-                job: "",
+                job: $(this).attr("value").split(';'),
                 action: 'revertTo',
                 ajax: 1
             },
             success: function(data) {
                 alert("success!");
             }
-            alert("clicked");
         })
     });
 });
@@ -39,7 +39,7 @@ $(document).ready(function() {
                 <td><?= date('Y-m-d h\h:m', $job["starttime"]) ?></td>
                 <td><b><?= strval($job["status"]) ?></b></td>
                 <td>
-                    <button id="revert_button" value=<?=$job?> class="btn btn-lg btn-primary"><span
+                    <button id="revert_button" value=<?=http_build_query($job, '', ',')?> class="btn btn-lg btn-primary"><span
                             class="glyphicon glyphicon-repeat"></span> <?= $_->l('Revert to') ?>
                     </button>
                 </td>

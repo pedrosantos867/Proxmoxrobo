@@ -39,20 +39,20 @@
 
     <script>
         var validate_messages = {
-            required: "<?=$_->l('Поле обязательное к заполнению')?>",
-            username: "<?=$_->l('3-20 символов, которыми могут быть буквы и цифры, первый символ обязательно буква')?>",
-            hosting_username: "<?=$_->l('3-20 символов, которыми могут быть только маленькие буквы и цифры, первый символ обязательно буква')?>",
-            email: "<?=$_->l('Введите правильный email')?>",
-            pass: "<?=$_->l('Строчные и прописные латинские буквы, цифры, спецсимволы. Минимум 4 символов.')?>",
-            pass2: "<?=$_->l('Повторите ввод пароля')?>",
-            fio: "<?=$_->l('Введите фамилию и имя')?>",
-            ajax: "<?=$_->l('Значение занято')?>",
-            phone: "<?=$_->l('Введите номер телефона в международном формате (например +380921235478)')?>",
-            phone_new : "<?=$_->l('Введите номер телефона в международном формате (например +38(092)123-54-78)')?>",
-            date: "<?=$_->l('Дата в формате: 2015-06-18')?>",
-            domain: "<?=$_->l('Введите доменное имя')?>",
-            possitive_number: "<?=$_->l('Введите число больше нуля')?>",
-            valid: "<?=$_->l('Поле заполнено правильно!')?>"
+            required: "<?=$_->l('Required field')?>",
+            username: "<?=$_->l('3-20 characters, which can be letters and numbers, the first character must be a letter')?>",
+            hosting_username: "<?=$_->l('3-20 characters, which can only be small letters and numbers, the first character must be a letter')?>",
+            email: "<?=$_->l('Enter correct email')?>",
+            pass: "<?=$_->l('Lowercase and uppercase Latin letters, numbers, special characters. Minimum 4 characters.')?>",
+            pass2: "<?=$_->l('Re-enter your password')?>",
+            fio: "<?=$_->l('Enter your last name and first name')?>",
+            ajax: "<?=$_->l('The value is taken')?>",
+            phone: "<?=$_->l('Enter the phone number in international format (for example +380921235478)')?>",
+            phone_new : "<?=$_->l('Enter the phone number in international format (for example +38 (092) 123-54-78)')?>",
+            date: "<?=$_->l('Date in the format: 2015-06-18')?>",
+            domain: "<?=$_->l('Enter your domain name')?>",
+            possitive_number: "<?=$_->l('Please enter a number greater than zero')?>",
+            valid: "<?=$_->l('The field is filled in correctly!')?>"
         };
     </script>
     <script>

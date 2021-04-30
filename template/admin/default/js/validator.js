@@ -18,26 +18,23 @@ $.fn.validate = function (options) {
     $(this).each(function () {
         // init(this);
 
-
-
-
         var messages = jQuery.extend({
-            required: 'Поле обязательное к заполнению',
-            username: '3-20 символов, которыми могут быть буквы и цифры, первый символ обязательно буква',
-            name: 'Набор символов, которыми могут быть буквы и дифисы, первый символ обязательно буква',
-            hosting_username: '3-20 символов, которыми могут быть только маленькие буквы и цифры, первый символ обязательно буква',
-            email: 'Введите правильный email',
-            pass: 'Строчные и прописные латинские буквы, цифры, спецсимволы. Минимум 4 символов.',
-            pass2: 'Повторите ввод пароля',
-            fio: 'Три слова разделенные пробелом',
-            ajax: 'Значение занято',
-            phone: 'Введите номер телефона в международном формате, например +380921235478',
-            phone_new: 'Введите номер телефона в международном формате, например +38(092)123-54-78',
-            date: 'Дата в формате: 2015-06-18',
-            date_new: 'Дата в формате: 18-06-2015',
-            domain: 'Введите доменное имя',
-            possitive_number: 'Введите число больше нуля',
-            valid: 'Поле заполнено правильно!'
+            required: 'Required field', //Поле обязательное к заполнению
+            username: '3-20 characters, which can be letters and numbers, the first character must be a letter', //3-20 символов, которыми могут быть буквы и цифры, первый символ обязательно буква
+            name: 'A set of characters, which can be letters and hyphens, the first character must be a letter', //Набор символов, которыми могут быть буквы и дифисы, первый символ обязательно буква
+            hosting_username: '3-20 characters, which can only be small letters and numbers, the first character must be a letter', //3-20 символов, которыми могут быть только маленькие буквы и цифры, первый символ обязательно буква
+            email: 'Please enter correct email', //Введите правильный email
+            pass: 'Lowercase and uppercase Latin letters, numbers, special characters. 4 characters minimum', //Строчные и прописные латинские буквы, цифры, спецсимволы. Минимум 4 символов.
+            pass2: 'Re-enter your password', //Повторите ввод пароля
+            fio: 'Three words separated by a space', //Три слова разделенные пробелом
+            ajax: 'The value is taken', //Значение занято
+            phone: 'Enter the phone number in international format (for example +380921235478)', //Введите номер телефона в международном формате (например +380921235478)
+            phone_new: 'Enter the phone number in international format (for example +38 (092) 123-54-78)', //Введите номер телефона в международном формате (например +38(092)123-54-78)
+            date: 'Date in the format: 2015-06-18', //Дата в формате: 2015-06-18
+            date_new: 'Date in the format: 18-06-2015', //Дата в формате: 18-06-2015
+            domain: 'Enter your domain name', //Введите доменное имя
+            possitive_number: 'Please enter a number greater than zero', //Введите число больше нуля
+            valid: 'The field is filled in correctly!' //Поле заполнено правильно!
         }, options.messages);
 
         // var result = {};

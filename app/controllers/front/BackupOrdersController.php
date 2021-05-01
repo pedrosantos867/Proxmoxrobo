@@ -131,34 +131,53 @@ class BackupOrdersController extends FrontController {
 
         $api = VPSAPI::selectServer($server->id);
 
-        $jobs = $api->getBackupsByVMID($vmid);
+        $vps_order_object = new VPSOrder();
+        $vps_order_object->select('*')->where(VPSOrder::getInstance(), 'vmid', $vmid);
+        
+        $vps = $vps_order_object->getRow();
+
+        $backup_order_object = new BackupOrder();
+        $backup_order_object->select('*')
+                            ->where(BackupOrder::getInstance(), 'vps_order_id', $vps->id);
+
+        $backup = $backup_order_object->getRow();
+
+        $backup_list = $api->getBackupsByVMID($server->name, $vmid, $backup->storage);
     
-        $view->jobs = $jobs;
+        $view->backup_list = $backup_list;
         $this->layout->import('content', $view);
     }
 
     public function actionRevertToAjax(){
-        $job = Tools::rPOST('job');
-        $job = urldecode($job[0]);
-        $job = explode(',', $job);
+        $backup = Tools::rPOST('backup');
+        $backup = urldecode($backup[0]);
+        $backup = explode(',', $backup);
 
-        $jobAux = array();
-        foreach($job as $j){
-            $splited = explode('=', $j);
-            $jobAux[$splited[0]]  = $splited[1];
+        $backupAux = array();
+        foreach($backup as $b){
+            $splited = explode('=', $b);
+            $backupAux[$splited[0]]  = $splited[1];
         }
-        $job = $jobAux;
+        $backup = $backupAux;
 
         $VpsServerObject = new VpsServer();
         $server = $VpsServerObject->select('*')->limit(1)->getRow();
 
         $api = VPSAPI::selectServer($server->id);
-        
+
+        $vps_order_object = new VPSOrder();
+        $vps_order_object->select('*')->where(VPSOrder::getInstance(), 'vmid', $backup["vmid"]);
+        $vps_order = $vps_order_object->getRow();
+
+        $vps_server_object = new VPSServer();
+        $vps_server_object->select('*')->where(VPSServer::getInstance(), 'id', $vps_order->server_id);
+        $vps_server = $vps_server_object->getRow();
+
         $paramenters = [
-            'vmid' => $job["id"],
-            'archive' => $job["upid"] 
+            'vmid' => $backup["vmid"],
+            'archive' => $backup["volid"] 
         ];
 
-        $this->pve->post("/nodes". $job["node"]."/qemu", $paramenters);
+        return $api->restoreBackup($vps_server->name, $paramenters);
     }
 }

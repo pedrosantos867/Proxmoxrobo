@@ -5,13 +5,14 @@ $(document).ready(function() {
 
         $.ajax({
             method: 'post',
-            dataType: 'json',
+            //dataType: 'json',
             data: {
-                job: $(this).attr("value").split(';'),
+                backup: $(this).attr("value").split(';'),
                 action: 'revertTo',
                 ajax: 1
             },
-            success: function(data) {
+            complete: function(data) {
+                alert(data);
                 alert("success!");
             }
         })
@@ -24,22 +25,24 @@ $(document).ready(function() {
         <thead>
             <tr>
                 <th><?=$_->l('Backup Data')?></th>
-                <th><?=$_->l('Status')?></th>
+                <th><?=$_->l('Size')?></th>
+                <th><?=$_->l('Format')?></th>
                 <th><?=$_->l('Action')?></th>
             </tr>
         </thead>
         <tbody>
-            <? if(count($jobs) == 0){ ?>
+            <? if(count($backup_list) == 0){ ?>
             <tr class="text-center">
                 <td colspan="100%"><?= $_->l('No results found') ?></td>
             </tr>
             <? }?>
-            <? foreach($jobs as $job){ ?>
+            <? foreach($backup_list["data"] as $backup){ ?>
             <tr>
-                <td><?= date('Y-m-d h\h:m', $job["starttime"]) ?></td>
-                <td><b><?= strval($job["status"]) ?></b></td>
+                <td><?= date('Y-m-d h\h:m', $backup["ctime"]) ?></td>
+                <td><?= strval($backup["size"]) ?></td>
+                <td><?= strval($backup["format"]) ?></td>
                 <td>
-                    <button id="revert_button" value=<?=http_build_query($job, '', ',')?> class="btn btn-lg btn-primary"><span
+                    <button id="revert_button" value=<?=http_build_query($backup, '', ',')?> class="btn btn-lg btn-primary"><span
                             class="glyphicon glyphicon-repeat"></span> <?= $_->l('Revert to') ?>
                     </button>
                 </td>

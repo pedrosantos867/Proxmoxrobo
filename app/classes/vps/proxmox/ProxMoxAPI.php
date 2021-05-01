@@ -388,21 +388,16 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         return $nfs_server_list->storage; 
     }
 
-    public function getBackupsByVMID($vmid){
-        $tasks = $this->pve->get("/cluster/tasks")["data"];
-
-        $jobs = array();
-
-        foreach($tasks as $task){
-            if($task["type"] == "vzdump" && $task["id"] == $vmid && $task["status"] == "OK" ){
-                array_push($jobs, $task);
-            }
-        }
-
-        return $jobs;
+    public function getBackupsByVMID($node, $vmid, $storage){
+        $backup_list = $this->pve->get("/nodes/". $node ."/storage/". $storage ."/content?content=backup&vmid=" . $vmid);
+        return $backup_list;
     }
 
-    public function restoreBackup($vmid, $path){
-        return 1;
+    public function restoreBackup($node, $parameters){
+        $response = $this->pve->post("/nodes/". $node."/qemu", $parameters);
+        if($response != null){
+            return http_response_code(200);
+        }
+        return http_response_code(404);
     }
 }

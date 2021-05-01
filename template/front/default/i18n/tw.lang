@@ -31,7 +31,11 @@
         "Валюта": "",
         "Поддержка": "",
         "Партнерская программа": "",
-        "Выход": ""
+        "Выход": "",
+        "Backups": "",
+        "Backup service": "",
+        "Новоее сообщение": "",
+        "Тикет": ""
     },
     "views\/bill\/list.php": {
         "Дата": "日期",
@@ -59,7 +63,9 @@
         "Удалить": "移除",
         "Ручная оплата": "標記已付款",
         "Смена хостинг тарифа": "更變費率",
-        "Действие": ""
+        "Действие": "",
+        "VPS": "",
+        "Download invoice": ""
     },
     "views\/client\/list.php": {
         "Добавить": "新增使用者",
@@ -240,7 +246,21 @@
         "Настройки": "",
         "Партнерская программа": "",
         "Выход": "",
-        "Биллинг панель": ""
+        "Биллинг панель": "",
+        "Required field": "",
+        "3-20 characters, which can be letters and numbers, the first character must be a letter": "",
+        "3-20 characters, which can only be small letters and numbers, the first character must be a letter": "",
+        "Enter correct email": "",
+        "Lowercase and uppercase Latin letters, numbers, special characters. Minimum 4 characters.": "",
+        "Re-enter your password": "",
+        "Enter your last name and first name": "",
+        "The value is taken": "",
+        "Enter the phone number in international format (for example +380921235478)": "",
+        "Enter the phone number in international format (for example +38 (092) 123-54-78)": "",
+        "Date in the format: 2015-06-18": "",
+        "Enter your domain name": "",
+        "Please enter a number greater than zero": "",
+        "The field is filled in correctly!": ""
     },
     "views\/setting\/language\/edit.php": {
         "Название": "名稱",
@@ -684,5 +704,39 @@
     "views\/service\/select.php": {
         "месяц": "",
         "ЗАКАЗАТЬ": ""
+    },
+    "views\/vps\/order\/new.php": {
+        "месяц": "",
+        "ЗАКАЗАТЬ": ""
+    },
+    "views\/vps\/order\/plan.php": {
+        "Извините, пользователь с таким именем уже существует. Выберите другое имя.": "",
+        "Пароль слишком простой, выберите пожалуйста другой пароль": "",
+        "Имя пользователя слишком длинное, попробуйте выбрать другое имя": "",
+        "Выбранный хостинг тариф": "",
+        "Изменить": "",
+        "Выберите сервер": "",
+        "Выберите образ": "",
+        "Период оплаты": "",
+        "месяц": "",
+        "месяца": "",
+        "месяцев": "",
+        "Ваш логин для входа в панель управления хостингом": "",
+        "Ваш пароль для входа в панель управления хостингом": "",
+        "Домен": "",
+        "Использовать промокод": "",
+        "Промокод": "",
+        "Ввести в случае наявности": "",
+        "Сформировать заказ": "",
+        "Закрыть": ""
+    },
+    "views\/backup\/order\/new.php": {
+        "Days of the week": "",
+        "VPS available to backup ": "",
+        "Backup type": "",
+        "Backup mode": "",
+        "Maximum number of stored backups": "",
+        "Time of the day": "",
+        "Create": ""
     }
 }

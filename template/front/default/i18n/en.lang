@@ -647,6 +647,8 @@
         "Action": "",
         "Backup Data": "",
         "Revert to": "",
-        "No results found": ""
+        "No results found": "",
+        "Size": "",
+        "Format": ""
     }
 }

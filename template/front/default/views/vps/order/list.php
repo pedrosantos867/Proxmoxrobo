@@ -1,3 +1,20 @@
+<script>
+$(document).ready(function() {
+    $(".noVNC_btn").click(function() {
+        var order_parts = $(this).attr("value").split(',')
+
+        var order = new Array()
+
+        $.each(order_parts, function(i){
+            var key_and_value = order_parts[i].split("=")
+            order[key_and_value[0]] = key_and_value[1]
+        })
+        var w = window.open("https://192.168.232.11:8006/?console=kvm&novnc=1&vmid=" + order["vmid"] + "&node=" + order["server_name"] + "&resize=off&cmd=", "popupWindow", "width=1200, height=800, scrollbars=yes");
+        var $w = $(w.document.body);
+        $w.html("<textarea></textarea>");
+    });
+});
+</script>
 <div class="ajax-block">
     <table class="table table-bordered">
         <thead>
@@ -106,9 +123,10 @@
                         </tr>
                         <tr>
                             <td>
-                                <a href="<?= $_->link('') ?>"><span
-                                        class="glyphicon glyphicon-console"></span>&nbsp;<?= $_->l('Secure shell into machine') ?>
-                                </a>
+                                <button value=<?=http_build_query($order, '', ',')?>
+                                    class="btn btn-sm btn-primary noVNC_btn">
+                                    <?= $_->l('Access with noVNC') ?>
+                                </button>
                             </td>
                         </tr>
                         <? if($order->has_backup_configured){ ?>

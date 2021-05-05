@@ -400,4 +400,8 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         }
         return http_response_code(404);
     }
+
+    public function deleteBackup($node, $storage, $volume){
+        $this->pve->delete("/nodes/". $node ."/storage/".$storage."/content/".$volume);
+    }
 }

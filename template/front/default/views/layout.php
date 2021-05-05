@@ -151,7 +151,7 @@
                                 <li <?= ($_->link($request) == $_->link('backup-orders/new') ? 'class="active"' : '') ?>><a
                                         href="<?= $_->link('backup-orders/new') ?>"><span class="glyphicon glyphicon-duplicate"
                                                                                        aria-hidden="true"></span>
-                                        &nbsp;<?= $_->l('Backup service') ?>
+                                        &nbsp;<?= $_->l('Backup schedule') ?>
                                     </a>
                                 </li>
                             <?}?>

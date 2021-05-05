@@ -484,7 +484,8 @@
         "Новоее сообщение": "New message",
         "Тикет": "Ticket",
         "Backup service": "",
-        "Backups": ""
+        "Backups": "",
+        "Backup schedule": ""
     },
     "views\/vps\/order\/list.php": {
         "Дата": "Date",
@@ -510,7 +511,10 @@
         "SSH to machine": "",
         "SSH into the machine": "",
         "Manage backups": "",
-        "Secure shell into machine": ""
+        "Secure shell into machine": "",
+        "Access by noVNC": "",
+        "Access with noVNC": "",
+        "Revert to": ""
     },
     "views\/vps\/order\/new.php": {
         "месяц": "month",
@@ -649,6 +653,7 @@
         "Revert to": "",
         "No results found": "",
         "Size": "",
-        "Format": ""
+        "Format": "",
+        "Delete": ""
     }
 }

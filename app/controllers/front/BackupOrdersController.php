@@ -180,4 +180,33 @@ class BackupOrdersController extends FrontController {
 
         return $api->restoreBackup($vps_server->name, $paramenters);
     }
+
+    public function actionDeleteBackupAjax(){
+        $backup = Tools::rPOST('backup');
+        $backup = urldecode($backup);
+        $backup = explode(',', $backup);
+
+        $backupAux = array();
+        foreach($backup as $b){
+            $splited = explode('=', $b);
+            $backupAux[$splited[0]]  = $splited[1];
+        }
+        
+        $backup = $backupAux;
+
+        $VpsServerObject = new VpsServer();
+        $server = $VpsServerObject->select('*')->limit(1)->getRow();
+
+        $api = VPSAPI::selectServer($server->id);
+
+        $vps_order_object = new VpsOrder();
+        $vps_order_object->select('*')->where(VpsOrder::getInstance(), 'vmid', $backup["vmid"]);
+        $vps_order = $vps_order_object->getRow();
+
+        $backup_order_object = new BackupOrder();
+        $backup_order_object->select('*')->where('vps_order_id', $vps_order->id);
+        $backup_order = $backup_order_object->getRow();
+
+        $api->deleteBackup($server->name, $backup_order->storage, $backup["volid"]);
+    }
 }

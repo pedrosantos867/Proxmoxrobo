@@ -514,7 +514,10 @@
         "Secure shell into machine": "",
         "Access by noVNC": "",
         "Access with noVNC": "",
-        "Revert to": ""
+        "Revert to": "",
+        "VPS Status": "",
+        "Start": "",
+        "Stop": ""
     },
     "views\/vps\/order\/new.php": {
         "месяц": "month",

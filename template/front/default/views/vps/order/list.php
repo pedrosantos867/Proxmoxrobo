@@ -5,13 +5,45 @@ $(document).ready(function() {
 
         var order = new Array()
 
-        $.each(order_parts, function(i){
+        $.each(order_parts, function(i) {
             var key_and_value = order_parts[i].split("=")
             order[key_and_value[0]] = key_and_value[1]
         })
-        var w = window.open("https://192.168.232.11:8006/?console=kvm&novnc=1&vmid=" + order["vmid"] + "&node=" + order["server_name"] + "&resize=off&cmd=", "popupWindow", "width=1200, height=800, scrollbars=yes");
+        var w = window.open("https://192.168.232.11:8006/?console=kvm&novnc=1&vmid=" + order["vmid"] +
+            "&node=" + order["server_name"] + "&resize=off&cmd=", "popupWindow",
+            "width=1200, height=800, scrollbars=yes");
         var $w = $(w.document.body);
         $w.html("<textarea></textarea>");
+    });
+
+    $(".btn-start").click(function() {
+        var order = $(this).attr("value").split(',')
+        $.ajax({
+            method: 'post',
+            data: {
+                order: $(this).attr("value").split(';'),
+                action: 'startVM',
+                ajax: 1
+            },
+            complete: function(data) {
+                location.reload();
+            }
+        })
+    });
+
+    $(".btn-stop").click(function() {
+        var order = $(this).attr("value").split(',')
+        $.ajax({
+            method: 'post',
+            data: {
+                order: $(this).attr("value").split(';'),
+                action: 'stopVM',
+                ajax: 1
+            },
+            complete: function(data) {
+                location.reload();
+            }
+        })
     });
 });
 </script>
@@ -69,6 +101,7 @@ $(document).ready(function() {
                 <th> <?= $_->l('Осталось') ?></th>
                 <th> <?= $_->l('Сервер') ?></th>
                 <th> <?= $_->l('Статус') ?></th>
+                <th> <?= $_->l('VPS Status') ?></th>
                 <th><?= $_->l('Actions') ?></th>
                 <th></th>
             </tr>
@@ -112,8 +145,37 @@ $(document).ready(function() {
                     <? } ?>
                 </td>
 
+
+                <td>
+                    <? if($order->vm_status != null){ ?>
+                    <span><?= $order->vm_status ?></span>
+                    <? } else{ ?>
+                    <span>N/A</span>
+                    <? } ?>
+                </td>
                 <td>
                     <table>
+                        <? if($order->vm_status == "running"){ ?>
+                        <tr>
+                            <td>
+                                <button class="btn btn-xs btn-danger btn-stop"
+                                    value=<?=http_build_query($order, '', ',')?>>
+                                    <span class="glyphicon glyphicon-stop"></span>
+                                    <?= $_->l('Stop') ?>
+                                </button>
+                            </td>
+                        </tr>
+                        <? } else{?>
+                        <tr>
+                            <td>
+                                <button class="btn btn-xs btn-success btn-start"
+                                    value=<?=http_build_query($order, '', ',')?>>
+                                    <span class="glyphicon glyphicon-play"></span>
+                                    <?= $_->l('Start') ?>
+                                </button>
+                            </td>
+                        </tr>
+                        <? } ?>
                         <tr>
                             <td>
                                 <a href="<?= $_->link('') ?>"><span
@@ -124,7 +186,8 @@ $(document).ready(function() {
                         <tr>
                             <td>
                                 <button value=<?=http_build_query($order, '', ',')?>
-                                    class="btn btn-sm btn-primary noVNC_btn">
+                                    class="btn btn-xs btn-primary noVNC_btn">
+                                    <span class="glyphicon glyphicon-new-window"> </span>
                                     <?= $_->l('Access with noVNC') ?>
                                 </button>
                             </td>

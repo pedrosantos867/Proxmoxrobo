@@ -78,6 +78,20 @@ class VpsOrderController extends FrontController {
 
         $view->currency = $this->currency;
 
+        $VpsServerObject = new VpsServer();
+        $server = $VpsServerObject->select('*')->limit(1)->getRow();
+
+        $api = VPSAPI::selectServer($server->id);
+
+        $vps_server_object = new VpsServer();
+
+        foreach($orders as $order){
+            $vps_server_object->select('*')->where(VpsServer::getInstance(), 'id', $order->server_id);
+            $vps_server = $vps_server_object->getRow();
+
+            $order->vm_status = $api->getVMStatus($vps_server->name, $order->vmid);
+        }
+
         $this->layout->import('content', $view);
 
     }
@@ -379,9 +393,60 @@ class VpsOrderController extends FrontController {
                 //  print_r($create_vm);
                 echo json_encode(array('result' => 0, 'error' => 'system_error'));
             }
-
         }
-
     }
 
+    public function actionStartVMAjax(){
+        $order = Tools::rPOST('order');
+
+        $order = urldecode($order[0]);
+        $order = explode(',', $order);
+
+        $orderAux = array();
+        foreach($order as $o){
+            $splited = explode('=', $o);
+            $orderAux[$splited[0]]  = $splited[1];
+        }
+        $order = $orderAux;
+
+        $vps_server_object = new VpsServer();
+        $vps_server_object->select('*')->where(VpsServer::getInstance(), 'id', $order["server_id"]);
+        $vps_server = $vps_server_object->getRow();
+
+        $node_name = $vps_server->name;  
+
+        $VpsServerObject = new VpsServer();
+        $server = $VpsServerObject->select('*')->limit(1)->getRow();
+
+        $api = VPSAPI::selectServer($server->id);
+
+        $response = $api->startVM($node_name, $order["vmid"]);
+    }   
+
+    public function actionStopVMAjax(){
+        $order = Tools::rPOST('order');
+
+        $order = urldecode($order[0]);
+        $order = explode(',', $order);
+
+        $orderAux = array();
+        foreach($order as $o){
+            $splited = explode('=', $o);
+            $orderAux[$splited[0]]  = $splited[1];
+        }
+        $order = $orderAux;
+
+        $vps_server_object = new VpsServer();
+        $vps_server_object->select('*')->where(VpsServer::getInstance(), 'id', $order["server_id"]);
+        $vps_server = $vps_server_object->getRow();
+
+        $node_name = $vps_server->name;  
+
+        $VpsServerObject = new VpsServer();
+        $server = $VpsServerObject->select('*')->limit(1)->getRow();
+
+        $api = VPSAPI::selectServer($server->id);
+
+        $response = $api->stopVM($node_name, $order["vmid"]);
+    }
 }

@@ -39,7 +39,7 @@ $(document).ready(function() {
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th><?=$_->l('Backup Data')?></th>
+                <th><?=$_->l('Backup Date')?></th>
                 <th><?=$_->l('Size')?></th>
                 <th><?=$_->l('Format')?></th>
                 <th><?=$_->l('Action')?></th>
@@ -51,18 +51,18 @@ $(document).ready(function() {
                 <td colspan="100%"><?= $_->l('No results found') ?></td>
             </tr>
             <? }?>
-            <? foreach($backup_list["data"] as $backup){ ?>
+            <? foreach($backup_list as $backup){ ?>
             <tr>
                 <td><?= date('Y-m-d h\h:m', $backup["ctime"]) ?></td>
                 <td><?= round($backup["size"] / 1024 / 1024 / 1024, 2)." GB" ?></td>
                 <td><?= strval($backup["format"]) ?></td>
                 <td>
                     <button value=<?=http_build_query($backup, '', ',')?>
-                        class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-repeat revert_btn"></span>
+                        class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-repeat revert_btn"></span>
                         <?= $_->l('Revert to') ?>
                     </button>
                     <button data-target="#myModal" id="delete_btn"
-                        value=<?=http_build_query($backup, '', ',')?> class="btn btn-sm btn-danger"><span
+                        value=<?=http_build_query($backup, '', ',')?> class="btn btn-xs btn-danger"><span
                             class="glyphicon glyphicon-trash"></span>
                         <?= $_->l('Delete') ?>
                     </button>

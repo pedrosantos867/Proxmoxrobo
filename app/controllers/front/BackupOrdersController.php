@@ -144,7 +144,7 @@ class BackupOrdersController extends FrontController {
 
         $backup_list = $api->getBackupsByVMID($server->name, $vmid, $backup->storage);
     
-        $view->backup_list = $backup_list;
+        $view->backup_list = $backup_list["data"];
         $this->layout->import('content', $view);
     }
 

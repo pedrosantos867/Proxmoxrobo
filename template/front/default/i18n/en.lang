@@ -517,7 +517,11 @@
         "Revert to": "",
         "VPS Status": "",
         "Start": "",
-        "Stop": ""
+        "Stop": "",
+        "N\/A": "",
+        "Running": "",
+        "Stopped": "",
+        "Reload": ""
     },
     "views\/vps\/order\/new.php": {
         "месяц": "month",
@@ -657,6 +661,7 @@
         "No results found": "",
         "Size": "",
         "Format": "",
-        "Delete": ""
+        "Delete": "",
+        "Backup Date": ""
     }
 }

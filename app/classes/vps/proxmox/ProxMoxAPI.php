@@ -184,6 +184,15 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         return $status = $response["data"]["status"];
     }
 
+    public function hasQemuGestAgentConfigured($node, $vmid){
+        if(!$this->is_logged){
+            return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
+        }
+
+        $response = $this->pve->get('/nodes/' . $node . '/qemu/' . $vmid . '/agent/info');
+        return $response;
+    }
+
     public function startVM($node, $vmid){
         if(!$this->is_logged){
             return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
@@ -301,9 +310,6 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
             Logger::log('ProxMox createVM error: '. $res['errors']);
 
         }
-
-
-
         return $this->result(self::ANSWER_CREATE_VM_FAIL, null);
     }
 

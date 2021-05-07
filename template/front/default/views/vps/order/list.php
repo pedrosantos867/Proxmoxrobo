@@ -109,7 +109,7 @@ $(document).ready(function() {
         <tbody>
             <? if (count($orders) == 0) { ?>
             <tr class="text-center">
-                <td colspan="100%"><?= $_->l('Результаты не найдены.') ?></td>
+                <td colspan="100%"><?= $_->l('No orders to show') ?></td>
             </tr>
             <? } ?>
             <? foreach ($orders as $order) { ?>
@@ -134,7 +134,7 @@ $(document).ready(function() {
                 <td><?= $order->username ?></td>
                 <td><?= $currency->displayPrice($order->price) ?></td>
                 <td><?= $order->paid_to ?></td>
-                <td><?= $interval->format('%a дней') ?></td>
+                <td><?= $interval->format('%a Days') ?></td>
                 <td><?= $order->server_name ?></td>
 
                 <td>
@@ -145,12 +145,13 @@ $(document).ready(function() {
                     <? } ?>
                 </td>
 
-
-                <td>
-                    <? if($order->vm_status != null){ ?>
-                    <span><?= $order->vm_status ?></span>
-                    <? } else{ ?>
-                    <span>N/A</span>
+                <td class="div-center">
+                    <? if($order->vm_status == "running"){ ?>
+                    <span class="label label-success"><?= $_->l('Running') ?></span>
+                    <? } else if($order->vm_status == "stopped"){ ?>
+                    <span class="label label-danger"><?= $_->l('Stopped') ?></span>
+                    <? }else{ ?>
+                    <span class="label label-default"><?= $_->l('N/A') ?></span>
                     <? } ?>
                 </td>
                 <td>
@@ -165,7 +166,7 @@ $(document).ready(function() {
                                 </button>
                             </td>
                         </tr>
-                        <? } else{?>
+                        <? } else if ($order->vm_status == "stopped"){?>
                         <tr>
                             <td>
                                 <button class="btn btn-xs btn-success btn-start"
@@ -176,6 +177,7 @@ $(document).ready(function() {
                             </td>
                         </tr>
                         <? } ?>
+                        <? if( $order->vm_status != null ){ ?>
                         <tr>
                             <td>
                                 <a href="<?= $_->link('') ?>"><span
@@ -192,7 +194,7 @@ $(document).ready(function() {
                                 </button>
                             </td>
                         </tr>
-                        <? if($order->has_backup_configured){ ?>
+                        <? if( $order->has_backup_configured ){ ?>
                         <tr>
                             <td>
                                 <a href="<?= $_->link('backup-orders/manage/'. $order->vmid) ?>"><span
@@ -201,9 +203,9 @@ $(document).ready(function() {
                             </td>
                         </tr>
                         <? } ?>
+                        <? } ?>
                     </table>
                 </td>
-
                 <!--Dropdown Settings -->
                 <td class="text-center">
                     <!-- Single button -->
@@ -240,3 +242,8 @@ $(document).ready(function() {
     </table>
     <?= $pagination ?>
 </div>
+<style>
+.div-center {
+    text-align: center;
+}
+</style>

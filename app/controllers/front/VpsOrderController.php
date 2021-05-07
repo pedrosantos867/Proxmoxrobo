@@ -90,6 +90,7 @@ class VpsOrderController extends FrontController {
             $vps_server = $vps_server_object->getRow();
 
             $order->vm_status = $api->getVMStatus($vps_server->name, $order->vmid);
+            $order->has_qga_configured = $api->hasQemuGestAgentConfigured($vps_server->name, $order->vmid);
         }
 
         $this->layout->import('content', $view);

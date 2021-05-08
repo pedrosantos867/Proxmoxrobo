@@ -208,7 +208,7 @@ $(document).ready(function() {
                 <td class="div-center">
                     <span class="label label-info">VMID: <?= $order->vmid ?></span>
 
-                    <? if( $order->has_qga_configured == 1  ){ ?>
+                    <? if( $order->has_qga_configured){ ?>
                     <span class="label label-success"><?= $_->l('QGA: Yes') ?></span>
                     <? } else {?>
                     <span class="label label-danger"><?= $_->l('QGA: No') ?></span>
@@ -235,7 +235,7 @@ $(document).ready(function() {
                                 </button>
                             </td>
                         </tr>
-                        <? if( $order->has_qga_configured == 1 ){  ?>
+                        <? if( $order->has_qga_configured){  ?>
                         <tr>
                             <td>
                                 <button class="btn btn-xs btn-danger btn-shutdown"

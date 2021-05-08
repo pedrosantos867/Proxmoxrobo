@@ -197,6 +197,14 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         return 0;
     }
 
+    public function manageVM($node, $vmid, $command){
+        if(!$this->is_logged){
+            return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
+        }
+
+        return $response = $this->pve->post('/nodes/'.$node.'/qemu/'.$vmid.'/status/'.$command, array());
+    }
+
     public function startVM($node, $vmid){
         if(!$this->is_logged){
             return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);

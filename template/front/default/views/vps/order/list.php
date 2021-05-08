@@ -22,7 +22,8 @@ $(document).ready(function() {
             method: 'post',
             data: {
                 order: $(this).attr("value").split(';'),
-                action: 'startVM',
+                command: "start",
+                action: 'manageVM',
                 ajax: 1
             },
             complete: function(data) {
@@ -37,7 +38,8 @@ $(document).ready(function() {
             method: 'post',
             data: {
                 order: $(this).attr("value").split(';'),
-                action: 'stopVM',
+                command: "stop",
+                action: 'manageVM',
                 ajax: 1
             },
             complete: function(data) {
@@ -52,7 +54,8 @@ $(document).ready(function() {
             method: 'post',
             data: {
                 order: $(this).attr("value").split(';'),
-                action: 'resetVM',
+                command: "reset",
+                action: 'manageVM',
                 ajax: 1
             },
             complete: function(data) {
@@ -67,7 +70,8 @@ $(document).ready(function() {
             method: 'post',
             data: {
                 order: $(this).attr("value").split(';'),
-                action: 'shutdownVM',
+                command: "shutdown",
+                action: 'manageVM',
                 ajax: 1
             },
             complete: function(data) {
@@ -82,7 +86,8 @@ $(document).ready(function() {
             method: 'post',
             data: {
                 order: $(this).attr("value").split(';'),
-                action: 'rebootVM',
+                command: "reboot",
+                action: 'manageVM',
                 ajax: 1
             },
             complete: function(data) {
@@ -180,14 +185,14 @@ $(document).ready(function() {
                 <td><?= $order->username ?></td>
                 <td><?= $currency->displayPrice($order->price) ?></td>
                 <td><?= $order->paid_to ?></td>
-                <td><?= $interval->format('%a Days') ?></td>
+                <td><?= $interval->format('%a days') ?></td>
                 <td><?= $order->server_name ?></td>
 
                 <td>
                     <? if ($order->active) { ?>
-                    <span class="label label-success"><?= $_->l('Активный') ?></span>
+                    <span class="label label-success"><?= $_->l('Active') ?></span>
                     <? } else { ?>
-                    <span class="label label-danger"><?= $_->l('Отключен') ?></span>
+                    <span class="label label-danger"><?= $_->l('Disabled') ?></span>
                     <? } ?>
                 </td>
 

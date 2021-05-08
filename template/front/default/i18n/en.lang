@@ -532,7 +532,8 @@
         "QGA\\n(Debug)": "",
         "QGA\n(Debug)": "",
         "QGA: No": "",
-        "QGA: Yes": ""
+        "QGA: Yes": "",
+        "Active": ""
     },
     "views\/vps\/order\/new.php": {
         "месяц": "month",

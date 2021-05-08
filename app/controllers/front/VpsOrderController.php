@@ -397,6 +397,38 @@ class VpsOrderController extends FrontController {
         }
     }
 
+    public function actionManageVMAjax(){
+        $order = Tools::rPOST('order');
+        $command = Tools::rPOST('command');
+
+        if(!in_array($command, ["start", "stop", "reset", "shutdown", "reboot"])){
+            return;
+        }
+
+        $order = urldecode($order[0]);
+        $order = explode(',', $order);
+
+        $orderAux = array();
+        foreach($order as $o){
+            $splited = explode('=', $o);
+            $orderAux[$splited[0]]  = $splited[1];
+        }
+        $order = $orderAux;
+
+        $vps_server_object = new VpsServer();
+        $vps_server_object->select('*')->where(VpsServer::getInstance(), 'id', $order["server_id"]);
+        $vps_server = $vps_server_object->getRow();
+
+        $node_name = $vps_server->name;  
+
+        $VpsServerObject = new VpsServer();
+        $server = $VpsServerObject->select('*')->limit(1)->getRow();
+
+        $api = VPSAPI::selectServer($server->id);
+
+        $response = $api->manageVM($node_name, $order["vmid"], $command);
+    }
+
     public function actionStartVMAjax(){
         $order = Tools::rPOST('order');
 

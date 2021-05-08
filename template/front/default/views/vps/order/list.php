@@ -45,6 +45,51 @@ $(document).ready(function() {
             }
         })
     });
+
+    $(".btn-reset").click(function() {
+        var order = $(this).attr("value").split(',')
+        $.ajax({
+            method: 'post',
+            data: {
+                order: $(this).attr("value").split(';'),
+                action: 'resetVM',
+                ajax: 1
+            },
+            complete: function(data) {
+                location.reload();
+            }
+        })
+    });
+
+    $(".btn-shutdown").click(function() {
+        var order = $(this).attr("value").split(',')
+        $.ajax({
+            method: 'post',
+            data: {
+                order: $(this).attr("value").split(';'),
+                action: 'shutdownVM',
+                ajax: 1
+            },
+            complete: function(data) {
+                location.reload();
+            }
+        })
+    });
+
+    $(".btn-reboot").click(function() {
+        var order = $(this).attr("value").split(',')
+        $.ajax({
+            method: 'post',
+            data: {
+                order: $(this).attr("value").split(';'),
+                action: 'rebootVM',
+                ajax: 1
+            },
+            complete: function(data) {
+                location.reload();
+            }
+        })
+    });
 });
 </script>
 <div class="ajax-block">
@@ -102,6 +147,7 @@ $(document).ready(function() {
                 <th> <?= $_->l('Сервер') ?></th>
                 <th> <?= $_->l('Статус') ?></th>
                 <th> <?= $_->l('VPS Status') ?></th>
+                <th> <?="Debug"?> </th>
                 <th><?= $_->l('Actions') ?></th>
                 <th></th>
             </tr>
@@ -154,8 +200,17 @@ $(document).ready(function() {
                     <span class="label label-default"><?= $_->l('N/A') ?></span>
                     <? } ?>
                 </td>
+                <td class="div-center">
+                    <span class="label label-info">VMID: <?= $order->vmid ?></span>
+
+                    <? if( $order->has_qga_configured == 1  ){ ?>
+                    <span class="label label-success"><?= $_->l('QGA: Yes') ?></span>
+                    <? } else {?>
+                    <span class="label label-danger"><?= $_->l('QGA: No') ?></span>
+                    <? } ?>
+                </td>
                 <td>
-                    <table>
+                    <table class="my_table">
                         <? if($order->vm_status == "running"){ ?>
                         <tr>
                             <td>
@@ -166,6 +221,35 @@ $(document).ready(function() {
                                 </button>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <button class="btn btn-xs btn-danger btn-reset"
+                                    value=<?=http_build_query($order, '', ',')?>>
+                                    <span class="glyphicon glyphicon-refresh"></span>
+                                    <?= $_->l('Reset') ?>
+                                </button>
+                            </td>
+                        </tr>
+                        <? if( $order->has_qga_configured == 1 ){  ?>
+                        <tr>
+                            <td>
+                                <button class="btn btn-xs btn-danger btn-shutdown"
+                                    value=<?=http_build_query($order, '', ',')?>>
+                                    <span class="glyphicon glyphicon-off"></span>
+                                    <?= $_->l('Shutdown') ?>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="btn btn-xs btn-success btn-reboot"
+                                    value=<?=http_build_query($order, '', ',')?>>
+                                    <span class="glyphicon glyphicon-refresh"></span>
+                                    <?= $_->l('Reboot') ?>
+                                </button>
+                            </td>
+                        </tr>
+                        <? } ?>
                         <? } else if ($order->vm_status == "stopped"){?>
                         <tr>
                             <td>
@@ -185,15 +269,7 @@ $(document).ready(function() {
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <button value=<?=http_build_query($order, '', ',')?>
-                                    class="btn btn-xs btn-primary noVNC_btn">
-                                    <span class="glyphicon glyphicon-new-window"> </span>
-                                    <?= $_->l('Access with noVNC') ?>
-                                </button>
-                            </td>
-                        </tr>
+
                         <? if( $order->has_backup_configured ){ ?>
                         <tr>
                             <td>
@@ -203,7 +279,17 @@ $(document).ready(function() {
                             </td>
                         </tr>
                         <? } ?>
+                        <tr>
+                            <td>
+                                <button value=<?=http_build_query($order, '', ',')?>
+                                    class="btn btn-xs btn-primary noVNC_btn">
+                                    <span class="glyphicon glyphicon-new-window"> </span>
+                                    <?= $_->l('Access with noVNC') ?>
+                                </button>
+                            </td>
+                        </tr>
                         <? } ?>
+
                     </table>
                 </td>
                 <!--Dropdown Settings -->
@@ -245,5 +331,25 @@ $(document).ready(function() {
 <style>
 .div-center {
     text-align: center;
+}
+
+.my_table tr {
+    display: flex;
+}
+
+.my_table td {
+    margin: 2px;
+    display: flex;
+    flex-grow: 1;
+    /* centering the button */
+    align-items: center;
+    justify-content: center;
+}
+
+.inner_button {
+    display: flex;
+    /* centering the text inside the button */
+    align-items: center;
+    justify-content: center;
 }
 </style>

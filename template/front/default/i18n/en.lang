@@ -521,7 +521,18 @@
         "N\/A": "",
         "Running": "",
         "Stopped": "",
-        "Reload": ""
+        "Reload": "",
+        "Quemu Guest Agent configured": "",
+        "Reset": "",
+        "Shutdown": "",
+        "Reboot": "",
+        "QGA": "",
+        "No": "",
+        "Yes": "",
+        "QGA\\n(Debug)": "",
+        "QGA\n(Debug)": "",
+        "QGA: No": "",
+        "QGA: Yes": ""
     },
     "views\/vps\/order\/new.php": {
         "месяц": "month",

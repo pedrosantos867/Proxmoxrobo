@@ -26,7 +26,8 @@
         "VPS": "VPS",
         "Возврат": "Returns",
         "Download Invoice": "",
-        "Download invoice": ""
+        "Download invoice": "",
+        "Backup": ""
     },
     "views\/carcase.php": {
         "Billing Panel": "Billing Panel",
@@ -533,7 +534,8 @@
         "QGA\n(Debug)": "",
         "QGA: No": "",
         "QGA: Yes": "",
-        "Active": ""
+        "Active": "",
+        "Disabled": ""
     },
     "views\/vps\/order\/new.php": {
         "месяц": "month",

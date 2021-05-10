@@ -428,4 +428,26 @@ class VpsOrderController extends FrontController {
 
         $response = $api->manageVM($node_name, $order["vmid"], $command);
     }
+
+    public function actionAccessWithNoVNCAjax(){
+        $order = Tools::rPOST('order');
+        $order = urldecode($order[0]);
+        $order = explode(',', $order);
+
+        $orderAux = array();
+        foreach($order as $o){
+            $splited = explode('=', $o);
+            $orderAux[$splited[0]]  = $splited[1];
+        }
+        $order = $orderAux;
+
+        $VpsServerObject = new VpsServer();
+        $server = $VpsServerObject->select('*')->limit(1)->getRow();
+
+        $api = VPSAPI::selectServer($server->id);
+        /*
+        if(!$api->checkIfUserExists()){
+        }
+        */
+    }
 }

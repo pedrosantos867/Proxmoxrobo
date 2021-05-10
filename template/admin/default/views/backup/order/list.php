@@ -1,12 +1,12 @@
 <div class="ajax-block">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th rowspan="2"><?=$_->l('ID')?></th>
                 <th rowspan="2"><?=$_->l('Backup Server')?></th>
                 <th rowspan="2"><?=$_->l('VPS ID')?></th>
                 <th rowspan="2"><?=$_->l('Client name')?></th>
-                <th colspan="7" ><?=$_->l('Day of the week')?></th>
+                <th colspan="7"><?=$_->l('Day of the week')?></th>
                 <th rowspan="2"><?=$_->l('Time of the day')?></th>
             </tr>
             <tr>
@@ -35,7 +35,7 @@
                         class="ajax-modal"><?= $backupOrder->name ?></a></td>
 
                 <? if($backupOrder->sunday){ ?>
-                    <td class="dow">X</td>
+                <td class="dow">X</td>
                 <? }else{?>
                 <td></td>
                 <?}?>
@@ -45,27 +45,27 @@
                 <td></td>
                 <?}?>
                 <? if($backupOrder->tuesday){ ?>
-                    <td class="dow">X</td>
+                <td class="dow">X</td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->wednesday){ ?>
-                    <td class="dow">X</td>
+                <td class="dow">X</td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->thursday){ ?>
-                    <td class="dow">X</td>
+                <td class="dow">X</td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->friday){ ?>
-                    <td class="dow">X</td>
+                <td class="dow">X</td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->saturday){ ?>
-                    <td class="dow">X</td>
+                <td class="dow">X</td>
                 <? }else{?>
                 <td></td>
                 <?}?>
@@ -78,8 +78,10 @@
         </tbody>
     </table>
     <style>
-        dow, th, td{
-            text-align: center;
-        }
+    dow,
+    th,
+    td {
+        text-align: center;
+    }
     </style>
 </div>

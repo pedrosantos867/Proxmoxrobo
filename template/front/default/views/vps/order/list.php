@@ -9,6 +9,19 @@ $(document).ready(function() {
             var key_and_value = order_parts[i].split("=")
             order[key_and_value[0]] = key_and_value[1]
         })
+
+        $.ajax({
+            method: 'post',
+            data: {
+                order: $(this).attr("value").split(';'),
+                action: 'accessWithNoVNC',
+                ajax: 1
+            },
+            complete: function(data) {
+                location.reload();
+            }
+        })
+
         var w = window.open("https://192.168.232.11:8006/?console=kvm&novnc=1&vmid=" + order["vmid"] +
             "&node=" + order["server_name"] + "&resize=off&cmd=", "popupWindow",
             "width=1200, height=800, scrollbars=yes");
@@ -98,7 +111,7 @@ $(document).ready(function() {
 });
 </script>
 <div class="ajax-block">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th style="width:7%">№

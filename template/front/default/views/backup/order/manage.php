@@ -1,3 +1,5 @@
+<?= $_->JS('jquery.toast.min.js'); ?>
+<?= $_->CSS('jquery.toast.min.css') ?>
 <script>
 $(document).ready(function() {
     $('.revert_btn').click(function() {
@@ -9,14 +11,27 @@ $(document).ready(function() {
                 ajax: 1
             },
             complete: function(data) {
-                alert(data);
-                alert("success!");
+                if (data["statusText"] == "OK") {
+                    $.toast({
+                        heading: "Success:",
+                        text: "Backup reverted with success!",
+                        icon: "success",
+                        position: "bottom-right"
+                    })
+                }else{
+                    $.toast({
+                        heading: "Error:",
+                        text: "There was an error.",
+                        icon: "error",
+                        position: "bottom-right"
+                    })
+                }
             }
         })
     });
 
     $('#delete_btn').click(function() {
-        $("#myModal").modal("toggle");
+        $("#confirmationModal").modal("toggle");
     });
 
     $('#btn-confirm-deletion').click(function() {
@@ -29,14 +44,30 @@ $(document).ready(function() {
                 ajax: 1
             },
             complete: function(data) {
-                alert("deleted!");
+                $("#confirmationModal").modal('hide')
+                location.reload()
+                if (data["statusText"] == "OK") {
+                    $.toast({
+                        heading: "Success:",
+                        text: "Backup deleted with success!",
+                        icon: "success",
+                        position: "bottom-right"
+                    })
+                }else{
+                    $.toast({
+                        heading: "Error:",
+                        text: "There was an error.",
+                        icon: "error",
+                        position: "bottom-right"
+                    })
+                }
             }
         })
     });
 });
 </script>
 <div class="ajax-block">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th><?=$_->l('Backup Date')?></th>
@@ -58,12 +89,11 @@ $(document).ready(function() {
                 <td><?= strval($backup["format"]) ?></td>
                 <td>
                     <button value=<?=http_build_query($backup, '', ',')?>
-                        class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-repeat revert_btn"></span>
+                        class="btn btn-xs btn-primary revert_btn"><span class="glyphicon glyphicon-repeat"></span>
                         <?= $_->l('Revert to') ?>
                     </button>
-                    <button data-target="#myModal" id="delete_btn"
-                        value=<?=http_build_query($backup, '', ',')?> class="btn btn-xs btn-danger"><span
-                            class="glyphicon glyphicon-trash"></span>
+                    <button data-target="#myModal" id="delete_btn" value=<?=http_build_query($backup, '', ',')?>
+                        class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span>
                         <?= $_->l('Delete') ?>
                     </button>
                 </td>
@@ -72,7 +102,7 @@ $(document).ready(function() {
         </tbody>
     </table>
     <div class="container">
-        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal fade" id="confirmationModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -81,7 +111,7 @@ $(document).ready(function() {
                     </div>
                     <div class="modal-body">
                         <b>Are you sure you want to delete this backup?</b>
-                        <h6>This process is irreversible</h6>
+                        <p>This process is irreversible</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger pull-left" id="btn-confirm-deletion">Yes</button>
@@ -92,7 +122,6 @@ $(document).ready(function() {
 
             </div>
         </div>
-
     </div>
     <style>
     dow,

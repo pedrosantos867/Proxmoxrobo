@@ -170,7 +170,6 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         }
 
         return $this->result(self::ANSWER_CREATE_USER_FAIL);
-
     }
 
     
@@ -190,6 +189,10 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         }
 
         $response = $this->pve->get('/nodes/' . $node . '/qemu/' . $vmid . '/status/current');
+
+        if($response == false){
+            return;
+        }
 
         if(array_key_exists("agent", $response["data"])){
             return true;
@@ -432,4 +435,11 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
     public function deleteBackup($node, $storage, $volume){
         $this->pve->delete("/nodes/". $node ."/storage/".$storage."/content/".$volume);
     }
+
+    public function checkIfUserExists($client_name){
+        if($this->pve->get("/access/users/".$client_name."@pve") == null){
+            return false;
+        }
+        return true;
+    }   
 }

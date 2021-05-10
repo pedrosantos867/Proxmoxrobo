@@ -207,9 +207,7 @@ class BillsController extends FrontController
             $hb->order('id', 'desc');
         }
 
-
         $view->filter = $vfilter;
-
 
         if ($id_order) {
             $view->order = new HostingAccount($id_order);

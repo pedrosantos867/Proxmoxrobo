@@ -1,6 +1,7 @@
 <div class="ajax-block">
-    <br>
-    <h1>Create a periodic backup job</h1>
+    <div class="page-header">
+        <h1>Create a periodic backup job</h1>
+    </div>
     <form method="POST">
         <div class="well">
             <div class="form-group">

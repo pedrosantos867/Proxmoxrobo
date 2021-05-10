@@ -1,5 +1,5 @@
 <div class="ajax-block">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th rowspan="2"><?=$_->l('ID')?></th>

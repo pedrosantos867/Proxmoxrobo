@@ -8,6 +8,8 @@ use Model\Client;
 use Model\VpsServer;
 use Model\VpsOrder;
 use Model\BackupServer;
+use Model\Bill;
+use System\Notifier;
 use System\Tools;
 use vps\VPSAPI;
 
@@ -62,6 +64,7 @@ class BackupOrdersController extends FrontController {
         if (Tools::rPOST()) {
             if(!empty($_POST['check_list_vps']) && count($_POST['check_list_days']) > 0 && !empty(Tools::rPOST('backup_type')) && !empty(Tools::rPOST('backup_mode'))){
                 foreach($_POST['check_list_vps'] as $vmid){
+                    $total_price = 1;
                     $vpsOrderAux = new VpsOrder();
                     $vpsOrderAux->select('*')->where('vmid', '=', $vmid);
                     
@@ -100,11 +103,11 @@ class BackupOrdersController extends FrontController {
                     $backupOrder->vps_order_id = $row->id;
                     $backupOrder->client_id = $this->client->id;
                     $backupOrder->time = Tools::rPOST('time');
+                    $backupOrder->expire_date = $vpsOrderToChange->paid_to;
+                    $backupOrder->timestamp = date("Y-m-d H:m:s");
                     $backupOrder->mode = Tools::rPOST('backup_mode');
                     $backupOrder->retention = $retention;
                     $backupOrder->type = $backup_type;
-                    $backupOrder->paid_to = '1970-01-01';
-                    $backupOrder->date = date('Y-m-d H:m:s');
                     
                     foreach($_POST['check_list_days'] as $day){
                         if($day){
@@ -113,7 +116,20 @@ class BackupOrdersController extends FrontController {
                         }
                     }
 
-                    $backupOrder->save();  
+                    $backupOrder->save();
+                    
+                    $bill                     = new Bill();
+                    $bill->client_id          = $this->client->id;
+                    $bill->total              = $total_price;
+                    $bill->price              = $total_price;
+                    $bill->date               = date("Y-m-d H:m:s");
+                    $bill->type               = Bill::TYPE_BACKUP;
+
+                    if ($bill->save()) {
+                        Notifier::NewBill($this->client, $bill);
+
+                        Tools::redirect('/bill/' . $bill->id);
+                    }
 
                     $api->createBackupJobForPBS($backupOrder->time, $dow, $vmid, $storage, $backupOrder->mode, $retention);                                      
                 }
@@ -177,6 +193,8 @@ class BackupOrdersController extends FrontController {
             'vmid' => $backup["vmid"],
             'archive' => $backup["volid"] 
         ];
+
+        $api->removeVM($vps_server->name, $backup["vmid"], "", 0);
 
         return $api->restoreBackup($vps_server->name, $paramenters);
     }

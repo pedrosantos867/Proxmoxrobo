@@ -30,10 +30,10 @@
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <input type="checkbox" name="check_list_vps[]" aria-label=""
-                                        value="<? echo strval($vps->vmid)?>">
+                                        value="<?= strval($vps->vmid)?>">
                                 </span>
                                 <input type="text" class="form-control" aria-label="..." readonly
-                                    value="<? echo strval($vps->vmid)?>">
+                                    value="<?= strval($vps->vmid)?>">
                             </div>
                         </div>
                     </div>

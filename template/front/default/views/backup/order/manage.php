@@ -1,5 +1,3 @@
-<?= $_->JS('jquery.toast.min.js'); ?>
-<?= $_->CSS('jquery.toast.min.css') ?>
 <script>
 $(document).ready(function() {
     $('.revert_btn').click(function() {
@@ -18,7 +16,7 @@ $(document).ready(function() {
                         icon: "success",
                         position: "bottom-right"
                     })
-                }else{
+                } else {
                     $.toast({
                         heading: "Error:",
                         text: "There was an error.",
@@ -45,20 +43,25 @@ $(document).ready(function() {
             },
             complete: function(data) {
                 $("#confirmationModal").modal('hide')
-                location.reload()
                 if (data["statusText"] == "OK") {
                     $.toast({
                         heading: "Success:",
                         text: "Backup deleted with success!",
                         icon: "success",
-                        position: "bottom-right"
+                        position: "bottom-right",
+                        afterHidden: function() {
+                            location.reload();
+                        }
                     })
-                }else{
+                } else {
                     $.toast({
                         heading: "Error:",
                         text: "There was an error.",
                         icon: "error",
-                        position: "bottom-right"
+                        position: "bottom-right",
+                        afterHidden: function() {
+                            location.reload();
+                        }
                     })
                 }
             }
@@ -92,7 +95,7 @@ $(document).ready(function() {
                         class="btn btn-xs btn-primary revert_btn"><span class="glyphicon glyphicon-repeat"></span>
                         <?= $_->l('Revert to') ?>
                     </button>
-                    <button data-target="#myModal" id="delete_btn" value=<?=http_build_query($backup, '', ',')?>
+                    <button data-target="#confirmationModal" id="delete_btn" value=<?=http_build_query($backup, '', ',')?>
                         class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span>
                         <?= $_->l('Delete') ?>
                     </button>

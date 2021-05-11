@@ -14,6 +14,7 @@ use model\HostingServer;
 use model\ServiceOrder;
 use model\VpsOrder;
 use model\VpsServer;
+use model\BackupOrder;
 use System\Config;
 use System\Module;
 use System\Notifier;
@@ -154,17 +155,24 @@ class CronController
             }
 //echo time().' -- '.$account_paid. '<br>';
 
-            if (time() >= $account_paid && $VpsOrder->active == 1) {
+            if (time() >= $account_paid && $VpsOrder->active == 1) { //se deixar de pagar
+                $backup_order = new BackupOrder();
+                $backup_order = new BackupOrder($backup_order->where(BackupOrder::getInstance(), 'vps_order_id', $VpsOrder->id)->getRow());
+                $backup_order->active = 0;
+                $backup_order->save();
+                
                 $VpsOrder->active = 0;
-                VPSAPI::selectServer(new VpsServer($VpsOrder->server_id))->suspendVM($VpsOrder->node,$VpsOrder->vmid, $VpsOrder->username, $VpsOrder->type);
+                $api = VPSAPI::selectServer(new VpsServer($VpsOrder->server_id));
+ 
+                $api->suspendVM($VpsOrder->node,$VpsOrder->vmid, $VpsOrder->username, $VpsOrder->type);
+                $api->disableBackupJob($VpsOrder->vmid);
+                
                 $VpsOrder->save();
 
-            } else if ($VpsOrder->active == 0 && time() < $account_paid) {
+            } else if ($VpsOrder->active == 0 && time() < $account_paid) {//se voltar a pagar
                 $VpsOrder->active = 1;
                 VPSAPI::selectServer(new VpsServer($VpsOrder->server_id))->unsuspendVM($VpsOrder->node,$VpsOrder->vmid, $VpsOrder->username, $VpsOrder->type);
                 $VpsOrder->save();
-
-
             }
         }
     }

@@ -5,6 +5,8 @@
                 <th rowspan="2"><?=$_->l('ID')?></th>
                 <th rowspan="2"><?=$_->l('Backup Server')?></th>
                 <th rowspan="2"><?=$_->l('VPS ID')?></th>
+                <th rowspan="2"><?=$_->l('Backup type')?></th>
+                <th rowspan="2" style="width: 10%"><?= $_->l('Retention') ?> / <?= $_->l('(Rotative)') ?></th>
                 <th colspan="7"><?=$_->l('Day of the week')?></th>
                 <th rowspan="2"><?=$_->l('Time of the day')?></th>
             </tr>
@@ -30,6 +32,8 @@
                 <th scope="row"><?= $backupOrder->id ?></th>
                 <td><?= $backupOrder->storage ?></td>
                 <td><?= $backupOrder->vmid ?></td>
+                <td><?= $backupOrder->type ?></td>
+                <td><?= $backupOrder->retention ?></td>
                 <? if($backupOrder->sunday){ ?>
                 <td class="dow">✓</td>
                 <? }else{?>
@@ -73,6 +77,7 @@
 
         </tbody>
     </table>
+    <?= $pagination ?>
     <style>
     dow,
     th,

@@ -41,7 +41,14 @@ class BackupOrdersController extends FrontController {
             ->select('saturday')
             ->select('time');
 
-        $view->backupOrders = $backupOrderObject->getRows();  
+
+        $backupOrderObject->limit($this->from, $this->count);
+
+        $rows = $backupOrderObject->getRows();
+        $view->backupOrders = $rows;
+        
+        $all = $backupOrderObject->lastQuery()->getRowsCount();  
+        $view->pagination = $this->pagination($all);
 
         $this->layout->import('content', $view);
     }
@@ -127,8 +134,6 @@ class BackupOrdersController extends FrontController {
 
                     if ($bill->save()) {
                         Notifier::NewBill($this->client, $bill);
-
-                        Tools::redirect('/bill/' . $bill->id);
                     }
 
                     $api->createBackupJobForPBS($backupOrder->time, $dow, $vmid, $storage, $backupOrder->mode, $retention);                                      

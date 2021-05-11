@@ -648,7 +648,13 @@
         "Client name": "",
         "Day of the week": "",
         "Time of the day": "",
-        "No results found.": ""
+        "No results found.": "",
+        "Backup type": "",
+        "Retention (Rotative)": "",
+        "Retention\\n (Rotative)": "",
+        "Retention \"\\n\" (Rotative)": "",
+        "Retention": "",
+        "(Rotative)": ""
     },
     "views\/backup\/order\/new.php": {
         "Название": "",

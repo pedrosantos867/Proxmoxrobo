@@ -114,10 +114,6 @@ class InstallController
                 }
             }
             if ($ok) {
-
-
-
-
                 Schema::create('clients', function (Table $table) {
                     $table
                         ->increment('id')
@@ -157,6 +153,7 @@ class InstallController
                         ->text('browser', 30)
                         ->timestamp('date');
                 });
+
                 Schema::create('client_reminder_codes', function (Table $table) {
                     $table
                         ->increment('id')
@@ -645,6 +642,28 @@ class InstallController
                     ;
                 });
 
+                Schema::create('backup_orders', function (Table $t){
+                    $t->increment('id')
+                        ->string('storage', 50)
+                        ->string('mode', 50)
+                        ->int('retention')
+                        ->string('type', 50)
+                        ->int('vps_order_id')
+                        ->int('client_id')
+                        ->bool('sunday')
+                        ->bool('monday')
+                        ->bool('tuesday')
+                        ->bool('wednesday')
+                        ->bool('thursday')
+                        ->bool('friday')
+                        ->bool('saturday')
+                        ->timestamp('time')
+                        ->timestamp('expire_date')
+                        ->timestamp('timestamp')
+                        ->bool('active', 1) //active by default
+                        ->create()  
+                    ;
+                });
 
                 $language = new Languages();
 
@@ -820,6 +839,7 @@ class InstallController
         $config->enable_component_hosting = 1;
         $config->enable_component_domain = 1;
         $config->enable_component_vps = 1;
+        $config->enable_component_backup = 1;
 
         $config->front_template            = 'default';
         $config->admin_template            = 'default';

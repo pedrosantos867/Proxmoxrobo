@@ -29,15 +29,15 @@ class BackupOrdersController extends FrontController{
             ->select(Client::getInstance(), 'name') 
 
             //add BackupServer table
-            ->join(BackupServer::getInstance(), 'backup_server_id', 'id') //id do BackupServer
-            ->select(BackupServer::getInstance(), 'name', 'backup_server_name') //renomeação de name para backup_server_name
+            //->join(BackupServer::getInstance(), 'backup_server_id', 'id') //id do BackupServer
+            //->select(BackupServer::getInstance(), 'name', 'backup_server_name') //renomeação de name para backup_server_name
 
             //add VpsServer table
             ->join(VpsOrder::getInstance(), 'vps_order_id', 'id')//id do VPS server
             ->select('bm_vps_orders', 'vmid')
             
             ->select('id')
-            ->select('backup_server_id')
+            //->select('backup_server_id')
             ->select('vps_order_id')
             ->select('client_id')
             ->select('sunday')

@@ -162,7 +162,6 @@ $(document).ready(function() {
                 <th> <?= $_->l('Стоимость') ?></th>
                 <th> <?= $_->l('Конец') ?></th>
                 <th> <?= $_->l('Осталось') ?></th>
-                <th> <?= $_->l('Сервер') ?></th>
                 <th> <?= $_->l('Статус') ?></th>
                 <th> <?= $_->l('VPS Status') ?></th>
                 <th> <?="Debug"?> </th>
@@ -199,7 +198,6 @@ $(document).ready(function() {
                 <td><?= $currency->displayPrice($order->price) ?></td>
                 <td><?= $order->paid_to ?></td>
                 <td><?= $interval->format('%a days') ?></td>
-                <td><?= $order->server_name ?></td>
 
                 <td>
                     <? if ($order->active) { ?>
@@ -219,8 +217,8 @@ $(document).ready(function() {
                     <? } ?>
                 </td>
                 <td class="div-center">
-                    <span class="label label-info">VMID: <?= $order->vmid ?></span>
-
+                    <span class="label label-default">VMID: <?= $order->vmid ?></span>
+                    <span class="label label-default">Server: <?= $order->server_name ?></span>
                     <? if( $order->has_qga_configured){ ?>
                     <span class="label label-success"><?= $_->l('QGA: Yes') ?></span>
                     <? } else {?>
@@ -347,6 +345,10 @@ $(document).ready(function() {
     <?= $pagination ?>
 </div>
 <style>
+thead > tr > th{
+    text-align: center;
+}
+
 .div-center {
     text-align: center;
 }

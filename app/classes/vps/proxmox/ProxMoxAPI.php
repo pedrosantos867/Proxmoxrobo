@@ -344,6 +344,47 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
 
     }
 
+    public function enableBackupJob($vmid){
+        $backup_jobs = $this->pve('/cluster/backup');
+
+        $backup_job = null;
+
+        foreach($backup_jobs as $b){
+            if($backup_job["vmid"] == $vmid){
+                $backup_job = $b;
+                break;
+            }
+        }
+
+        $parameters = [
+            'starttime' => $backup_job["starttime"],
+            'enabled' => 1
+        ];
+        
+        return $this->pve->put('/cluster/backup/'.$backup_job["id"], $parameters);
+    }
+
+    
+    public function disableBackupJob($vmid){
+        $backup_jobs = $this->pve->get('/cluster/backup')["data"];
+
+        $backup_job = array();
+
+        foreach($backup_jobs as $b){
+            if($b["vmid"] == $vmid){
+                $backup_job = $b;
+                break;
+            }
+        }
+
+        $parameters = [
+            'starttime' => $backup_job["starttime"],
+            'enabled' => 0
+        ];
+        
+        return $this->pve->put('/cluster/backup/'.$backup_job["id"], $parameters);
+    }
+
     public function createBackupJobForPBS($starttime, $dow, $vmid, $storage, $mode, $retention){ //TODO: add mode (snapshot, suspend or stop)
         if($starttime == null || $dow == null || $vmid == null){
             return;
@@ -361,6 +402,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
             'enabled' => 1,
             'mode' => 'snapshot',
             'vmid' => $vmid,
+            'enabled' => 1
             //'prune-backups' => "keep-last".$retention
         ];
 

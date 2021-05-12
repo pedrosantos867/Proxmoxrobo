@@ -12,6 +12,7 @@ use model\VpsPlanDetail;
 use model\VpsPlanParam;
 use model\VpsServer;
 use model\VpsServerIp;
+use model\Client;
 use System\Cookie;
 use System\Db\Schema\Schema;
 use System\Db\Schema\Table;
@@ -19,6 +20,7 @@ use System\Notifier;
 use System\Router;
 use System\Tools;
 use vps\VPSAPI;
+use vps\proxmox\PVE2_API;
 
 class VpsOrderController extends FrontController {
 
@@ -431,6 +433,7 @@ class VpsOrderController extends FrontController {
 
     public function actionAccessWithNoVNCAjax(){
         $order = Tools::rPOST('order');
+        $aux = Tools::rPOST('aux');
         $order = urldecode($order[0]);
         $order = explode(',', $order);
 
@@ -444,10 +447,12 @@ class VpsOrderController extends FrontController {
         $VpsServerObject = new VpsServer();
         $server = $VpsServerObject->select('*')->limit(1)->getRow();
 
-        $api = VPSAPI::selectServer($server->id);
-        /*
-        if(!$api->checkIfUserExists()){
-        }
-        */
+        //$api = VPSAPI::selectServer($server->id);
+        
+        $pve2 = new PVE2_API($order["server_host"], $order["username"], "pve", $order["password"]);
+        
+        $pve2->login();
+    
+        $pve2->setCookie(); 
     }
 }

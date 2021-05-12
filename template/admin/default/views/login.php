@@ -10,7 +10,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                         <span class="glyphicon glyphicon-ok"></span>
-                        <?=$_->l('На Ваш email отправлено сообщение с инструкцией по восстановлению пароля.')?>
+                        <?=$_->l('A message has been sent to your email with instructions on how to reset your password.')?>
                     </div>
                 <? } else if (\System\Tools::rGET('send')) { ?>
                     <div class="alert alert-success alert-dismissible" role="alert">

@@ -92,7 +92,7 @@ class CronController
 
             $date = strtotime($bill->date);
 
-            if ($bill->is_paid == 0 && $now - $date > 86400 * 2) {
+            if ($bill->is_paid == 0 && $now - $date > 86400 * 2) { //two days without paying
                 $bill->is_paid = -1;
                 $bill->save();
             }

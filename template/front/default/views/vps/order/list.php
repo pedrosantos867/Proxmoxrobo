@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function() {
-    $(".noVNC_btn").click(function() {
+    $(".noVNC_btn").click(function() {       
         var order_parts = $(this).attr("value").split(',')
 
         var order = new Array()
@@ -18,15 +18,22 @@ $(document).ready(function() {
                 ajax: 1
             },
             complete: function(data) {
-                location.reload();
+                //alert(document.cookie)
+                alert(JSON.stringify(data))
+
+                //var a = $('<iframe src="https://192.168.232.11:8006/?console=kvm&novnc=1&vmid=" + order["vmid"] + "&node=" + order["server_name"] + "&resize=off&cmd=" title="a"></iframe>').appendTo('.frame');
+                //$(a).cookie = "aa=a"
+                
+                var w = window.open(
+                    "https://192.168.232.11:8006/?console=kvm&novnc=1&vmid=" + order[
+                        "vmid"] +
+                    "&node=" + order["server_name"] + "&resize=off&cmd=", "popupWindow",
+                    "width=1200, height=800, scrollbars=yes");
+                var $w = $(w.document.body)
+                $w.html("<textarea></textarea>");
+                
             }
         })
-
-        var w = window.open("https://192.168.232.11:8006/?console=kvm&novnc=1&vmid=" + order["vmid"] +
-            "&node=" + order["server_name"] + "&resize=off&cmd=", "popupWindow",
-            "width=1200, height=800, scrollbars=yes");
-        var $w = $(w.document.body);
-        $w.html("<textarea></textarea>");
     });
 
     $(".btn-start").click(function() {
@@ -111,6 +118,8 @@ $(document).ready(function() {
 });
 </script>
 <div class="ajax-block">
+    <div class="frame">
+    </div>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -345,7 +354,7 @@ $(document).ready(function() {
     <?= $pagination ?>
 </div>
 <style>
-thead > tr > th{
+thead>tr>th {
     text-align: center;
 }
 

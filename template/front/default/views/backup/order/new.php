@@ -1,3 +1,4 @@
+<title>Create backup</title>
 <div class="ajax-block">
     <div class="page-header">
         <h1>Create a periodic backup job</h1>
@@ -16,7 +17,7 @@
                             <span class="input-group-addon">
                                 <input type="checkbox" name="check_list_days[]" aria-label="" value="<? echo $day?>">
                             </span>
-                            <input type="text" class="form-control" aria-label="..." readonly value="<? echo $day?>">
+                            <input type="text" class="form-control" aria-label="..." readonly value="<? echo ucfirst($day)?>">
                         </div>
                     </div>
                 </div>
@@ -52,17 +53,9 @@
                                     value="Incremental backup">
                             </div>
                         </div>
-                        <div class="col-sm-1">
-                            <i class="fa fa-question-circle" id="incremental-backup-question-mark"></i>
-
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="panel panel-default" id="incremental-backup-explanation" style="display: none;">
-                                <div class="panel-body">
-                                    <b>Incremental backups</b> are faster but the administrator needs to configure a
-                                    PBSServer.
-                                </div>
-                            </div>
+                        <div>
+                            <i class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="right"
+                                title="Incremental backups" data-content="Incremental backups are faster but the administrator needs to configure a PBSServer."></i>
                         </div>
                     </div>
 
@@ -75,16 +68,9 @@
                                 <input type="text" class="form-control" aria-label="..." readonly value="Full backup">
                             </div>
                         </div>
-                        <div class="col-sm-1">
-                            <i class="fa fa-question-circle" id="full-backup-question-mark"></i>
-
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="panel panel-default" id="full-backup-explanation" style="display: none;">
-                                <div class="panel-body">
-                                    <b>Full backups</b> are slower but can result in a longer downtime.
-                                </div>
-                            </div>
+                        <div>
+                        <i class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="right"
+                                title="Full backups" data-content="Full backups are slower and can result in a longer downtime."></i>
                         </div>
                     </div>
                 </div><br>
@@ -149,16 +135,15 @@
             </div>
         </div>
         <button class="btn btn-success"><?=$_->l('Create')?></button>
-
     </form>
-
-
     <script>
-    $("#incremental-backup-question-mark").click("click", function() {
-        $('#incremental-backup-explanation').slideToggle("slow");
-    });
-    $("#full-backup-question-mark").click("click", function() {
-        $('#full-backup-explanation').slideToggle("slow");
+    $(document).ready(function() {
+        $('[data-toggle="popover"]').popover();
     });
     </script>
+    <style>
+        .row{
+            padding-bottom: 0.5em;
+        }
+    </style>
 </div>

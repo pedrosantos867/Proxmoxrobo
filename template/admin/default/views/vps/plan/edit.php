@@ -339,6 +339,21 @@
                     </div>
                 </div>
 
+                <div class="form-group proxmox">
+                    <label class="control-label" for="transfer"><?=$_->l('Transfer')?></label>
+                    <div class="controls">
+                        <input type="number" id="transfer" name="transfer" value="<?= $plan->transfer ?>" placeholder=""
+                               class="form-control "  data-validate="required">GB
+                    </div>
+                </div>
+
+                <div class="form-group proxmox">
+                    <label class="control-label" for="bandwith"><?=$_->l('Bandwith')?></label>
+                    <div class="controls">
+                        <input type="number" id="bandwith" name="bandwith" value="<?= $plan->bandwith ?>" placeholder=""
+                               class="form-control "  data-validate="required">MB/s
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label class="control-label" for="socket"><?=$_->l('Подключение к сети')?></label>

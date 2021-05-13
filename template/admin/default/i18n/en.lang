@@ -807,7 +807,8 @@
         "Активный": "Active",
         "Управление": "Managing",
         "Счета": "Accounts",
-        "Удалить заказ": "Delete order"
+        "Удалить заказ": "Delete order",
+        "Отключен": ""
     },
     "views\/vps\/param\/list.php": {
         "Добавить": "Add",
@@ -879,7 +880,9 @@
         "Добавить": "Add",
         "Параметр": "Parameter",
         "Значение": "Value",
-        "Сохранить": "Save"
+        "Сохранить": "Save",
+        "Transfer": "",
+        "Bandwith": ""
     },
     "views\/vps\/server\/ip\/list.php": {
         "Список серверов": "List of servers",

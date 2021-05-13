@@ -71,6 +71,8 @@ class VpsPlansController extends FrontController{
             $Plan->cores = Tools::rPOST('cores');
             $Plan->recipe = Tools::rPOST('recipe');
             $Plan->socket = Tools::rPOST('socket');
+            $Plan->transfer = Tools::rPOST('transfer');
+            $Plan->bandwith = Tools::rPOST('bandwith');
             $Plan->net_type = Tools::rPOST('net_type');
             $Plan->setServers(Tools::rPOST('available_servers'));
             $Plan->setImages(Tools::rPOST('images'));

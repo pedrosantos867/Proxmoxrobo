@@ -208,7 +208,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         return $response = $this->pve->post('/nodes/'.$node.'/qemu/'.$vmid.'/status/'.$command, array());
     }
 
-    public function createVM($node, $type, $memory, $hdd, $cores, $image, $socket, $user, $password, $net_type, $net=''){
+    public function createVM($node, $type, $memory, $hdd, $cores, $image, $socket, $user, $password, $bandwith, $net_type, $net=''){
 
         if(!$this->is_logged){
             return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
@@ -248,6 +248,11 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
                 } else if($net_type==2){
                     $new_container_settings['net0'] = 'e1000,bridge=vmbr0,tag=' .$net;
                 }
+
+                $aux = $new_container_settings['net0']; 
+
+                $new_container_settings['net0'] .= ",rate=".$bandwith;
+
                 $res = $this->pve->post("/nodes/$node/qemu", $new_container_settings);
             } else { //If is a container
                 $new_container_settings = array();
@@ -277,6 +282,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
                     $new_container_settings['net0'] = "bridge=vmbr0,name=eth0,ip=$ip/$cidr,gw=$gw";
                     //echo  $new_container_settings['net0'];
                 }
+
                 $res = $this->pve->post("/nodes/$node/lxc", $new_container_settings);
                
             }

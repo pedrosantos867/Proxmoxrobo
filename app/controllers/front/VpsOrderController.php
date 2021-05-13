@@ -332,7 +332,7 @@ class VpsOrderController extends FrontController {
 
 
             $domain = Tools::rPOST('domain');
-            $create_vm = $server->createVM($plan->node, $plan->type, $plan->memory, $plan->hdd, $plan->cores, $VpsOrder->image,$plan->sockets, $create_user->data, $VpsOrder->password,$plan->net_type, $net, $domain, $plan->recipe);
+            $create_vm = $server->createVM($plan->node, $plan->type, $plan->memory, $plan->hdd, $plan->cores, $VpsOrder->image,$plan->sockets, $create_user->data, $VpsOrder->password, $plan->bandwith, $plan->net_type, $net, $domain, $plan->recipe);
             if($create_vm->code == VPSAPI::ANSWER_CREATE_VM_SUCCESS){
 
                 $VpsOrder->vmid = $create_vm->data;
@@ -432,27 +432,8 @@ class VpsOrderController extends FrontController {
     }
 
     public function actionAccessWithNoVNCAjax(){
-        $order = Tools::rPOST('order');
-        $aux = Tools::rPOST('aux');
-        $order = urldecode($order[0]);
-        $order = explode(',', $order);
-
-        $orderAux = array();
-        foreach($order as $o){
-            $splited = explode('=', $o);
-            $orderAux[$splited[0]]  = $splited[1];
-        }
-        $order = $orderAux;
-
-        $VpsServerObject = new VpsServer();
-        $server = $VpsServerObject->select('*')->limit(1)->getRow();
-
-        //$api = VPSAPI::selectServer($server->id);
-        
         $pve2 = new PVE2_API($order["server_host"], $order["username"], "pve", $order["password"]);
-        
         $pve2->login();
-    
         $pve2->setCookie(); 
     }
 }

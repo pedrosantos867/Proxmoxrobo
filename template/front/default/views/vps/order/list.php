@@ -18,20 +18,16 @@ $(document).ready(function() {
                 ajax: 1
             },
             complete: function(data) {
-                //alert(document.cookie)
-                alert(JSON.stringify(data))
-
-                //var a = $('<iframe src="https://192.168.232.11:8006/?console=kvm&novnc=1&vmid=" + order["vmid"] + "&node=" + order["server_name"] + "&resize=off&cmd=" title="a"></iframe>').appendTo('.frame');
-                //$(a).cookie = "aa=a"
-                
+                alert(JSON.stringify(data))  
+                           
                 var w = window.open(
                     "https://192.168.232.11:8006/?console=kvm&novnc=1&vmid=" + order[
                         "vmid"] +
                     "&node=" + order["server_name"] + "&resize=off&cmd=", "popupWindow",
                     "width=1200, height=800, scrollbars=yes");
+
                 var $w = $(w.document.body)
                 $w.html("<textarea></textarea>");
-                
             }
         })
     });

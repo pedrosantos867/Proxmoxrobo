@@ -24,7 +24,7 @@ interface IVPSAPI
      * @param $password string User password for VM
      * @return object result
      */
-    public function createVM($node, $type, $memory, $hdd, $cores, $image, $socket, $user, $password, $net_type);
+    public function createVM($node, $type, $memory, $hdd, $cores, $image, $socket, $user, $password, $bandwith, $net_type);
 
 
     /**

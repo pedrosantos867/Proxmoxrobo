@@ -818,3 +818,28 @@
  on line: 57
  in func: run
  in class CronController
+2021-05-13 04:03:26 ProxMox createVM error: Array
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 308
+ in func: createVM
+ in class vps\proxmox\ProxMoxAPI
+2021-05-13 04:11:33 ProxMox createUser error: 
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 158
+ in func: createUser
+ in class vps\proxmox\ProxMoxAPI
+2021-05-13 04:15:46 ProxMox createVM error: Array
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 308
+ in func: createVM
+ in class vps\proxmox\ProxMoxAPI
+2021-05-13 04:17:00 ProxMox createVM error: Array
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 308
+ in func: createVM
+ in class vps\proxmox\ProxMoxAPI
+2021-05-13 04:18:22 ProxMox createUser error: Array
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 158
+ in func: createUser
+ in class vps\proxmox\ProxMoxAPI

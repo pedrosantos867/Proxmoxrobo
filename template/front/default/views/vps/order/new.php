@@ -25,7 +25,22 @@
                             <li class="list-group-item"><?= $plan->cores ?> cores</li>
                             <li class="list-group-item"><?= $plan->socket ?> sockets</li>
                             <li class="list-group-item"><?= $plan->hdd ?> GB HDD</li>
-                            <? if($plan->test_days > 0){ ?> <li class="list-group-item"><?= $plan->test_days ?> test days</li> <? } ?>
+
+                            <? if($plan->bandwith == 0){ ?>
+                            <li class="list-group-item">Bandwith: Unlimited speed</li>
+                            <? } else { ?>
+                            <li class="list-group-item">Bandwith: <?= $plan->bandwith ?> MB/s</li>
+                            <? } ?>
+
+                            <? if($plan->transfer == 0){ ?>
+                            <li class="list-group-item">Unmetered</li>
+                            <? } else { ?>
+                            <li class="list-group-item"><?= $plan->transfer ?> GB transfer/Month</li>
+                            <? } ?>
+
+                            <? if($plan->test_days > 0){ ?>
+                            <li class="list-group-item"><?= $plan->test_days ?> test days</li>
+                            <? } ?>
                             <? foreach ($plan->details as $detail) { ?>
                             <li class="list-group-item"><i class="fa fa-check"></i><?= $detail->name ?>
                                 : <?= $detail->value ?></li>

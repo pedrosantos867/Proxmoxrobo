@@ -18,16 +18,9 @@ $(document).ready(function() {
                 ajax: 1
             },
             complete: function(data) {
-                alert(JSON.stringify(data))  
-                           
-                var w = window.open(
-                    "https://192.168.232.11:8006/?console=kvm&novnc=1&vmid=" + order[
-                        "vmid"] +
-                    "&node=" + order["server_name"] + "&resize=off&cmd=", "popupWindow",
-                    "width=1200, height=800, scrollbars=yes");
-
-                var $w = $(w.document.body)
-                $w.html("<textarea></textarea>");
+                data = data["responseText"].substring(1, data["responseText"].length-1)
+                splited = data.split(",")
+                alert("Now you can access your vm using RealVNC or other VNC clients\n VNC Server: " + splited[0] + ":" + splited[1] + "\nPassword: " + splited[2])
             }
         })
     });
@@ -305,7 +298,7 @@ $(document).ready(function() {
                                 <button value=<?=http_build_query($order, '', ',')?>
                                     class="btn btn-xs btn-primary noVNC_btn">
                                     <span class="glyphicon glyphicon-new-window"> </span>
-                                    <?= $_->l('Access with noVNC') ?>
+                                    <?= $_->l('Access with VNC client') ?>
                                 </button>
                             </td>
                         </tr>

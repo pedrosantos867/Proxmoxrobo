@@ -490,4 +490,46 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         }
         return true;
     }   
+
+    public function vncProxy($node, $vmid){
+        $PVEAuthCookie = $this->pve->post("/nodes/pve1/qemu/102/vncproxy", array("websocket" => 1))["data"]["ticket"];
+        return urlencode($PVEAuthCookie);
+    }
+
+    public function createVNCConnection($node, $vmid)
+    {
+        $validCharacters = "abcdefghijklmnopqrstuxyvwzABCDEFGHIJKLMNOPQRSTUXYVWZ0123456789";
+        $validCharNumber = strlen($validCharacters);
+     
+        $password = "";
+
+        $length = 10;
+     
+        for ($i = 0; $i < $length; $i++) {
+            $index = mt_rand(0, $validCharNumber - 1);
+            $password .= $validCharacters[$index];
+        }
+
+        $firstParam = [
+            "command" => "change vnc 0.0.0.0:".$vmid.",password" 
+        ];
+
+        $secondParam = [
+            "command" => "set_password vnc ".$password 
+        ];
+
+        $res = $this->pve->post("/nodes/".$node."/qemu/".$vmid."/monitor", $firstParam);
+        $res2 = $this->pve->post("/nodes/".$node."/qemu/".$vmid."/monitor", $secondParam);
+
+        return $password;
+    }
+
+    public function checkVPSNetworkingCap($node, $vmid){
+        $times = $this->pve->get("/nodes/".$node."/qemu/".$vmid."/rrddata?timeframe=hour");
+
+        
+        
+
+
+    }
 }

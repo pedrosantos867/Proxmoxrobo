@@ -40,6 +40,9 @@ class CronController
 
             Module::extendMethod('hourlyCronUpdate');
         } else {
+            $this->checkVPSNetworkingCap();
+            \System\Logger::log('Running daily cron: checkVPSNetworkingCap');
+
             \System\Logger::log('Running daily cron: checkAccounts');
             $this->checkAccounts();
             \System\Logger::log('Running daily cron: checkVpsAccounts');
@@ -57,6 +60,21 @@ class CronController
             \System\Logger::log('Running daily cron: removeOldDomainOrders');
 
             Module::extendMethod('dailyCronUpdate');
+        }
+    }
+
+    public function checkVPSNetworkingCap(){
+        $VpsOrder = new VpsOrder();
+        $vps_orders = $VpsOrder->getRows();
+
+        foreach($vps_orders as $vps_order){
+            $VpsOrder = new VpsOrder($vps_order);
+
+            $vpsServer = new VpsServer();
+            $vpsServer = new VpsServer($vpsServer->select("*")->where(VpsServer::getInstance(), "id", $VpsOrder->object->server_id)->getRow());
+
+            $api = VPSAPI::selectServer(new VpsServer($VpsOrder->object->server_id));
+            $api->checkVPSNetworkingCap($vpsServer->object->name, $VpsOrder->object->vmid);
         }
     }
 

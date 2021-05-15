@@ -535,7 +535,8 @@
         "QGA: No": "",
         "QGA: Yes": "",
         "Active": "",
-        "Disabled": ""
+        "Disabled": "",
+        "Access with VNC client": ""
     },
     "views\/vps\/order\/new.php": {
         "месяц": "month",

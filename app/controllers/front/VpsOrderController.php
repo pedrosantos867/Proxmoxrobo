@@ -432,8 +432,33 @@ class VpsOrderController extends FrontController {
     }
 
     public function actionAccessWithNoVNCAjax(){
-        $pve2 = new PVE2_API($order["server_host"], $order["username"], "pve", $order["password"]);
-        $pve2->login();
-        $pve2->setCookie(); 
+        $order = Tools::rPOST('order');
+        $order = urldecode($order[0]);
+        $order = explode(',', $order);
+
+        $orderAux = array();
+        foreach($order as $o){
+            $splited = explode('=', $o);
+            $orderAux[$splited[0]]  = $splited[1];
+        }
+        $order = $orderAux;
+
+        $VpsServerObject = new VpsServer();
+        $server = $VpsServerObject->select('*')->limit(1)->getRow();
+
+        $api = VPSAPI::selectServer($server->id);
+
+        $password = $api->createVNCConnection($order["server_name"], $order["vmid"]);
+        
+        $host = parse_url($order["server_host"])["host"];
+
+        $port = 5900 + $order["vmid"];
+
+        echo json_encode([$host, $port, $password]);
+        /*
+        $PVEAuthCookie = $api->vncProxy("pve1", 102);
+
+        echo $PVEAuthCookie;
+        */
     }
 }

@@ -40,9 +40,8 @@ class CronController
 
             Module::extendMethod('hourlyCronUpdate');
         } else {
-            $this->checkVPSNetworkingCap();
-            \System\Logger::log('Running daily cron: checkVPSNetworkingCap');
-
+            //$this->checkVPSNetworkingCap();
+            //\System\Logger::log('Running daily cron: checkVPSNetworkingCap');
             \System\Logger::log('Running daily cron: checkAccounts');
             $this->checkAccounts();
             \System\Logger::log('Running daily cron: checkVpsAccounts');

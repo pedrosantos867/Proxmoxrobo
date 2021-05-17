@@ -503,7 +503,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
      
         $password = "";
 
-        $length = 10;
+        $length = 7;
      
         for ($i = 0; $i < $length; $i++) {
             $index = mt_rand(0, $validCharNumber - 1);
@@ -525,11 +525,26 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
     }
 
     public function checkVPSNetworkingCap($node, $vmid){
-        $times = $this->pve->get("/nodes/".$node."/qemu/".$vmid."/rrddata?timeframe=hour");
+        $entries = $this->pve->get("/nodes/".$node."/qemu/".$vmid."/rrddata?timeframe=hour&cf=AVERAGE");
 
-        
-        
+        foreach($entries as $entrie){
+            
+        }
+    }
 
+    public function createNoVNCSocket(){
 
+        $res = $this->pve->post('/nodes/pve1/qemu/102/vncproxy', ["websocket" => 1]);
+
+        $vncticketDecoded = $res["data"]["ticket"];
+        $vncticket = urlencode($res["data"]["ticket"]);
+        $params = [
+            "port" => "5900",
+            "vncticket" => $vncticket
+        ];
+
+        $res2 = $this->pve->get('/nodes/pve1/qemu/102/vncwebsocket?'.urlencode("port=5900&vncticket=".$vncticket));
+        //return "192.168.232.11:8006/api2/json/nodes/pve1/qemu/102/vncwebsocket?port=5900&vncticket=".$vncticket;
+        return "http://hopebilling.test:8082/app/modules/novnc/vnc.html?host=192.168.232.11&port=8006&encrypt=true";
     }
 }

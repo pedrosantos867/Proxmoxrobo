@@ -1,15 +1,6 @@
 <script>
 $(document).ready(function() {
-    $(".noVNC_btn").click(function() {       
-        var order_parts = $(this).attr("value").split(',')
-
-        var order = new Array()
-
-        $.each(order_parts, function(i) {
-            var key_and_value = order_parts[i].split("=")
-            order[key_and_value[0]] = key_and_value[1]
-        })
-
+    $(".noVNC_btn").click(function() {
         $.ajax({
             method: 'post',
             data: {
@@ -17,10 +8,11 @@ $(document).ready(function() {
                 action: 'accessWithNoVNC',
                 ajax: 1
             },
-            complete: function(data) {
-                data = data["responseText"].substring(1, data["responseText"].length-1)
-                splited = data.split(",")
-                alert("Now you can access your vm using RealVNC or other VNC clients\n VNC Server: " + splited[0] + ":" + splited[1] + "\nPassword: " + splited[2])
+            complete: function(data) {                
+                splited = data["responseText"].split(" ")
+                $("#vncModalHeader").append("<b>Access VPS with VNC client</b>");
+                $("#vncModalBody").append("Now you can access your VPS using <a href='https://www.realvnc.com/en/connect/download/viewer/' target='_blank'>RealVNC</a> or other VNC clients. <p><p> <b>VNC Server:</b> " + splited[0] + ":" + splited[1] + "<p><b>Password: </b>" + splited[2]);
+                $("#vncModal").modal('show');
             }
         })
     });
@@ -295,8 +287,7 @@ $(document).ready(function() {
                         <? } ?>
                         <tr>
                             <td>
-                                <button value=<?=http_build_query($order, '', ',')?>
-                                    class="btn btn-xs btn-primary noVNC_btn">
+                                <button value=<?=http_build_query($order, '', ',')?> <?=($order->vm_status != 'running' ? 'disabled="disabled"' : '') ?> class="btn btn-xs btn-primary noVNC_btn">
                                     <span class="glyphicon glyphicon-new-window"> </span>
                                     <?= $_->l('Access with VNC client') ?>
                                 </button>
@@ -338,6 +329,25 @@ $(document).ready(function() {
                 </td>
             </tr>
             <? } ?>
+            <div class="container">
+                <div class="modal fade" id="vncModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header" id="vncModalHeader">
+                                <!-- Content added later -->
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body" id="vncModalBody">
+                                <!-- Content added later -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </tbody>
     </table>
     <?= $pagination ?>

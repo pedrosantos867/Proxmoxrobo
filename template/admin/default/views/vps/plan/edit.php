@@ -29,8 +29,6 @@
                 <?/* <li role="presentation" id="tab_prices" class="tb "><a href="#prices" aria-controls="options" role="tab" data-toggle="tab">Цены</a></li>*/?>
                 <li role="presentation" id="tab_options" class="tb "><a href="#params" aria-controls="options" role="tab" data-toggle="tab">Parameters</a></li>
                 <li role="presentation" id="tab_options" class="tb "><a href="#options" aria-controls="options" role="tab" data-toggle="tab">Options</a></li>
-
-
             </ul>
         </div>
         <div class="tab-content">
@@ -48,7 +46,6 @@
                 </div>
 
                 <div class="form-group">
-
                     <label class="control-label"><?=$_->l('Тип')?></label>
                     <div class="radio">
                         <label>
@@ -64,8 +61,24 @@
                         </label>
                     </div>
 
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="type" value="2" <?=$plan->type == 1 ? 'checked="checked"' : ''?> >
+                            <?=$_->l('Instant creation using a VM template')?>
+                        </label>
+                    </div>
                 </div>
 
+                <div class="form-group" id="form-group-available_vps_templates" style='display:none;'>
+                    <label class="control-label" for="name"><?=$_->l('VPS templates available')?></label>
+
+                    <select id="available_vps_templates" name="available_vps_templates[]" multiple class="input-xlarge form-control"  data-validate="required">
+                        <? foreach ($vmTemplates as $vmTemplate) { ?>
+                            <option value="<?=$vmTemplate['vmid']['vmid'] ?>"><?="VMID ".$vmTemplate['vmid']['vmid']." - Name: ".$vmTemplate['vmid']['name']." - Memory: ".$vmTemplate['vmid']['maxmem']." MB - Cores: ".$vmTemplate['vmid']['cpus'] ?></option>
+                        <? } ?>
+                    </select>
+                </div>
+            
                 <?
                 $net_types = [
                     \model\VpsServer::PANEL_VMMANAGER => [
@@ -168,11 +181,11 @@
                         })
                     }
                     function eventChangeType() {
-
                         var server_id = ($('#available_servers').val());
                         var node      = $('select[name=node]').val();
 
                         if($('input[name=type]:checked').val()==1){
+                            showNonTemplateImputs();
                             type = 'lxc';
                             if(typeof server_id !== 'undefined') {
                                 //get containers to images select
@@ -181,17 +194,39 @@
                             }
                             $('#recipe-group').show();
 
-                        } else {
+                        } else if($('input[name=type]:checked').val()==0) {
+                            showNonTemplateImputs();
                             type = 'kvm';
                             //get iso images to images select
                             if(typeof server_id !== 'undefined') {
                                 getIsoImages(server_id[0], node);
                             }
                             $('#recipe-group').hide();
+                        }else{ //VM template
+                            hideNonTemplateImputs();
                         }
-
                     }
 
+                    function showNonTemplateImputs(){
+                        $('#form-group-images').show();
+                        $('#form-group-net_type').show();
+                        $('#form-group-available_vps_templates').hide();
+                        $('input[name=memory]').prop('disabled', false);
+                        $('input[name=hdd]').prop('disabled', false);
+                        $('input[name=cores]').prop('disabled', false);
+                        $('input[name=socket]').prop('disabled', false);
+                    }
+
+                    function hideNonTemplateImputs(){
+                        $('#form-group-images').hide();
+                        $('#form-group-net_type').hide();
+                        $('#form-group-available_vps_templates').show();
+                        $('input[name=memory]').prop('disabled', true);
+                        $('input[name=hdd]').prop('disabled', true);
+                        $('input[name=cores]').prop('disabled', true);
+                        $('input[name=socket]').prop('disabled', true);
+                    }
+                    
                     $('input[name=type]').on('change', function () {
                         eventChangeType();
                     });
@@ -218,9 +253,6 @@
                     <label for="test_days"><?= $_->l('Кол-во дней для тестирования') ?></label>
                     <input type="number" value="<?= $plan->test_days ?>" name="test_days" class="form-control" id="test_days" placeholder="7">
                 </div>
-
-
-
 
                 <div class="form-group">
                     <label class="control-label" for="name"><?=$_->l('Доступные для выбора сервера')?></label>
@@ -355,7 +387,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="form-group-net_type">
                     <label class="control-label" for="socket"><?=$_->l('Подключение к сети')?></label>
                     <div class="controls">
                        <select name="net_type" class="form-control">
@@ -367,7 +399,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="form-group-images">
                     <label class="control-label" for="images"><?=$_->l('Доступные образы')?></label>
                     <div class="controls">
                         <select id="images" name="images[]" class="form-control" multiple="multiple">

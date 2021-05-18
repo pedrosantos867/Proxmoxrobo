@@ -843,3 +843,8 @@
  on line: 158
  in func: createUser
  in class vps\proxmox\ProxMoxAPI
+2021-05-18 03:22:32 Exception in file C:\laragon\www\hopebilling\app\classes\vps\VPSAPI.php: Server not found
+ in file: C:\laragon\www\hopebilling\core\classes\System\Exception.php
+ on line: 8
+ in func: __construct
+ in class System\Exception

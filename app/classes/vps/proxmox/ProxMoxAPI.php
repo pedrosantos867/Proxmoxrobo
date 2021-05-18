@@ -442,12 +442,11 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
     }
 
     public function getNFSWithMostStorageAvailable(){
-        
         $array = $this->pve->get('/cluster/resources?type=storage')["data"];
 
         //Gets only NFS servers
         $nfs_server_list = array_filter($array, function($obj){
-            if(strpos($obj['plugintype'], 'nfs', 1) !== false){
+            if(strpos($obj['plugintype'], 'nfs', 0) !== false){
                 return true;
             }
         });
@@ -464,7 +463,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
             }
         }
 
-        return $nfs_server_list->storage; 
+        return $chosen_server["storage"]; 
     }
 
     public function getBackupsByVMID($node, $vmid, $storage){
@@ -533,7 +532,6 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
     }
 
     public function createNoVNCSocket(){
-
         $res = $this->pve->post('/nodes/pve1/qemu/102/vncproxy', ["websocket" => 1]);
 
         $vncticketDecoded = $res["data"]["ticket"];
@@ -546,5 +544,28 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         $res2 = $this->pve->get('/nodes/pve1/qemu/102/vncwebsocket?'.urlencode("port=5900&vncticket=".$vncticket));
         //return "192.168.232.11:8006/api2/json/nodes/pve1/qemu/102/vncwebsocket?port=5900&vncticket=".$vncticket;
         return "http://hopebilling.test:8082/app/modules/novnc/vnc.html?host=192.168.232.11&port=8006&encrypt=true";
+    }
+
+    public function getVMTemplates(){
+        $vps_server_list = $this->pve->get('/nodes')["data"]; 
+
+        $templates = array();
+        $vps_list = array();
+
+        foreach($vps_server_list as $vps_server){
+            $vps_list = $this->pve->get('/nodes/'.$vps_server["node"].'/qemu')["data"];
+        
+            foreach($vps_list as $vps){
+                $vps_info = $this->pve->get('/nodes/'.$vps_server["node"].'/qemu/'.$vps["vmid"].'/config');
+                if(array_key_exists("template", $vps_info["data"]) && $vps_info["data"]["template"] == 1){
+                    array_push($templates, [
+                        "node" => $vps_server["node"],
+                        "vmid" => $vps
+                        ]);
+                }
+            }         
+        }
+
+        return $templates;
     }
 }

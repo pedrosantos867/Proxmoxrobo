@@ -882,7 +882,10 @@
         "Значение": "Value",
         "Сохранить": "Save",
         "Transfer": "",
-        "Bandwith": ""
+        "Bandwith": "",
+        "VM template": "",
+        "Instant creation using a VM template": "",
+        "VPS templates available": ""
     },
     "views\/vps\/server\/ip\/list.php": {
         "Список серверов": "List of servers",

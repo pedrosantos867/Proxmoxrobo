@@ -130,8 +130,14 @@ class VpsPlansController extends FrontController{
         $view->plan     = $Plan;
         $view->servers  = VpsServer::factory()->getRows();
 
-            $view->details   = VpsPlanDetail::factory()->getRows();
+        $view->details   = VpsPlanDetail::factory()->getRows();
 
+        $VpsServer = new VpsServer();
+        $server = $VpsServer->select('*')->limit(1)->getRow();
+
+        $api = VPSAPI::selectServer($server->id);
+
+        $view->vmTemplates = $api->getVMTemplates(); 
 
         //not working
         $params   = VpsPlanParam::factory()

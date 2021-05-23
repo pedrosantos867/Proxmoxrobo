@@ -568,4 +568,19 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
 
         return $templates;
     }
+
+    public function getBackupJobByVMID($vmid){
+        $jobs = $this->pve->get('/cluster/backup')["data"];
+        
+        foreach($jobs as $job){
+            if($job["vmid"] == $vmid){
+                return $job;                    
+            }
+        }
+    }
+
+    public function backupNow($node, $job){
+       $res =  $this->pve->post('/nodes/'.$node.'/vzdump/',$job);
+        return $res;
+    }
 }

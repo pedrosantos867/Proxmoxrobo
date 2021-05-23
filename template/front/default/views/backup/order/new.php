@@ -108,6 +108,10 @@
                                 <input type="text" class="form-control" aria-label="..." readonly value="Stop">
                             </div>
                         </div>
+                        <div>
+                            <i class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="right"
+                                title="Attention" data-content="This mode will only work if your VPS have the Qemu Guest Agent installed!"></i>
+                        </div>
                     </div>
                 </div><br>
 

@@ -474,4 +474,26 @@ class VpsOrderController extends FrontController {
 
         echo $host, " ", $port, " ", $password;
     }
+
+    public function actionbackupNowAjax(){
+        $params = Tools::rPOST('params'); 
+        $splited = explode(':', $params);
+
+        $node = $splited[0];
+        $vmid = $splited[1];
+
+        $VpsServerObject = new VpsServer();
+        $server = $VpsServerObject->select('*')->limit(1)->getRow();
+        $api = VPSAPI::selectServer($server->id);
+
+        $job = $api->getBackupJobByVMID($vmid);
+
+        unset($job["enabled"]);
+        unset($job["starttime"]);
+        unset($job["dow"]);
+        unset($job["id"]);
+        unset($job["node"]);
+
+        $api->backupNow($node, $job);
+    }
 }

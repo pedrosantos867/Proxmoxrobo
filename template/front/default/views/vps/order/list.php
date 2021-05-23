@@ -8,10 +8,12 @@ $(document).ready(function() {
                 action: 'accessWithNoVNC',
                 ajax: 1
             },
-            complete: function(data) {                
+            complete: function(data) {
                 splited = data["responseText"].split(" ")
                 $("#vncModalHeader").append("<b>Access VPS with VNC client</b>");
-                $("#vncModalBody").append("Now you can access your VPS using <a href='https://www.realvnc.com/en/connect/download/viewer/' target='_blank'>RealVNC</a> or other VNC clients. <p><p> <b>VNC Server:</b> " + splited[0] + ":" + splited[1] + "<p><b>Password: </b>" + splited[2]);
+                $("#vncModalBody").append(
+                    "Now you can access your VPS using <a href='https://www.realvnc.com/en/connect/download/viewer/' target='_blank'>RealVNC</a> or other VNC clients. <p><p> <b>VNC Server:</b> " +
+                    splited[0] + ":" + splited[1] + "<p><b>Password: </b>" + splited[2]);
                 $("#vncModal").modal('show');
             }
         })
@@ -89,6 +91,20 @@ $(document).ready(function() {
                 order: $(this).attr("value").split(';'),
                 command: "reboot",
                 action: 'manageVM',
+                ajax: 1
+            },
+            complete: function(data) {
+                location.reload();
+            }
+        })
+    });
+
+    $(".btn-backup-now").click(function() {
+        $.ajax({
+            method: 'post',
+            data: {
+                params: $(this).attr("value"),
+                action: 'backupNow',
                 ajax: 1
             },
             complete: function(data) {
@@ -217,6 +233,7 @@ $(document).ready(function() {
                 </td>
                 <td>
                     <table class="my_table">
+                        <? if($order->active == 1) {?>
                         <? if($order->vm_status == "running"){ ?>
                         <tr>
                             <td>
@@ -270,9 +287,11 @@ $(document).ready(function() {
                         <? if( $order->vm_status != null ){ ?>
                         <tr>
                             <td>
-                                <a href="<?= $_->link('') ?>"><span
-                                        class="glyphicon glyphicon-play-circle"></span>&nbsp;<?= $_->l('Backup now') ?>
-                                </a>
+                                <button class="btn btn-xs btn-primary btn-backup-now"
+                                    value=<?=$order->server_name.":".$order->vmid?>>
+                                    <span class="glyphicon glyphicon-duplicate"></span>
+                                    <?= $_->l('Backup now') ?>
+                                </button>
                             </td>
                         </tr>
 
@@ -287,14 +306,16 @@ $(document).ready(function() {
                         <? } ?>
                         <tr>
                             <td>
-                                <button value=<?=http_build_query($order, '', ',')?> <?=($order->vm_status != 'running' ? 'disabled="disabled"' : '') ?> class="btn btn-xs btn-primary noVNC_btn">
+                                <button value=<?=http_build_query($order, '', ',')?>
+                                    <?=($order->vm_status != 'running' ? 'disabled="disabled"' : '') ?>
+                                    class="btn btn-xs btn-primary noVNC_btn">
                                     <span class="glyphicon glyphicon-new-window"> </span>
                                     <?= $_->l('Access with VNC client') ?>
                                 </button>
                             </td>
                         </tr>
                         <? } ?>
-
+                        <? } ?>
                     </table>
                 </td>
                 <!--Dropdown Settings -->

@@ -80,7 +80,7 @@ class BackupOrdersController extends FrontController {
                     
                     $vpsOrderToChange = new VpsOrder($row->id);
 
-                    $vpsOrderToChange->has_backup_configured = 0; //TODO: CHANGE TO 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    $vpsOrderToChange->has_backup_configured = 1;
                     $vpsOrderToChange->save();
 
                     //Create backup job via Proxmox API 

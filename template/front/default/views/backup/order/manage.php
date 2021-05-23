@@ -28,12 +28,12 @@ $(document).ready(function() {
         })
     });
 
-    $('#delete_btn').click(function() {
+    $('.delete_btn').click(function() {
         $("#confirmationModal").modal("toggle");
     });
 
     $('#btn-confirm-deletion').click(function() {
-        var backup = $('#delete_btn').attr('value')
+        var backup = $('.delete_btn').attr('value')
         $.ajax({
             method: 'post',
             data: {
@@ -95,8 +95,8 @@ $(document).ready(function() {
                         class="btn btn-xs btn-primary revert_btn"><span class="glyphicon glyphicon-repeat"></span>
                         <?= $_->l('Revert to') ?>
                     </button>
-                    <button data-target="#confirmationModal" id="delete_btn" value=<?=http_build_query($backup, '', ',')?>
-                        class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span>
+                    <button data-target="#confirmationModal" value=<?=http_build_query($backup, '', ',')?>
+                        class="btn btn-xs btn-danger delete_btn"><span class="glyphicon glyphicon-trash"></span>
                         <?= $_->l('Delete') ?>
                     </button>
                 </td>

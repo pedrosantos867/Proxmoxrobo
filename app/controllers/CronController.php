@@ -181,7 +181,10 @@ class CronController
                 $VpsOrder->active = 0;
                 $api = VPSAPI::selectServer(new VpsServer($VpsOrder->server_id));
  
-                $api->suspendVM($VpsOrder->node,$VpsOrder->vmid, $VpsOrder->username, $VpsOrder->type);
+                $vps_server = new VpsServer($VpsOrder->server_id);
+                $vps_server = $vps_server->select('*')->getRow();
+
+                $api->suspendVM($vps_server->name,$VpsOrder->vmid, $VpsOrder->username, $VpsOrder->type);
                 $api->disableBackupJob($VpsOrder->vmid);
                 
                 $VpsOrder->save();

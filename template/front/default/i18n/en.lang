@@ -541,7 +541,11 @@
     },
     "views\/vps\/order\/new.php": {
         "месяц": "month",
-        "ЗАКАЗАТЬ": "Order"
+        "ЗАКАЗАТЬ": "Order",
+        "mo": "",
+        " \/ mo": "",
+        " mo": "",
+        " \/mo": ""
     },
     "views\/domain\/owner\/edit.php": {
         "Добавить владельца": "Add an owner",

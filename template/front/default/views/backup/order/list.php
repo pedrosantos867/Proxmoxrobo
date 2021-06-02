@@ -35,37 +35,51 @@
                 <td><?= $backupOrder->type ?></td>
                 <td><?= $backupOrder->retention ?></td>
                 <? if($backupOrder->sunday){ ?>
-                <td class="dow">✓</td>
+                <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->monday){ ?>
-                <td class="dow">✓</td>
+                <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->tuesday){ ?>
-                <td class="dow">✓</td>
+                <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->wednesday){ ?>
-                <td class="dow">✓</td>
+                <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->thursday){ ?>
-                <td class="dow">✓</td>
+                <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->friday){ ?>
-                <td class="dow">✓</td>
+                <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->saturday){ ?>
-                <td class="dow">✓</td>
+                <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>

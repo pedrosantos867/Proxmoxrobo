@@ -1,5 +1,8 @@
 <!-- Plans -->
 <section id="plans">
+    <div class="text-center">
+        <h1>Pricing Plans</h1>
+    </div>
     <div class="container">
         <div class="row">
             <? $i=1; foreach ($plans as $plan) { ?>
@@ -16,8 +19,10 @@
                             <h3><?= $plan->name ?></h3>
                         </div>
                         <div class="panel-body text-center">
-                            <p><strong><?= $currency->displayPrice($plan->price) ?> /
-                                    <?= $_->l('месяц') ?></strong></p>
+                            <h1 class="card-title pricing-card-title">
+                                <?= $currency->displayPrice($plan->price) ?>
+                                <small class="text-muted"><?= $_->l(' / mo') ?></small>
+                            </h1>
                         </div>
                         <ul class="list-group text-center">
                             <li class="list-group-item">Image: <?= $plan->images ?></li>
@@ -48,7 +53,7 @@
 
                         </ul>
                         <div class="panel-footer">
-                            <a class="btn btn-lg btn-block btn-success"
+                            <a class="btn btn-lg btn-block btn-primary"
                                 href="<?= $_->link('vps-order/plan/' . $plan->id) ?>"><?= $_->l('ЗАКАЗАТЬ') ?>!</a>
                         </div>
                     </div>

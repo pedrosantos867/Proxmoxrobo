@@ -19,7 +19,7 @@
                 <th>Sat</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody>  
             <? if (count($backupOrders) == 0) { ?>
             <tr>
                 <td colspan="100%"><?=$_->l('No results found.')?></td>
@@ -29,43 +29,57 @@
             <? foreach ($backupOrders as $backupOrder) { ?>
             <tr>
                 <th scope="row"><?= $backupOrder->id ?></th>
-                <td><?= $backupOrder->backup_server_name ?></td>
+                <td><?= $backupOrder->storage ?></td>
                 <td><?= $backupOrder->vmid ?></td>
                 <td><a href="<?= $_->link('admin/client/info/' . $backupOrder->client_id) ?>"
                         class="ajax-modal"><?= $backupOrder->name ?></a></td>
 
                 <? if($backupOrder->sunday){ ?>
-                <td class="dow">X</td>
+                    <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->monday){ ?>
-                <td class="dow">X</td>
+                    <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->tuesday){ ?>
-                <td class="dow">X</td>
+                    <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->wednesday){ ?>
-                <td class="dow">X</td>
+                    <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->thursday){ ?>
-                <td class="dow">X</td>
+                    <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->friday){ ?>
-                <td class="dow">X</td>
+                    <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>>
                 <? }else{?>
                 <td></td>
                 <?}?>
                 <? if($backupOrder->saturday){ ?>
-                <td class="dow">X</td>
+                    <td>
+                    <p class="glyphicon glyphicon-ok dow" style="color:green"></p>
+                </td>
                 <? }else{?>
                 <td></td>
                 <?}?>

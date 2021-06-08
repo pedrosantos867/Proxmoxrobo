@@ -234,7 +234,7 @@ $(document).ready(function() {
                 <td>
                     <table class="my_table">
                         <? if($order->active == 1) {?>
-                        <? if($order->vm_status == "running"){ ?>
+                        <? if($order->vm_status == "running"){ ?>   
                         <tr>
                             <td>
                                 <button class="btn btn-xs btn-danger btn-stop"
@@ -285,6 +285,7 @@ $(document).ready(function() {
                         </tr>
                         <? } ?>
                         <? if( $order->vm_status != null ){ ?>
+                        <? if( $order->has_backup_configured ){ ?>
                         <tr>
                             <td>
                                 <button class="btn btn-xs btn-primary btn-backup-now"
@@ -294,8 +295,6 @@ $(document).ready(function() {
                                 </button>
                             </td>
                         </tr>
-
-                        <? if( $order->has_backup_configured ){ ?>
                         <tr>
                             <td>
                                 <a href="<?= $_->link('backup-orders/manage/'. $order->vmid) ?>"><span

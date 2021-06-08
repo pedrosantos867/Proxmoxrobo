@@ -115,8 +115,7 @@ return array(
     'admin/settings'                                                    => 'admin|settings',
     'admin/settings/social-auth'                                        => 'admin|settings|socialAuthSettings',
     'admin/settings/send-text-message'                                  => 'admin|settings|sendTextMessage',
-
-
+    'admin/settings/backup'                                             => 'admin|settings|backupSettings',
 
     'admin/tickets'                                                     => 'admin|tickets',
     'admin/ticket/change-status/([0-9]{1,})/(1|0|-1)'                   => 'admin|tickets|changeStatus|id_ticket=$1|status=$2',
@@ -208,12 +207,12 @@ return array(
     'reminder/code/([A-Za-z0-9]{0,})'                                   => 'front|user|reminder|code=$1',
     'reminder'                                                          => 'front|user|reminder',
 
-    'social/auth/(.*)'                                                       => 'front|user|socialAuth|back=$1',
+    'social/auth/(.*)'                                                  => 'front|user|socialAuth|back=$1',
     'social/auth'                                                       => 'front|user|socialAuth',
 
     'partner/getMoney'                                                  => 'front|partner|getMoney',
     'partner'                                                           => 'front|partner',
-    'balance/create-bill/([+]?[0-9]*\.?[0-9]{1,2})'                                   => 'front|balance|createBill|summ=$1',
+    'balance/create-bill/([+]?[0-9]*\.?[0-9]{1,2})'                     => 'front|balance|createBill|summ=$1',
 
     'domain-owner/add'                                                  => 'front|domainOwner|add',
 
@@ -262,9 +261,6 @@ return array(
     'vps-orders/prolong'                                                => 'front|VpsOrder|prolong',
     'vps-orders/remove'                                                 => 'front|VpsOrder|remove',
     
-    //Backups
-    'vps-actions/backup-now/([0-9]{1,})'                                => '', //New
-    
     'backup-orders'                                                     => 'front|backupOrders|list', //new
     'backup-orders/new'                                                 => 'front|backupOrders|new', //new
     'backup-orders/manage/([0-9]{1,})'                                  => 'front|backupOrders|manage|vmid=$1',
@@ -306,10 +302,10 @@ return array(
 
     'bug-report'                                                        => 'admin|bugReport',
     'install'                                                           => '|install',
-    'cron/(.*)' => '|cron|safeRun|key=$1',
+    'cron/(.*)'                                                         => '|cron|safeRun|key=$1',
     'cron'                                                              => '|cron',
 
-    'admin/modules/([A-Za-z0-9]{0,})/(.*)'                                    => '|modules|route|module=$1|route=$2|prefix=admin/',
+    'admin/modules/([A-Za-z0-9]{0,})/(.*)'                              => '|modules|route|module=$1|route=$2|prefix=admin/',
     'modules/([A-Za-z0-9]{0,})/(.*)'                                    => '|modules|route|module=$1|route=$2',
 
     'page/([A-Za-z0-9]{0,})' => 'front|page|display|page=$1',

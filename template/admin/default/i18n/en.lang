@@ -37,7 +37,9 @@
         "Тема тикета": "Subject",
         "Backup service": "",
         "Orders": "",
-        "Servers": ""
+        "Servers": "",
+        "Configure prices": "",
+        "Settings": ""
     },
     "views\/bill\/list.php": {
         "Дата": "Date",
@@ -941,5 +943,25 @@
         "Are you sure you want to delete this server? Deleting a server will delete all orders associated with this server!": "",
         "Delete": "",
         "No results found.": ""
+    },
+    "views\/backup\/prices.php": {
+        "Days of the week": "",
+        "Create": "",
+        "Price per GB of disk": "",
+        "Price per GB": "",
+        "Save": "",
+        "Enable incremental backups": "",
+        "Enable incremental backups (Proxmox Backup Server)": "",
+        "Enable full backups (Every other storage media)": "",
+        "Activate the ability to do incremental backups (Proxmox Backup Server)": "",
+        "Activate the ability to do full backups (Every other storage media)": "",
+        "Price per GB on PBS": "",
+        "Price per GB on other media": "",
+        "Price per GB on other storage media": "",
+        "Type of backup": "",
+        "Maximum number of retentions": "",
+        "Maximum number of backups per vm": "",
+        "Limit I\/O bandwidth (KBytes per second)": "",
+        "0 for unlimited": ""
     }
 }

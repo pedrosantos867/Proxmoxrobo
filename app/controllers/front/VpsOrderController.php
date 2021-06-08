@@ -332,7 +332,7 @@ class VpsOrderController extends FrontController {
 
 
             $domain = Tools::rPOST('domain');
-            $create_vm = $server->createVM($plan->node, $plan->type, $plan->memory, $plan->hdd, $plan->cores, $VpsOrder->image,$plan->sockets, $create_user->data, $VpsOrder->password, $plan->bandwith, $plan->net_type, $net, $domain, $plan->recipe);
+            $create_vm = $server->createVM($plan->node, $plan->type, $plan->memory, $plan->hdd, $plan->cores, $VpsOrder->image, $plan->socket, $create_user->data, $VpsOrder->password, $plan->bandwith, $plan->net_type, $net, $domain, $plan->recipe);
             if($create_vm->code == VPSAPI::ANSWER_CREATE_VM_SUCCESS){
 
                 $VpsOrder->vmid = $create_vm->data;

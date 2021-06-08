@@ -209,6 +209,15 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
     }
 
     public function createVM($node, $type, $memory, $hdd, $cores, $image, $socket, $user, $password, $bandwith, $net_type, $net=''){
+        //Verifies if Ceph storage is configured
+        $res = $this->pve->get('/cluster/resources?type=storage');
+        $ceph = null;
+
+        foreach($res["data"] as $storage){
+            if($storage["plugintype"] == "rbd"){
+                $ceph = $storage["storage"];
+            }
+        }
 
         if(!$this->is_logged){
             return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
@@ -218,24 +227,38 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         $vmid = $vmid['data'];
 
         if($type == 0) { //if is a vm
-            $res_create_disk = $this->pve->post('/nodes/' . $node . '/storage/local/content', array(
-                'filename' => 'vm-' . $vmid . '-disk-1.qcow2',
-                'format' => 'qcow2',
-                'size' => $hdd . 'G',
-                'vmid' => $vmid
-            ));
+            if($ceph){
+                $res_create_disk = $this->pve->post('/nodes/' . $node . '/storage/'.$ceph.'/content', array(
+                    'filename' => 'vm-' . $vmid . '-disk-1.qcow2',
+                    'format' => 'qcow2',
+                    'size' => $hdd . 'G',
+                    'vmid' => $vmid
+                ));
+            }else{
+                $res_create_disk = $this->pve->post('/nodes/' . $node . '/storage/local/content', array(
+                    'filename' => 'vm-' . $vmid . '-disk-1.qcow2',
+                    'format' => 'qcow2',
+                    'size' => $hdd . 'G',
+                    'vmid' => $vmid
+                ));
+            }
+            
             if(isset($res_create_disk['errors'])) {
                 Logger::log('ProxMox createVM error: ' . $res_create_disk['errors']);
             }
         }
 
-
         if($type == 0 && !isset($res_create_disk['errors']) || $type==1) {
 
             if($type == 0) { //If is a vm
                 $new_container_settings = array();
-                $new_container_settings['ide0'] = 'local:' . $vmid . '/vm-' . $vmid . '-disk-1.qcow2';
 
+                if($ceph){
+                    $new_container_settings['ide0'] = $ceph.':' . 'vm-' . $vmid . '-disk-1.qcow2';
+                }else{
+                    $new_container_settings['ide0'] = 'local:' . $vmid . '/vm-' . $vmid . '-disk-1.qcow2';
+                }
+                
                 if ($image) {
                     $new_container_settings['ide2'] = $image.',media=cdrom';//"local:iso/CentOS-6.5-x86_64-minimal.iso,media=cdrom";
                 }
@@ -398,7 +421,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
 
         $days = "";
         foreach($dow as $day){
-            $days . $day;
+            $days .= substr($day, 0, 3) . ",";
         }
 
         $payload = [

@@ -55,7 +55,6 @@ class BackupOrdersController extends FrontController {
 
     public function actionNew(){
         $view = $this->getView('backup/order/new.php');
-
          //Get all user vps's 
          $vpsOrderObject = new VpsOrder();
 
@@ -67,7 +66,7 @@ class BackupOrdersController extends FrontController {
  
          $view->vps_list = $vps_list;
          $this->layout->import('content', $view);
-
+        
         if (Tools::rPOST()) {
             if(!empty($_POST['check_list_vps']) && count($_POST['check_list_days']) > 0 && !empty(Tools::rPOST('backup_type')) && !empty(Tools::rPOST('backup_mode'))){
                 foreach($_POST['check_list_vps'] as $vmid){
@@ -131,12 +130,13 @@ class BackupOrdersController extends FrontController {
                     $bill->price              = $total_price;
                     $bill->date               = date("Y-m-d H:m:s");
                     $bill->type               = Bill::TYPE_BACKUP;
-
+                    $bill->backup_order_id    = $backupOrder->id;
                     if ($bill->save()) {
                         Notifier::NewBill($this->client, $bill);
                     }
 
-                    $api->createBackupJobForPBS($backupOrder->time, $dow, $vmid, $storage, $backupOrder->mode, $retention);                                      
+                    $api->createBackupJobForPBS($backupOrder->time, $dow, $vmid, $storage, $backupOrder->mode, $retention);      
+                    Tools::redirect('/bill/'.$bill->id);
                 }
             }
         }

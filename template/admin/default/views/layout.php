@@ -139,6 +139,11 @@
                                 <a><span class="glyphicon glyphicon-duplicate"></span>
                                         <?=$_->l('Backup service')?>  </a>
                                 <ul class="dropdown-menu">
+                                    <li <?= ($_->link($request) == $_->link('admin/settings/backup') ? 'class="active"' : '') ?>>
+                                        <a href="<?= $_->link('admin/settings/backup') ?>"><span
+                                                class="glyphicon glyphicon-wrench"
+                                                aria-hidden="true"></span><?=$_->l('Settings')?></a>
+                                    </li>
                                     <li <?= ($_->link($request) == $_->link('admin/backup-servers') ? 'class="active"' : '') ?>>
                                         <a href="<?= $_->link('admin/backup-servers') ?>"><span
                                                 class="glyphicon glyphicon-shopping-cart"

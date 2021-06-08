@@ -33,6 +33,25 @@ use update\Update;
 class SettingsController extends FrontController
 {
 
+    public function actionBackup(){
+        $backupConfig = new Config('backup');
+        $view = $this->getView('backup/prices.php');
+        $view->backupConfig = $backupConfig; 
+        $this->layout->import('content', $view);
+        
+        if (Tools::rPOST()) {
+            $backupConfig->pricePerGbPBS              = Tools::rPOST('pricePerGbPBS');
+            $backupConfig->pricePerGB                 = Tools::rPOST('pricePerGb');
+            $backupConfig->maxNumberOfRetentions      = Tools::rPOST('maxNumberOfRetentions');
+            $backupConfig->typeOfBackup               = Tools::rPOST('typeOfBackup');
+            $backupConfig->IOBandwidthLimit           = Tools::rPOST('IOBandwidthLimit');
+            $backupConfig->enableIncrementalBackups   = Tools::rPOST('enableIncrementalBackups');
+            $backupConfig->enableFullBackups          = Tools::rPOST('enableFullBackups'); 
+
+            $backupConfig->save();
+        }
+    }
+
     public function actionSendTextMessageAjax()
     {
         $config = Config::factory();

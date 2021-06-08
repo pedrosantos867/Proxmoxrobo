@@ -258,3 +258,38 @@
  on line: 59
  in func: run
  in class CronController
+2021-06-02 03:00:14 Exception in file C:\laragon\www\hopebilling\core\classes\System\View\View.php: File C:\laragon\www\hopebilling/template/admin/default/views/prices.php not exists.
+ in file: C:\laragon\www\hopebilling\core\classes\System\Exception.php
+ on line: 8
+ in func: __construct
+ in class System\Exception
+2021-06-02 03:00:48 Exception in file C:\laragon\www\hopebilling\core\classes\System\View\View.php: File C:\laragon\www\hopebilling/template/admin/default/views/backups/prices.php not exists.
+ in file: C:\laragon\www\hopebilling\core\classes\System\Exception.php
+ on line: 8
+ in func: __construct
+ in class System\Exception
+2021-06-08 12:12:12 ProxMox createUser error: 
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 158
+ in func: createUser
+ in class vps\proxmox\ProxMoxAPI
+2021-06-08 12:12:16 ProxMox createUser error: 
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 158
+ in func: createUser
+ in class vps\proxmox\ProxMoxAPI
+2021-06-08 12:35:54 ProxMox createUser error: 
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 158
+ in func: createUser
+ in class vps\proxmox\ProxMoxAPI
+2021-06-08 01:20:22 ProxMox createUser error: 
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 158
+ in func: createUser
+ in class vps\proxmox\ProxMoxAPI
+2021-06-08 01:22:35 ProxMox createUser error: 
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 158
+ in func: createUser
+ in class vps\proxmox\ProxMoxAPI

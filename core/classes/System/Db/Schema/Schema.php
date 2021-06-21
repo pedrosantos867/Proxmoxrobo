@@ -27,6 +27,7 @@ class Schema
         $table = new Table($table_name);
         $callback($table);
 
+        
         return $table;
     }
 

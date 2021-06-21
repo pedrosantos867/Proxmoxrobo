@@ -51,9 +51,22 @@ class Table
 
     public function timestamp($field)
     {
+        /*
+        $time = time();
+        $date = date('Y-m-d H:i:s', $time);
+        */
         $this->fields[$field] = array('type' => 'timestamp', 'nullable' => false, 'default' => "'1970-01-01 00:00:01'");
 
         return $this;
+    }
+
+    public function time($field)
+
+    {
+        $this->fields[$field] = array('type' => 'time', 'nullable' => false, 'default' => "'00:00:01'");
+
+        return $this;
+
     }
 
     public function text($field, $length = 800)
@@ -162,6 +175,8 @@ class Table
                 break;
             case 'timestamp':
                 return 'TIMESTAMP';
+            case 'time':
+                return 'TIME';
         }
     }
 

@@ -209,6 +209,18 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
     }
 
     public function createVM($node, $type, $memory, $hdd, $cores, $image, $socket, $user, $password, $bandwith, $net_type, $net=''){
+        if(!$this->is_logged){
+            return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
+        }
+
+        /*
+        if($type == 2){ //If is a Template we need to clone 
+            
+        }else{
+
+        }
+        */
+        
         //Verifies if Ceph storage is configured
         $res = $this->pve->get('/cluster/resources?type=storage');
         $ceph = null;
@@ -219,9 +231,6 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
             }
         }
 
-        if(!$this->is_logged){
-            return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
-        }
 
         $vmid = $this->pve->get('cluster/nextid');
         $vmid = $vmid['data'];
@@ -575,16 +584,18 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         $templates = array();
         $vps_list = array();
 
-        foreach($vps_server_list as $vps_server){
+        foreach($vps_server_list as $vps_server){// List of Nodes
             $vps_list = $this->pve->get('/nodes/'.$vps_server["node"].'/qemu')["data"];
         
-            foreach($vps_list as $vps){
+            foreach($vps_list as $vps){ // List of vms 
                 $vps_info = $this->pve->get('/nodes/'.$vps_server["node"].'/qemu/'.$vps["vmid"].'/config');
                 if(array_key_exists("template", $vps_info["data"]) && $vps_info["data"]["template"] == 1){
                     array_push($templates, [
-                        "node" => $vps_server["node"],
-                        "vmid" => $vps
-                        ]);
+                        "node"      => $vps_server["node"],
+                        "vmid"      => $vps,
+                        "cores"     => $vps_info["data"]["cores"],
+                        "sockets"   => $vps_info["data"]["sockets"]
+                    ]);
                 }
             }         
         }

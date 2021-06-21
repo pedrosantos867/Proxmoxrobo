@@ -74,10 +74,21 @@
 
                     <select id="available_vps_templates" name="available_vps_templates[]" multiple class="input-xlarge form-control"  data-validate="required">
                         <? foreach ($vmTemplates as $vmTemplate) { ?>
-                            <option value="<?=$vmTemplate['vmid']['vmid'] ?>"><?="VMID ".$vmTemplate['vmid']['vmid']." - Name: ".$vmTemplate['vmid']['name']." - Memory: ".$vmTemplate['vmid']['maxmem']." MB - Cores: ".$vmTemplate['vmid']['cpus'] ?></option>
+                            <option value="<?=$vmTemplate['vmid']['vmid'] ?>"><?="VMID: ".$vmTemplate['vmid']['vmid']." - Name: ".$vmTemplate['vmid']['name']." - Disk: " . round($vmTemplate['vmid']["maxdisk"] / 1024 / 1024 / 1024, 2). " GB - Memory: ".round($vmTemplate['vmid']["maxmem"] / 1024 / 1024, 2)." MB - Sockets: ".$vmTemplate['sockets'] . " - Cores: ".$vmTemplate['cores']?></option>
                         <? } ?>
                     </select>
                 </div>
+
+                <script>
+                    $('select#available_vps_templates').on('change',function(){
+                        var splitted = $('select#available_vps_templates').find(":selected").text().split(" ");
+                        
+                        $('input[name=memory]').val(splitted[11]);
+                        $('input[name=hdd]').val(splitted[7]);
+                        $('input[name=cores]').val(splitted[18]);
+                        $('input[name=socket]').val(splitted[15]);
+                    });   
+                </script>
             
                 <?
                 $net_types = [
@@ -211,20 +222,20 @@
                         $('#form-group-images').show();
                         $('#form-group-net_type').show();
                         $('#form-group-available_vps_templates').hide();
-                        $('input[name=memory]').prop('disabled', false);
-                        $('input[name=hdd]').prop('disabled', false);
-                        $('input[name=cores]').prop('disabled', false);
-                        $('input[name=socket]').prop('disabled', false);
+                        $('input[name=memory]').prop('readonly', false);
+                        $('input[name=hdd]').prop('readonly', false);
+                        $('input[name=cores]').prop('readonly', false);
+                        $('input[name=socket]').prop('readonly', false);
                     }
 
                     function hideNonTemplateImputs(){
                         $('#form-group-images').hide();
                         $('#form-group-net_type').hide();
                         $('#form-group-available_vps_templates').show();
-                        $('input[name=memory]').prop('disabled', true);
-                        $('input[name=hdd]').prop('disabled', true);
-                        $('input[name=cores]').prop('disabled', true);
-                        $('input[name=socket]').prop('disabled', true);
+                        $('input[name=memory]').prop('readonly', true);
+                        $('input[name=hdd]').prop('readonly', true);
+                        $('input[name=cores]').prop('readonly', true);
+                        $('input[name=socket]').prop('readonly', true);
                     }
                     
                     $('input[name=type]').on('change', function () {
@@ -265,9 +276,6 @@
                     </select>
 
                     <script>
-
-
-
                         $('select#available_servers').on('change',function(){
                             var server_id = ($(this).val());
                             panel = $(this).find('option:selected').data('panel');

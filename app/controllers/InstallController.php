@@ -660,7 +660,7 @@ class InstallController
                         ->bool('thursday')
                         ->bool('friday')
                         ->bool('saturday')
-                        ->timestamp('time')
+                        ->time('time')
                         ->timestamp('expire_date')
                         ->timestamp('timestamp')
                         ->bool('active', 1) //active by default

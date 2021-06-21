@@ -71,11 +71,18 @@ class VpsPlansController extends FrontController{
             $Plan->cores = Tools::rPOST('cores');
             $Plan->recipe = Tools::rPOST('recipe');
             $Plan->socket = Tools::rPOST('socket');
+
+            if(Tools::rPOST('type') != 2){
+                $Plan->setImages(Tools::rPOST('images'));
+            }else{
+                $Plan->images = Tools::rPost('available_vps_templates')[0];
+            }
+            
             $Plan->transfer = Tools::rPOST('transfer');
             $Plan->bandwith = Tools::rPOST('bandwith');
             $Plan->net_type = Tools::rPOST('net_type');
             $Plan->setServers(Tools::rPOST('available_servers'));
-            $Plan->setImages(Tools::rPOST('images'));
+            
             $Plan->save();
 
 /*
@@ -152,7 +159,6 @@ class VpsPlansController extends FrontController{
 
         $view->params = $params;
         $this->layout->import('content', $view);
-
     }
 
     public function actionHideShowRowAjax()

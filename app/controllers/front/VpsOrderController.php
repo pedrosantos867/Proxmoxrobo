@@ -234,6 +234,7 @@ class VpsOrderController extends FrontController {
         $VpsOrder->plan_id  = Tools::rPOST('id_plan');
         $VpsOrder->server_id  = Tools::rPOST('server');
         $VpsOrder->image  = Tools::rPOST('image');
+        $VpsOrder->date = date('Y-m-d H:i:s');
         $VpsOrder->paid_to  = date('Y-m-d');
 
         if(Tools::rPOST('pay_period') == 'test' && $plan->test_days > 0){

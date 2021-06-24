@@ -357,7 +357,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         if($type==1) {
             $res = $this->pve->delete("/nodes/$node/lxc/$vmid");
         } else{
-            $res = $this->pve->delete("/nodes/$node/qemu/$vmid");
+            $res = $this->pve->delete("/nodes/$node/qemu/$vmid?purge=1");
         }
 
         if(!isset($res['errors'])) {

@@ -447,13 +447,19 @@ class BillsController extends FrontController
        
         $html = '';
 
+        $html .=    '<style>
+                        .title{text-align: center; }
+                    </style>';
+
+        $html .= '<h1 class="title">Bill payment receipt</h1>';
+
         $html .= '<h1>Client name: '.$client->name.'</h1>';
         $html .= '<h3>E-mail: '.$client->email.'</h3>';
         
         $html .= '<h3>Invoice No: '.$bill->id.'</h3>';
         $html .= '<h3>Billing type: '.$bill->type.'</h3>';
 
-        $table .= '<table class="bordered">' ;
+        $table .= '<table border="1">' ;
 
         $header = '<tr><th>Hosting account</th><th>Order No</th><th>Hosting plan</th><th>Hosting plaan 2</th><th>Domain order No.</th><th>Period</th><th>Price</th><th>Total</th></tr>';
         $table .= $header;

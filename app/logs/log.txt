@@ -293,3 +293,138 @@
  on line: 158
  in func: createUser
  in class vps\proxmox\ProxMoxAPI
+2021-06-22 02:20:45 Running daily cron: checkAccounts
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 45
+ in func: run
+ in class CronController
+2021-06-22 02:20:45 Running daily cron: checkVpsAccounts
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 47
+ in func: run
+ in class CronController
+2021-06-22 02:20:55 Running daily cron: checkAccounts
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 45
+ in func: run
+ in class CronController
+2021-06-22 02:20:55 Running daily cron: checkVpsAccounts
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 47
+ in func: run
+ in class CronController
+2021-06-22 02:20:56 Running daily cron: checkCustomServices
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 49
+ in func: run
+ in class CronController
+2021-06-22 02:20:56 Running daily cron: disableOldBills
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 51
+ in func: run
+ in class CronController
+2021-06-22 02:20:56 Running daily cron: createBills
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 53
+ in func: run
+ in class CronController
+2021-06-22 02:20:56 Running daily cron: refreshCurrencies
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 55
+ in func: run
+ in class CronController
+2021-06-22 02:20:56 Running daily cron: refreshCurrencies
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 57
+ in func: run
+ in class CronController
+2021-06-22 02:20:56 Running daily cron: removeOldDomainOrders
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 59
+ in func: run
+ in class CronController
+2021-06-22 02:22:17 Running daily cron: checkAccounts
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 45
+ in func: run
+ in class CronController
+2021-06-22 02:22:17 Running daily cron: checkVpsAccounts
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 47
+ in func: run
+ in class CronController
+2021-06-22 02:22:18 Running daily cron: checkCustomServices
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 49
+ in func: run
+ in class CronController
+2021-06-22 02:22:18 Running daily cron: disableOldBills
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 51
+ in func: run
+ in class CronController
+2021-06-22 02:22:18 Running daily cron: createBills
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 53
+ in func: run
+ in class CronController
+2021-06-22 02:22:18 Running daily cron: refreshCurrencies
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 55
+ in func: run
+ in class CronController
+2021-06-22 02:22:18 Running daily cron: refreshCurrencies
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 57
+ in func: run
+ in class CronController
+2021-06-22 02:22:18 Running daily cron: removeOldDomainOrders
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 59
+ in func: run
+ in class CronController
+2021-06-22 03:13:35 Running daily cron: checkAccounts
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 45
+ in func: run
+ in class CronController
+2021-06-22 03:13:35 Running daily cron: checkVpsAccounts
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 47
+ in func: run
+ in class CronController
+2021-06-22 03:13:39 Running daily cron: checkCustomServices
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 49
+ in func: run
+ in class CronController
+2021-06-22 03:13:39 Running daily cron: disableOldBills
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 51
+ in func: run
+ in class CronController
+2021-06-22 03:13:39 Running daily cron: createBills
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 53
+ in func: run
+ in class CronController
+2021-06-22 03:13:39 Running daily cron: refreshCurrencies
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 55
+ in func: run
+ in class CronController
+2021-06-22 03:13:39 Running daily cron: refreshCurrencies
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 57
+ in func: run
+ in class CronController
+2021-06-22 03:13:39 Running daily cron: removeOldDomainOrders
+ in file: C:\laragon\www\hopebilling\app\controllers\CronController.php
+ on line: 59
+ in func: run
+ in class CronController
+2021-06-22 04:06:31 ProxMox createUser error: 
+ in file: C:\laragon\www\hopebilling\app\classes\vps\proxmox\ProxMoxAPI.php
+ on line: 158
+ in func: createUser
+ in class vps\proxmox\ProxMoxAPI

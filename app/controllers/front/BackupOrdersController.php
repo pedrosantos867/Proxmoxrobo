@@ -105,7 +105,7 @@ class BackupOrdersController extends FrontController {
                     }
 
                     $backupOrder = new BackupOrder();
-                    $backupOrder->storage = $api->getPBSWithMostStorageAvailable();
+                    $backupOrder->storage = $storage;
                     $backupOrder->vps_order_id = $row->id;
                     $backupOrder->client_id = $this->client->id;
                     $backupOrder->time = Tools::rPOST('time');

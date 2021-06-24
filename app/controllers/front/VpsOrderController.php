@@ -110,8 +110,9 @@ class VpsOrderController extends FrontController {
 
             try {
                 $api = VPSAPI::selectServer($vpsOrderObject->server_id);
+                $VpsServer = new VpsServer($vpsOrderObject->server_id);
                 //try delete orders from server
-                $api->removeVM("pve", $vpsOrderObject->vmid, $vpsOrderObject->username, $vpsOrderObject->type);
+                $api->removeVM($VpsServer->name, $vpsOrderObject->vmid, $vpsOrderObject->username, $vpsOrderObject->type);
                 $api->removeUser($vpsOrderObject->username);
             } catch (\System\Exception $e) {
                 //nothing to do

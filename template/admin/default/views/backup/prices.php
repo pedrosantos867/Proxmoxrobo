@@ -12,7 +12,7 @@
                     <div class="col-xs-3">
                         <div class="input-group ">
                             <div class="input-group-addon"><?= $this->currency->object->symbol?></div>
-                            <input type="text" class="form-control" id="pricePerGbPBS" placeholder="Amount" value=<?=$backupConfig->pricePerGbPBS?>>
+                            <input type="text" class="form-control" name="pricePerGbPBS" id="pricePerGbPBS" placeholder="Amount" value=<?=$backupConfig->pricePerGbPBS?>>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                         <label for="pricePerGB"><?=$_->l('Price per GB on other storage media')?></label>
                         <div class="input-group ">
                             <div class="input-group-addon"><?= $this->currency->object->symbol?></div>
-                            <input type="text" class="form-control" id="pricePerGB" placeholder="Amount" value=<?=$backupConfig->pricePerGB?>>
+                            <input type="text" class="form-control" name="pricePerGB" id="pricePerGB" placeholder="Amount" value=<?=$backupConfig->pricePerGB?>>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                     <div class="col-xs-3">
                         <label for="maxNumberOfRetentions"><?=$_->l('Maximum number of backups per vm')?></label>
                         <div class="input-group ">
-                            <input type="text" class="form-control" id="maxNumberOfRetentions" placeholder="Amount" value=<?=$backupConfig->maxNumberOfRetentions?>>
+                            <input type="text" class="form-control" name="maxNumberOfRetentions" id="maxNumberOfRetentions" placeholder="Amount" value=<?=$backupConfig->maxNumberOfRetentions?>>
                             <div class="input-group-addon">Backups</div>
                         </div>
                     </div>
@@ -47,46 +47,18 @@
 
             <div class="form-group">
                 <div class="row">
-                    <div class="col-xs-3">
-                        <label for="typeOfBackup"><?=$_->l('Type of backup')?></label>
-                        <select name="typeOfBackup" class="form-control">
-                            <option value="snapshot">Snapshot</option>
-                            <option value="suspend">Suspend</option>
-                            <option value="stop">Stop</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="row">
                     <div class="col-xs-5">
                         <label for="IOBandwidthLimit"><?=$_->l('Limit I/O bandwidth (KBytes per second)')?></label>
                         <div class="col">
                             <small class="text-muted"><?= $_->l('0 for unlimited') ?></small>
                         </div>
                         <div class="input-group ">
-                            <input type="text" class="form-control" id="IOBandwidthLimit" placeholder="Amount" value=<?=$backupConfig->IOBandwidthLimit?>>
+                            <input type="text" class="form-control" name="IOBandwidthLimit" id="IOBandwidthLimit" placeholder="Amount" value=<?=$backupConfig->IOBandwidthLimit?>>
                             <div class="input-group-addon">KBytes per second</div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" id="enableIncrementalBackups" name="enableIncrementalBackups" value="1">
-                    <?=$_->l('Activate the ability to do incremental backups (Proxmox Backup Server)')?>
-                </label>
-            </div>
-
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="enableFullBackups" value="1">
-                    <?=$_->l('Activate the ability to do full backups (Every other storage media)')?>
-                </label>
-            </div><br>
-
             <button class="btn btn-success"><?=$_->l('Save')?></button>
         </form>
     </div>

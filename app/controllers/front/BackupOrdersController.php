@@ -66,6 +66,7 @@ class BackupOrdersController extends FrontController {
  
          $view->vps_list = $vps_list;
          $this->layout->import('content', $view);
+         
         
         if (Tools::rPOST()) {
             if(!empty($_POST['check_list_vps']) && count($_POST['check_list_days']) > 0 && !empty(Tools::rPOST('backup_type')) && !empty(Tools::rPOST('backup_mode'))){

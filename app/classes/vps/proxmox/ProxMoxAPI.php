@@ -257,7 +257,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
             }
         }
 
-        if($type == 0 && !isset($res_create_disk['errors']) || $type==1) {
+        if($type == 0 && !isset($res_create_disk['errors']) || $type==1 || $type==2) {
 
             if($type == 0) { //If is a vm
                 $new_container_settings = array();
@@ -286,7 +286,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
                 $new_container_settings['net0'] .= ",rate=".$bandwith;
 
                 $res = $this->pve->post("/nodes/$node/qemu", $new_container_settings);
-            } else { //If is a container
+            } else if($type == 1) { //If is a container
                 $new_container_settings = array();
                 $new_container_settings['storage'] = 'local';
                 $new_container_settings['rootfs'] = $hdd;
@@ -317,6 +317,18 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
 
                 $res = $this->pve->post("/nodes/$node/lxc", $new_container_settings);
                
+            }else{
+                $nodeFrom = $this->getNodeFromVMID($image);
+                $params = [
+                    "description" => "Clone of vm ". $image,
+                    "format" => "qcow2",
+                    "full" => 1,
+                    "storage" => $ceph,
+                    "target" => $node,
+                    "newid" => $vmid
+                ];
+
+                $res = $this->pve->post("/nodes/$nodeFrom/qemu/$image/clone", $params);
             }
            
 
@@ -383,7 +395,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
     }
 
     public function enableBackupJob($vmid){
-        $backup_jobs = $this->pve('/cluster/backup');
+        $backup_jobs = $this->pve->get('/cluster/backup');
 
         $backup_job = null;
 
@@ -602,6 +614,23 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
 
         return $templates;
     }
+
+    public function getNodeFromVMID($vmid){
+        $nodes = $this->pve->get('/nodes')["data"];
+        $nodeName = "";
+
+        foreach($nodes as $node){
+            $vms = $this->pve->get('/nodes/'.$node['node'].'/qemu')["data"];
+            foreach($vms as $vm){
+                if($vmid == $vm["vmid"]){
+                    $nodeName = $node["node"];
+                    return $nodeName;
+                }
+            }
+        }
+        return "";
+    }
+
 
     public function getBackupJobByVMID($vmid){
         $jobs = $this->pve->get('/cluster/backup')["data"];

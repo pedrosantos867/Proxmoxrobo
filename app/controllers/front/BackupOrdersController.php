@@ -11,6 +11,7 @@ use Model\BackupServer;
 use Model\Bill;
 use System\Notifier;
 use System\Tools;
+use System\Config;
 use vps\VPSAPI;
 
 class BackupOrdersController extends FrontController {
@@ -55,6 +56,9 @@ class BackupOrdersController extends FrontController {
 
     public function actionNew(){
         $view = $this->getView('backup/order/new.php');
+
+        $backupsConfig = new Config('backup');
+
          //Get all user vps's 
          $vpsOrderObject = new VpsOrder();
 
@@ -64,6 +68,7 @@ class BackupOrdersController extends FrontController {
  
          $vps_list = $vpsOrderObject->getRows();
  
+         $view->backupsConfig = $backupsConfig->options;
          $view->vps_list = $vps_list;
          $this->layout->import('content', $view);
          
@@ -105,15 +110,16 @@ class BackupOrdersController extends FrontController {
                         $retention = 5;
                     }
 
-                    $backupOrder = new BackupOrder();
-                    $backupOrder->storage = $storage;
-                    $backupOrder->vps_order_id = $row->id;
-                    $backupOrder->client_id = $this->client->id;
-                    $backupOrder->time = Tools::rPOST('time');
-                    $backupOrder->expire_date = $vpsOrderToChange->paid_to;
-                    $backupOrder->timestamp = date("Y-m-d H:m:s");
-                    $backupOrder->mode = Tools::rPOST('backup_mode');
-                    $backupOrder->retention = $retention;
+                    $backupOrder                = new BackupOrder();
+                    $backupOrder->storage       = $storage;
+                    $backupOrder->vps_order_id  = $row->id;
+                    $backupOrder->client_id     = $this->client->id;
+                    $backupOrder->time          = Tools::rPOST('time');
+                    $backupOrder->expire_date   = $vpsOrderToChange->paid_to;
+                    $backupOrder->timestamp     = date("Y-m-d H:m:s");
+                    $backupOrder->mode          = Tools::rPOST('backup_mode');
+                    $backupOrder->retention     = $retention;
+                    
                     $backupOrder->type = $backup_type;
                     
                     foreach($_POST['check_list_days'] as $day){
@@ -127,8 +133,14 @@ class BackupOrdersController extends FrontController {
                     
                     $bill                     = new Bill();
                     $bill->client_id          = $this->client->id;
-                    $bill->total              = $total_price;
-                    $bill->price              = $total_price;
+
+                    if($backup_type == "incremental"){
+                        $bill->total          = 2 + $backupsConfig->options["pricePerGbPBS"]+(count($dow)*0.3)+($retention*0.5);
+                    }else{
+                        $bill->total          = 2 + $backupsConfig->options["pricePerGB"]+(count($dow)*0.3)+($retention*0.5);
+                    }
+                    
+                    $bill->price              = $bill->total;
                     $bill->date               = date("Y-m-d H:m:s");
                     $bill->type               = Bill::TYPE_BACKUP;
                     $bill->backup_order_id    = $backupOrder->id;
@@ -136,7 +148,7 @@ class BackupOrdersController extends FrontController {
                         Notifier::NewBill($this->client, $bill);
                     }
 
-                    $api->createBackupJobForPBS($backupOrder->time, $dow, $vmid, $storage, $backupOrder->mode, $retention);      
+                    $api->createBackupJobForPBS($backupOrder->time, $dow, $vmid, $storage, $backupOrder->mode, $retention, $backupsConfig->options["IOBandwidthLimit"]);      
                     Tools::redirect('/bill/'.$bill->id);
                 }
             }

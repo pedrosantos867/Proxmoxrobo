@@ -17,7 +17,8 @@
                             <span class="input-group-addon">
                                 <input type="checkbox" name="check_list_days[]" aria-label="" value="<? echo $day?>">
                             </span>
-                            <input type="text" class="form-control" aria-label="..." readonly value="<? echo ucfirst($day)?>">
+                            <input type="text" class="form-control" aria-label="..." readonly
+                                value="<? echo ucfirst($day)?>">
                         </div>
                     </div>
                 </div>
@@ -55,7 +56,8 @@
                         </div>
                         <div>
                             <i class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="right"
-                                title="Incremental backups" data-content="Incremental backups are faster but the administrator needs to configure a PBSServer."></i>
+                                title="Incremental backups"
+                                data-content="Incremental backups are faster but the administrator needs to configure a PBSServer."></i>
                         </div>
                     </div>
 
@@ -69,8 +71,9 @@
                             </div>
                         </div>
                         <div>
-                        <i class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="right"
-                                title="Full backups" data-content="Full backups are slower and can result in a longer downtime."></i>
+                            <i class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="right"
+                                title="Full backups"
+                                data-content="Full backups are slower and can result in a longer downtime."></i>
                         </div>
                     </div>
                 </div><br>
@@ -110,7 +113,8 @@
                         </div>
                         <div>
                             <i class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="right"
-                                title="Attention" data-content="This mode will only work if your VPS have the Qemu Guest Agent installed!"></i>
+                                title="Attention"
+                                data-content="This mode will only work if your VPS have the Qemu Guest Agent installed!"></i>
                         </div>
                     </div>
                 </div><br>
@@ -136,18 +140,41 @@
                         </div>
                     </div>
                 </div>
+                <div class="from-group">
+                    <label class="control-label" for="price_to_pay"><?=$_->l('Price to pay')?></label>
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value="1">
+                        <span class="input-group-addon">.00</span>
+                    </div>
+                </div>
             </div>
         </div>
         <button class="btn btn-success"><?=$_->l('Create')?></button>
     </form>
     <script>
-    $(document).ready(function() {
-        $('[data-toggle="popover"]').popover();
-    });
+        $(document).ready(function() {
+            $('[data-toggle="popover"]').popover();
+        });
+
+        $('input[name=retention]').on('change', function () {
+            calculatePrice();
+            //alert("asdasd")
+        });
+
+        $('input[name=backup_type]').on('change', function () {
+            //alert("select")
+            calculatePrice();
+        });
+
+        function calculatePrice(){
+            //var backup_type = 
+            //var 
+        }
     </script>
     <style>
-        .row{
-            padding-bottom: 0.5em;
-        }
+    .row {
+        padding-bottom: 0.5em;
+    }
     </style>
 </div>

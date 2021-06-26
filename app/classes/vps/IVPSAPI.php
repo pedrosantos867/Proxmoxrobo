@@ -90,5 +90,5 @@ interface IVPSAPI
      * @param $server string server to backup to 
      * @return object result 
      */
-    public function createBackupJobForPBS($starttime, $dow, $vmid, $storage, $mode, $retention);
+    public function createBackupJobForPBS($starttime, $dow, $vmid, $storage, $mode, $retention, $speedLimit);
 }

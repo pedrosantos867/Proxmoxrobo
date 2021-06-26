@@ -676,7 +676,8 @@
         "Incremental": "",
         "Full backup": "",
         "Backup mode": "",
-        "Maximum number of stored backups": ""
+        "Maximum number of stored backups": "",
+        "Price to pay": ""
     },
     "views\/backup\/order\/manage.php": {
         "Data": "",

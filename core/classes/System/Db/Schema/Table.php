@@ -51,10 +51,7 @@ class Table
 
     public function timestamp($field)
     {
-        /*
-        $time = time();
-        $date = date('Y-m-d H:i:s', $time);
-        */
+
         $this->fields[$field] = array('type' => 'timestamp', 'nullable' => false, 'default' => "'1970-01-01 00:00:01'");
 
         return $this;

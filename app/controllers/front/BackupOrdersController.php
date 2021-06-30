@@ -115,8 +115,8 @@ class BackupOrdersController extends FrontController {
                     $backupOrder->vps_order_id  = $row->id;
                     $backupOrder->client_id     = $this->client->id;
                     $backupOrder->time          = Tools::rPOST('time');
-                    $backupOrder->expire_date   = $vpsOrderToChange->paid_to;
-                    $backupOrder->timestamp     = date("Y-m-d H:m:s");
+                    $backupOrder->expire_date   = date("Y-m-d H:i:s"); //time will be added when the bill is paid (app\classes\model\Bill.php)
+                    $backupOrder->timestamp     = date("Y-m-d H:i:s");
                     $backupOrder->mode          = Tools::rPOST('backup_mode');
                     $backupOrder->retention     = $retention;
                     
@@ -141,7 +141,7 @@ class BackupOrdersController extends FrontController {
                     }
                     
                     $bill->price              = $bill->total;
-                    $bill->date               = date("Y-m-d H:m:s");
+                    $bill->date               = date("Y-m-d H:i:s");
                     $bill->type               = Bill::TYPE_BACKUP;
                     $bill->backup_order_id    = $backupOrder->id;
                     if ($bill->save()) {

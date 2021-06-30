@@ -176,6 +176,15 @@ class Bill extends \System\ObjectModel
 
                     VPSAPI::selectServer(new VpsServer($VpsOrder->server_id))->unsuspendVM($VpsOrder->node, $VpsOrder->vmid, $VpsOrder->username, $VpsOrder->type);
                 }
+            }else if($bill->type == self::TYPE_BACKUP){
+                $BackupOrder = new BackupOrder($bill->backup_order_id);
+                $client             = new Client($BackupOrder->client_id);
+                $client->rev        += $bill->total;
+                $client->ref_rev    += $bill->total;
+                $client->save();
+
+                $BackupOrder->expire_date = date("Y-m-d H:i:s", strtotime("+1 month", strtotime($BackupOrder->expire_date)));
+                $BackupOrder->save();
             }
 
             \System\Module::extendMethod('payBill', $bill);

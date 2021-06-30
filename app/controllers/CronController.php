@@ -46,6 +46,8 @@ class CronController
             $this->checkAccounts();
             \System\Logger::log('Running daily cron: checkVpsAccounts');
             $this->checkVpsAccounts();
+            \System\Logger::log('Running daily cron: checkBackupJobs');
+            $this->checkBackupJobs();
             \System\Logger::log('Running daily cron: checkCustomServices');
             $this->checkCustomServices();
             \System\Logger::log('Running daily cron: disableOldBills');
@@ -117,6 +119,53 @@ class CronController
         }
     }
 
+    public function checkBackupJobs(){
+        $backupObject = new BackupOrder();
+        $backupOrders = $backupObject->getRows();
+
+        foreach($backupOrders as $backupOrder){
+            $time_now     = time();
+            $backup_paid  = strtotime($backupOrder->expire_date);
+
+            if($backupOrder->active == 1 && ($backup_paid - $time_now < 86400 * 3) && ($backup_paid - $time_now) >= 0){
+                $bill = new \model\Bill();
+                $res  = $bill
+                    ->where('type', Bill::TYPE_BACKUP)
+                    ->where('backup_order_id', $backupOrder->id)
+                    ->where('client_id', $backupOrder->client_id)
+                    ->where('is_paid', 0)->getRow();
+
+                if (!($res)) {
+                    $bill = new Bill();
+                    $bill->client_id            = $backupOrder->client_id;
+                    $bill->type                 = Bill::TYPE_BACKUP; 
+                    $bill->backup_order_id      = $backupOrder->id;
+                    $bill->pay_period           = 1; 
+                    $bill->price                = 1; //TODO 
+                    $bill->is_paid              = 0; 
+                    $bill->total                = 1; //TODO 
+                    $bill->date                 = date('Y-m-d');
+                
+                    $client = new Client($backupOrder->client_id);
+    
+                    if ($bill->save()) {
+                        Notifier::NewBill($client, $bill);
+                    }
+                }
+            }
+
+            if (time() >= $backup_paid && $backupOrder->active == 1) { //se deixar de pagar
+                $bo = new BackupOrder($backupOrder->id);
+                $bo->active = 0;
+                $bo->save();
+                $VpsOrder = new VpsOrder($backupOrder->vps_order_id);
+                $VpsServer = new VpsServer();
+                $api = VPSAPI::selectServer(new VpsServer($VpsOrder->server_id));
+                $api->disableBackupJob($VpsOrder->vmid);
+            }
+        }
+    }
+
     public function checkVpsAccounts(){
         $VpsOrder = new VpsOrder();
         $vps_orders = $VpsOrder->getRows();
@@ -133,24 +182,19 @@ class CronController
 
             $client = new Client($VpsOrder->client_id);
 
-            if ($VpsOrder->active && ($account_paid - $time_now < 86400 * 3) && ($account_paid - $time_now) >= 0) {
+            if ($VpsOrder->active && ($account_paid - $time_now < 86400 * 3) && ($account_paid - $time_now) >= 0) { //If active and 3 days before expire
 
                 $time = $account_paid - $time_now;
                 $days = ceil($time / (60 * 60 * 24));
 
-
-
-
                 $bill = new \model\Bill();
                 $res  = $bill
-                    ->where('type', Bill::TYPE_ORDER)
+                    ->where('type', Bill::TYPE_VPS)
                     ->where('hosting_account_id', $VpsOrder->id)
                     ->where('client_id', $VpsOrder->client_id)
                     ->where('is_paid', 0)->getRow();
 
                 if (!($res)) {
-
-
                     $bill       = new \model\Bill();
 
                     $plan = new \model\VpsPlan($VpsOrder->plan_id);
@@ -173,11 +217,12 @@ class CronController
 //echo time().' -- '.$account_paid. '<br>';
 
             if (time() >= $account_paid && $VpsOrder->active == 1) { //se deixar de pagar
+                /*
                 $backup_order = new BackupOrder();
                 $backup_order = new BackupOrder($backup_order->where(BackupOrder::getInstance(), 'vps_order_id', $VpsOrder->id)->getRow());
                 $backup_order->active = 0;
                 $backup_order->save();
-                
+                */
                 $VpsOrder->active = 0;
                 $api = VPSAPI::selectServer(new VpsServer($VpsOrder->server_id));
  
@@ -185,7 +230,7 @@ class CronController
                 $vps_server = $vps_server->select('*')->getRow();
 
                 $api->suspendVM($vps_server->name,$VpsOrder->vmid, $VpsOrder->username, $VpsOrder->type);
-                $api->disableBackupJob($VpsOrder->vmid);
+                //$api->disableBackupJob($VpsOrder->vmid);
                 
                 $VpsOrder->save();
 

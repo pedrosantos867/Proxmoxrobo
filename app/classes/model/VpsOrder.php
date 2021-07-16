@@ -13,7 +13,10 @@ class VpsOrder extends ObjectModel{
             try {
                 $api = VPSAPI::selectServer($this->server_id);
                 //try delete orders from server
-                $api->removeVM("pve", $this->vmid, $this->username, $this->type);
+                $vps_plan = new VpsPlan();
+                $vps_plan = $vps_plan->select('*')->where(VpsPlan::getInstance(), 'id', $this->plan_id)->getRow();
+                
+                $api->removeVM($vps_plan->node, $this->vmid, $this->username, $this->type);
                 $api->removeUser($this->username);
             } catch (\System\Exception $e) {
                 //nothing to do

@@ -964,6 +964,8 @@
         "Maximum number of retentions": "",
         "Maximum number of backups per vm": "",
         "Limit I\/O bandwidth (KBytes per second)": "",
-        "0 for unlimited": ""
+        "0 for unlimited": "",
+        "Price for incremental backup": "",
+        "Price on other storage media": ""
     }
 }

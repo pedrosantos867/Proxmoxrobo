@@ -40,8 +40,6 @@ class CronController
 
             Module::extendMethod('hourlyCronUpdate');
         } else {
-            //$this->checkVPSNetworkingCap();
-            //\System\Logger::log('Running daily cron: checkVPSNetworkingCap');
             \System\Logger::log('Running daily cron: checkAccounts');
             $this->checkAccounts();
             \System\Logger::log('Running daily cron: checkVpsAccounts');
@@ -115,7 +113,6 @@ class CronController
                 $bill->is_paid = -1;
                 $bill->save();
             }
-
         }
     }
 
@@ -214,15 +211,8 @@ class CronController
 
                 }
             }
-//echo time().' -- '.$account_paid. '<br>';
 
             if (time() >= $account_paid && $VpsOrder->active == 1) { //se deixar de pagar
-                /*
-                $backup_order = new BackupOrder();
-                $backup_order = new BackupOrder($backup_order->where(BackupOrder::getInstance(), 'vps_order_id', $VpsOrder->id)->getRow());
-                $backup_order->active = 0;
-                $backup_order->save();
-                */
                 $VpsOrder->active = 0;
                 $api = VPSAPI::selectServer(new VpsServer($VpsOrder->server_id));
  
@@ -230,11 +220,10 @@ class CronController
                 $vps_server = $vps_server->select('*')->getRow();
 
                 $api->suspendVM($vps_server->name,$VpsOrder->vmid, $VpsOrder->username, $VpsOrder->type);
-                //$api->disableBackupJob($VpsOrder->vmid);
                 
                 $VpsOrder->save();
 
-            } else if ($VpsOrder->active == 0 && time() < $account_paid) {//se voltar a pagar
+            } else if ($VpsOrder->active == 0 && time() < $account_paid) { //se voltar a pagar
                 $VpsOrder->active = 1;
                 VPSAPI::selectServer(new VpsServer($VpsOrder->server_id))->unsuspendVM($VpsOrder->node,$VpsOrder->vmid, $VpsOrder->username, $VpsOrder->type);
                 $VpsOrder->save();

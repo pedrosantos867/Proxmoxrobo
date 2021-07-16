@@ -224,7 +224,7 @@ $(document).ready(function() {
                 </td>
                 <td class="div-center">
                     <span class="label label-default">VMID: <?= $order->vmid ?></span>
-                    <span class="label label-default">Server: <?= $order->server_name ?></span>
+                    <span class="label label-default">Server: <?= $order->node ?></span>
                     <? if( $order->has_qga_configured){ ?>
                     <span class="label label-success"><?= $_->l('QGA: Yes') ?></span>
                     <? } else {?>
@@ -289,7 +289,7 @@ $(document).ready(function() {
                         <tr>
                             <td>
                                 <button class="btn btn-xs btn-primary btn-backup-now"
-                                    value=<?=$order->server_name.":".$order->vmid?>>
+                                    value=<?=$order->node.":".$order->vmid?>>
                                     <span class="glyphicon glyphicon-duplicate"></span>
                                     <?= $_->l('Backup now') ?>
                                 </button>

@@ -190,10 +190,6 @@ return array(
 
     'admin/vps-params/remove'                                           => 'admin|VpsParams|remove',
 
-    'admin/backup-servers'                                              => 'admin|BackupServers|list',
-    'admin/backup-servers/edit'                                         => 'admin|BackupServers|edit',
-    'admin/backup-servers/remove'                                       => 'admin|BackupServers|remove',
-
     'admin/backup-orders'                                               => 'admin|BackupOrders|list',
     'admin/backup-orders/edit'                                          => 'admin|BackupOrders|edit',
     'admin/backup-orders/remove'                                        => 'admin|BackupOrders|remove',

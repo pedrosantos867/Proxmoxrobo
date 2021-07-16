@@ -7,12 +7,12 @@
         <form method="POST">
             <h3>Pricing</h3>
             <div class="form-group">
-                <label for="pricePerGbPBS"><?=$_->l('Price per GB on PBS')?></label>
+                <label for="pricePBS"><?=$_->l('Price for an incremental backup')?></label>
                 <div class="row">
                     <div class="col-xs-3">
                         <div class="input-group ">
                             <div class="input-group-addon"><?= $this->currency->object->symbol?></div>
-                            <input type="text" class="form-control" name="pricePerGbPBS" id="pricePerGbPBS" placeholder="Amount" value=<?=$backupConfig->pricePerGbPBS?>>
+                            <input type="text" class="form-control" name="pricePBS" id="pricePBS" placeholder="Amount" value=<?=$backupConfig->pricePBS?>>
                         </div>
                     </div>
                 </div>
@@ -21,10 +21,10 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-xs-3">
-                        <label for="pricePerGB"><?=$_->l('Price per GB on other storage media')?></label>
+                        <label for="priceNAS"><?=$_->l('Price for an complete backup')?></label>
                         <div class="input-group ">
                             <div class="input-group-addon"><?= $this->currency->object->symbol?></div>
-                            <input type="text" class="form-control" name="pricePerGB" id="pricePerGB" placeholder="Amount" value=<?=$backupConfig->pricePerGB?>>
+                            <input type="text" class="form-control" name="priceNAS" id="priceNAS" placeholder="Amount" value=<?=$backupConfig->priceNAS?>>
                         </div>
                     </div>
                 </div>

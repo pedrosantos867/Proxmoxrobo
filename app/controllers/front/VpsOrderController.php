@@ -88,15 +88,16 @@ class VpsOrderController extends FrontController {
         $vps_server_object = new VpsServer();
 
         foreach($orders as $order){
+            $vps_plan = new VpsPlan();
+            $vps_plan = $vps_plan->select('*')->where(VpsPlan::getInstance(), 'id', $order->plan_id)->getRow();
             $vps_server_object->select('*')->where(VpsServer::getInstance(), 'id', $order->server_id);
             $vps_server = $vps_server_object->getRow();
-
-            $order->vm_status = $api->getVMStatus($vps_server->name, $order->vmid);
-            $order->has_qga_configured = $api->hasQemuGestAgentConfigured($vps_server->name, $order->vmid);
+            $order->node = $vps_plan->node;
+            $order->vm_status = $api->getVMStatus($vps_plan->node, $order->vmid);
+            $order->has_qga_configured = $api->hasQemuGestAgentConfigured($vps_plan->node, $order->vmid);
         }
 
         $this->layout->import('content', $view);
-
     }
 
     public function actionRemoveAjax()
@@ -419,11 +420,15 @@ class VpsOrderController extends FrontController {
         }
         $order = $orderAux;
 
+        /*
         $vps_server_object = new VpsServer();
         $vps_server_object->select('*')->where(VpsServer::getInstance(), 'id', $order["server_id"]);
         $vps_server = $vps_server_object->getRow();
+        */
 
-        $node_name = $vps_server->name;  
+        $vps_plan = new VpsPlan();
+        $vps_plan = $vps_plan->select('*')->where(VpsPlan::getInstance(), 'id', $order["plan_id"])->getRow();
+        $node_name = $vps_plan->node;  
 
         $VpsServerObject = new VpsServer();
         $server = $VpsServerObject->select('*')->limit(1)->getRow();
@@ -434,26 +439,6 @@ class VpsOrderController extends FrontController {
     }
 
     public function actionAccessWithNoVNCAjax(){
-        /*
-        $order = Tools::rPOST('order');
-        $order = urldecode($order[0]);
-        $order = explode(',', $order);
-
-        $orderAux = array();
-        foreach($order as $o){
-            $splited = explode('=', $o);
-            $orderAux[$splited[0]]  = $splited[1];
-        }
-        $order = $orderAux;
-
-        $VpsServerObject = new VpsServer();
-        $server = $VpsServerObject->select('*')->limit(1)->getRow();
-
-        $api = VPSAPI::selectServer($server->id);
-        $res = $api->createNoVNCSocket();
-
-        echo $res;
-        */
         $order = Tools::rPOST('order');
         $order = urldecode($order[0]);
         $order = explode(',', $order);
@@ -469,9 +454,12 @@ class VpsOrderController extends FrontController {
         $server = $VpsServerObject->select('*')->limit(1)->getRow();
         $api = VPSAPI::selectServer($server->id);
 
-        $password = $api->createVNCConnection($order["server_name"], $order["vmid"]);
+        $password = $api->createVNCConnection($order["node"], $order["vmid"]);
         
-        $host = parse_url($order["server_host"])["host"];
+        $vps_server = new VpsServer();
+        $vps_server = $vps_server->select('*')->where(VpsServer::getInstance(), 'name', $order["node"])->getRow();
+
+        $host = parse_url($vps_server->host)["host"];
         $port = 5900 + $order["vmid"];
 
         echo $host, " ", $port, " ", $password;

@@ -177,7 +177,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         if(!$this->is_logged){
             return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
         }
-
+        
         $response = $this->pve->get('/nodes/' . $node . '/qemu/' . $vmid . '/status/current');
 
         return $status = $response["data"]["status"];
@@ -435,7 +435,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         return $this->pve->put('/cluster/backup/'.$backup_job["id"], $parameters);
     }
 
-    public function createBackupJobForPBS($starttime, $dow, $vmid, $storage, $mode, $retention, $speedLimit){ //TODO: add mode (snapshot, suspend or stop)
+    public function createBackupJobForPBS($starttime, $dow, $vmid, $storage, $mode, $retention, $speedLimit){ 
         if($starttime == null || $dow == null || $vmid == null){
             return;
         }
@@ -454,7 +454,7 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
             'vmid' => $vmid,
             'bwlimit' => $speedLimit,
             'enabled' => 1
-            //'prune-backups' => "keep-last".$retention
+            //'prune-backups' => "keep-last".$retention //Not 
         ];
 
         $this->pve->post("/cluster/backup", $payload);

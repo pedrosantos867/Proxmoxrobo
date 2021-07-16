@@ -7,6 +7,7 @@ use model\BackupOrder;
 use Model\Client;
 use Model\VpsServer;
 use Model\VpsOrder;
+use Model\VpsPlan;
 use Model\BackupServer;
 use Model\Bill;
 use System\Notifier;
@@ -76,7 +77,6 @@ class BackupOrdersController extends FrontController {
         if (Tools::rPOST()) {
             if(!empty($_POST['check_list_vps']) && count($_POST['check_list_days']) > 0 && !empty(Tools::rPOST('backup_type')) && !empty(Tools::rPOST('backup_mode'))){
                 foreach($_POST['check_list_vps'] as $vmid){
-                    $total_price = 1;
                     $vpsOrderAux = new VpsOrder();
                     $vpsOrderAux->select('*')->where('vmid', '=', $vmid);
                     
@@ -135,9 +135,9 @@ class BackupOrdersController extends FrontController {
                     $bill->client_id          = $this->client->id;
 
                     if($backup_type == "incremental"){
-                        $bill->total          = 2 + $backupsConfig->options["pricePerGbPBS"]+(count($dow)*0.3)+($retention*0.5);
+                        $bill->total          = 2 + $backupsConfig->options["pricePBS"]+(count($dow)*0.3)+($retention*0.5);
                     }else{
-                        $bill->total          = 2 + $backupsConfig->options["pricePerGB"]+(count($dow)*0.3)+($retention*0.5);
+                        $bill->total          = 2 + $backupsConfig->options["priceNAS"]+(count($dow)*0.3)+($retention*0.5);
                     }
                     
                     $bill->price              = $bill->total;
@@ -174,9 +174,12 @@ class BackupOrdersController extends FrontController {
         $backup_order_object->select('*')
                             ->where(BackupOrder::getInstance(), 'vps_order_id', $vps->id);
 
+        $vps_plan = new VpsPlan();
+        $vps_plan = $vps_plan->select('*')->where(VpsPlan::getInstance(), 'id', $vps->plan_id)->getRow();
+
         $backup = $backup_order_object->getRow();
 
-        $backup_list = $api->getBackupsByVMID($server->name, $vmid, $backup->storage);
+        $backup_list = $api->getBackupsByVMID($vps_plan->node, $vmid, $backup->storage);
     
         $view->backup_list = $backup_list["data"];
         $this->layout->import('content', $view);
@@ -212,9 +215,12 @@ class BackupOrdersController extends FrontController {
             'archive' => $backup["volid"] 
         ];
 
-        $api->removeVM($vps_server->name, $backup["vmid"], "", 0);
+        $vps_plan = new VpsPlan();
+        $vps_plan = $vps_plan->select('*')->where(VpsPlan::getInstance(), 'id', $vps_order->plan_id)->getRow();
 
-        return $api->restoreBackup($vps_server->name, $paramenters);
+        $api->removeVM($vps_plan->node, $backup["vmid"], "", 0);
+
+        return $api->restoreBackup($vps_plan->node, $paramenters);
     }
 
     public function actionDeleteBackupAjax(){
@@ -243,6 +249,9 @@ class BackupOrdersController extends FrontController {
         $backup_order_object->select('*')->where('vps_order_id', $vps_order->id);
         $backup_order = $backup_order_object->getRow();
 
-        $api->deleteBackup($server->name, $backup_order->storage, $backup["volid"]);
+        $vps_plan = new VpsPlan();
+        $vps_plan = $vps_plan->select('*')->where(VpsPlan::getInstance(), 'id', $vps_order->plan_id)->getRow();
+
+        $api->deleteBackup($vps_plan->node, $backup_order->storage, $backup["volid"]);
     }
 }

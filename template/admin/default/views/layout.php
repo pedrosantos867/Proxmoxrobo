@@ -144,11 +144,6 @@
                                                 class="glyphicon glyphicon-wrench"
                                                 aria-hidden="true"></span><?=$_->l('Settings')?></a>
                                     </li>
-                                    <li <?= ($_->link($request) == $_->link('admin/backup-servers') ? 'class="active"' : '') ?>>
-                                        <a href="<?= $_->link('admin/backup-servers') ?>"><span
-                                                class="glyphicon glyphicon-shopping-cart"
-                                                aria-hidden="true"></span><?=$_->l('Servers')?></a>
-                                    </li>
                                     <li <?= ($_->link($request) == $_->link('admin/backup-orders') ? 'class="active"' : '') ?>>
                                         <a href="<?= $_->link('admin/backup-orders') ?>"><span
                                                 class="glyphicon glyphicon-hdd"

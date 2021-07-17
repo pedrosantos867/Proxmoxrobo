@@ -457,22 +457,17 @@ class BillsController extends FrontController
         $html .= '<h3>E-mail: '.$client->email.'</h3>';
         
         $html .= '<h3>Invoice No: '.$bill->id.'</h3>';
-        $html .= '<h3>Billing type: '.$bill->type.'</h3>';
+        $html .= '<h3>Service brought: '.$bill->type.'</h3>';
 
         $table .= '<table border="1">' ;
 
-        $header = '<tr><th>Hosting account</th><th>Order No</th><th>Hosting plan</th><th>Hosting plaan 2</th><th>Domain order No.</th><th>Period</th><th>Price</th><th>Total</th></tr>';
+        $header = '<tr><th>Hosting account</th><th>Period</th><th>Total</th></tr>';
         $table .= $header;
         
         $table.= '<tr>';
 
         $table .= '<td>'.$bill->hosting_account_id.'</td>';
-        $table .= '<td>'.$bill->service_order_id.'</td>';
-        $table .= '<td>'.$bill->hosting_plan_id.'</td>';
-        $table .= '<td>'.$bill->hosting_plan_id2.'</td>';
-        $table .= '<td>'.$bill->domain_order_id.'</td>';
         $table .= '<td>'.$bill->pay_period.'</td>';
-        $table .= '<td>'.$bill->price.'</td>';
         $table .= '<td>'.$bill->total.'</td>';
 
         $table.= '</tr>';

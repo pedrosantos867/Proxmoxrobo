@@ -39,7 +39,10 @@
         "Orders": "",
         "Servers": "",
         "Configure prices": "",
-        "Settings": ""
+        "Settings": "",
+        "VPS": "",
+        "Virtual Private Servers": "",
+        "Labels": ""
     },
     "views\/bill\/list.php": {
         "Дата": "Date",
@@ -504,14 +507,15 @@
         "Домен был отредактирован!": "The domain  has been successfully saved!",
         "Информация о администраторе успешно сохранена!": "Successfully saved!",
         "Свойство уже существует!": "The option already exists!",
-        "Соединение установленно!": "The connection is established!",
+        "Соединение установленно!": "Connection established!",
         "Сервер не отвечает!": "The server doesn't not respond!",
         "Тариф был успешно удален": "A tarifa foi excluída com sucesso",
-        "Услуга успешно добавлена": "",
-        "Услуга успешно удалена": "",
-        "Успешно удалено": "",
-        "Возврат выполнен!": "",
-        "Заказ успешно удален": ""
+        "Услуга успешно добавлена": "Serviço adicionado com sucesso",
+        "Услуга успешно удалена": "Serviço excluído com sucesso",
+        "Успешно удалено": "Excluído com sucesso",
+        "Возврат выполнен!": "Reembolso concluído!",
+        "Заказ успешно удален": "Pedido excluído com sucesso",
+        "Свойство успешно добавлено": ""
     },
     "views\/client\/info.php": {
         "Информация о клиенте": "Info about client",
@@ -557,7 +561,11 @@
         "Войти": "Log in",
         "Забыли пароль ?": "Forgot your password ?",
         "На Ваш email отправлено сообщение с новым паролем.": "Message with new password was sent on your email",
-        "Логин или пароль введен не верно!": "The username or password  entered is not correct!"
+        "Логин или пароль введен не верно!": "The username or password  entered is not correct!",
+        "username": "",
+        "password": "",
+        "Log in": "",
+        "Forgot your password?": ""
     },
     "views\/reminder.php": {
         "Логин": "Username",
@@ -721,9 +729,9 @@
         "Добавить": "Add",
         "Название": "Name",
         "Результаты не найдены.": "Results not found",
-        "Редактировать": "",
-        "Продолжить удаление?": "",
-        "Удалить": ""
+        "Редактировать": "Editar",
+        "Продолжить удаление?": "Continuar excluindo?",
+        "Удалить": "Excluir"
     },
     "views\/service\/category\/edit.php": {
         "Категория": "Category",
@@ -818,8 +826,8 @@
         "Добавить": "Add",
         "Название": "Name",
         "Результаты не найдены.": "Results not found",
-        "Изменить": "",
-        "Удалить": ""
+        "Изменить": "Editar",
+        "Удалить": "Excluir"
     },
     "views\/vps\/plan\/list.php": {
         "Добавить": "Add",
@@ -889,7 +897,11 @@
         "Bandwith": "",
         "VM template": "",
         "Instant creation using a VM template": "",
-        "VPS templates available": ""
+        "VPS templates available": "",
+        "Cancel": "",
+        "   Go back": "",
+        "Entry point to access the Proxmox Cluster": "",
+        "Proxmox node where the VPS will be created": ""
     },
     "views\/vps\/server\/ip\/list.php": {
         "Список серверов": "List of servers",
@@ -900,10 +912,10 @@
         "Результаты не найдены.": "No results were found."
     },
     "views\/backup\/order\/list.php": {
-        "Название": "",
-        "Адрес": "",
-        "Соединение": "",
-        "Результаты не найдены.": "",
+        "Название": "Nome",
+        "Адрес": "Endereço",
+        "Соединение": "Composto",
+        "Результаты не найдены.": "Nenhum resultado encontrado.",
         "Nº": "",
         "Name": "",
         "Address": "",
@@ -911,11 +923,11 @@
         "Retention": "",
         "Datastore": "",
         "No results found.": "",
-        "Проверить соединение": "",
-        "Редактировать": "",
-        "IP адреса": "",
-        "Вы уверенны что хотите удалить этот сервер? Удаление сервера приведет к удалению всех заказов связанных с данным сервером!": "",
-        "Удалить": "",
+        "Проверить соединение": "Verifique a conexão",
+        "Редактировать": "Editar",
+        "IP адреса": "Endereço de IP",
+        "Вы уверенны что хотите удалить этот сервер? Удаление сервера приведет к удалению всех заказов связанных с данным сервером!": "Tem certeza que deseja excluir este servidor? Excluir um servidor irá excluir todos os pedidos associados a este servidor!",
+        "Удалить": "Excluir",
         "Check connection": "",
         "Edit": "",
         "IP address": "",
@@ -966,6 +978,10 @@
         "Limit I\/O bandwidth (KBytes per second)": "",
         "0 for unlimited": "",
         "Price for incremental backup": "",
-        "Price on other storage media": ""
+        "Price on other storage media": "",
+        "Price for an incremental backup": "",
+        "Price for an complete backup": "",
+        "Price for each GB": "",
+        "Multiplier for each retention": ""
     }
 }

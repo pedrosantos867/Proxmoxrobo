@@ -478,6 +478,8 @@ class VpsOrderController extends FrontController {
 
         $job = $api->getBackupJobByVMID($vmid);
 
+        //$job["bwlimit"] = 0; //unlimited speed, might wanna change this
+
         unset($job["enabled"]);
         unset($job["starttime"]);
         unset($job["dow"]);

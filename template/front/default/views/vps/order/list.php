@@ -108,7 +108,16 @@ $(document).ready(function() {
                 ajax: 1
             },
             complete: function(data) {
-                location.reload();
+                $.toast({
+                        heading: "Success:",
+                        text: "Backup started!",
+                        icon: "success",
+                        position: "bottom-right",
+                        afterHidden: function() {
+                            //location.reload();
+                        }
+                    })
+                //location.reload();
             }
         })
     });
@@ -168,9 +177,9 @@ $(document).ready(function() {
                 <th> <?= $_->l('Стоимость') ?></th>
                 <th> <?= $_->l('Конец') ?></th>
                 <th> <?= $_->l('Осталось') ?></th>
-                <th> <?= $_->l('Статус') ?></th>
+                <th> <?= $_->l('Service status') ?></th>
                 <th> <?= $_->l('VPS Status') ?></th>
-                <th> <?="Debug"?> </th>
+                <th> <?="More info"?> </th>
                 <th><?= $_->l('Actions') ?></th>
                 <th></th>
             </tr>
@@ -205,9 +214,9 @@ $(document).ready(function() {
                 <td><?= $order->paid_to ?></td>
                 <td><?= $interval->format('%a days') ?></td>
 
-                <td>
+                <td class="subscription-status">
                     <? if ($order->active) { ?>
-                    <span class="label label-success"><?= $_->l('Active') ?></span>
+                    <span class="label label-success "><?= $_->l('Active') ?></span>
                     <? } else { ?>
                     <span class="label label-danger"><?= $_->l('Disabled') ?></span>
                     <? } ?>

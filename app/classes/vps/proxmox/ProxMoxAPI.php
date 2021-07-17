@@ -200,6 +200,19 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
         return false;
     }
 
+    public function getVPSDiskSize($vmid){
+        if(!$this->is_logged){
+            return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
+        }
+        $node = $this->getNodeFromVMID($vmid);
+
+        $res = $this->pve->get('/nodes/'.$node.'/qemu/'.$vmid.'/status/current');
+
+        $diskSize = $res['data']['maxdisk'];
+
+        return $diskSize;
+    }
+
     public function manageVM($node, $vmid, $command){
         if(!$this->is_logged){
             return $this->result(VPSAPI::ANSWER_CONNECTION_ERROR);
@@ -263,9 +276,9 @@ class ProxMoxAPI extends VPSAPI implements IVPSAPI{
                 $new_container_settings = array();
 
                 if($ceph){
-                    $new_container_settings['ide0'] = $ceph.':' . 'vm-' . $vmid . '-disk-1.qcow2';
+                    $new_container_settings['ide0'] = $ceph.':' . 'vm-' . $vmid . '-disk-1.qcow2,size='.$hdd.'G';
                 }else{
-                    $new_container_settings['ide0'] = 'local:' . $vmid . '/vm-' . $vmid . '-disk-1.qcow2';
+                    $new_container_settings['ide0'] = 'local:' . $vmid . '/vm-' . $vmid . '-disk-1.qcow2,size='.$hdd.'G';
                 }
                 
                 if ($image) {

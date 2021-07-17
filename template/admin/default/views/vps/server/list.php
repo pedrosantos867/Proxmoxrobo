@@ -43,7 +43,7 @@
                     <a class="btn btn-default btn-xs ajax-modal"
                        href="<?= $_->link('admin/vps-servers/edit?server_id=' . $server->id) ?>"><span class="glyphicon glyphicon-cog"
                                                                                    aria-hidden="true"></span><?=$_->l('Редактировать')?></a>
-                    <a class="btn btn-info btn-xs"
+                    <a class="btn btn-info btn-xs hidden"
                        href="<?= $_->link('admin/vps-ips?server_id=' . $server->id) ?>"><span class="glyphicon glyphicon-menu-hamburger"
                                                                                                        aria-hidden="true"></span><?=$_->l('IP адреса')?></a>
 

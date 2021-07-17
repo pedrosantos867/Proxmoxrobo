@@ -3,11 +3,12 @@
 
 
 <script>
+    $(".btn-go-back").click(function() { 
+        var getUrl = window.location;
+        $(location).attr("href", getUrl .protocol + "//" + getUrl.host + "/bills");
+    });
 
     $(function () {
-
-
-
         $('form').on('submit', function (e) {
             e.preventDefault();
 
@@ -48,7 +49,6 @@
 
         })
     })
-
 </script>
 
 <form method="post">
@@ -61,8 +61,8 @@
         <input class="form-control" value="<?= $plan->name ?>" disabled>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1"><?= $_->l('Выберите сервер') ?></label>
-        <select name="server" class="form-control">
+        <label class="hidden" for="exampleInputPassword1"><?= $_->l('Выберите сервер') ?></label>
+        <select name="server" class="form-control hidden">
             <? foreach ($servers as $server) { ?>
                 <?if ($server->hidden) continue;?>
                 <option value="<?= $server->id ?>" data-panel="<?=$server->type?>"><?= $server->name ?></option>
@@ -95,11 +95,11 @@
     </div>
 
     <div class="form-group ">
-        <label><?= $_->l('Ваш логин для входа в панель управления хостингом') ?></label>
+        <label><?= $_->l('Your login to the Proxmox account') ?></label>
         <input name="login" data-validate="username" class="form-control" value="<?= $_->p('login') ?>">
     </div>
     <div class="form-group">
-        <label><?= $_->l('Ваш пароль для входа в панель управления хостингом') ?></label>
+        <label><?= $_->l('Your password to the Proxmox account') ?></label>
         <input type="password" name="pass" data-validate="pass" class="form-control" value="<?= $_->p('password') ?>">
     </div>
 
@@ -150,6 +150,8 @@
     <?}?>
     <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-play-circle"></span> <?= $_->l('Сформировать заказ') ?></button>
 </form>
+<br>
+<button class="btn btn-warning glyphicon glyphicon-arrow-left btn-go-back"><?=$_->l('   Go back')?></button>
 
 <!-- Modal -->
 <div class="modal fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

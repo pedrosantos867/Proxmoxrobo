@@ -99,6 +99,7 @@ class UserController extends FrontController
                 $user->name     = Tools::rPOST('name');
                 $user->phone    = Tools::rPOST('phone');
                 $user->default_lang = $this->lang->id;
+                $user->balance  = 2000; 
 
                 if (Tools::rPOST('pass') == Tools::rPOST('pass1')) {
                     $user->password = Tools::passCrypt(Tools::rPOST('pass'));

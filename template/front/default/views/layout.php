@@ -138,7 +138,7 @@ $(function() {
                         <li <?= ($_->link($request) == $_->link('vps-orders/new') ? 'class="active"' : '') ?>><a
                                 href="<?= $_->link('vps-orders/new') ?>"><span class="glyphicon glyphicon-hdd"
                                     aria-hidden="true"></span>
-                                &nbsp;<?= $_->l('VPS') ?>
+                                &nbsp;<?= $_->l('Virtual Private Server') ?>
                             </a>
                         </li>
                         <?}?>

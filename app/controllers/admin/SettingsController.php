@@ -40,13 +40,9 @@ class SettingsController extends FrontController
         $this->layout->import('content', $view);
         
         if (Tools::rPOST()) {
-            $backupConfig->pricePBS              = Tools::rPOST('pricePBS');
-            $backupConfig->priceNAS                 = Tools::rPOST('priceNAS');
-            $backupConfig->maxNumberOfRetentions      = Tools::rPOST('maxNumberOfRetentions');
-            $backupConfig->typeOfBackup               = Tools::rPOST('typeOfBackup');
-            $backupConfig->IOBandwidthLimit           = Tools::rPOST('IOBandwidthLimit');
-            $backupConfig->enableIncrementalBackups   = Tools::rPOST('enableIncrementalBackups');
-            $backupConfig->enableFullBackups          = Tools::rPOST('enableFullBackups'); 
+            $backupConfig->pricePerGB               = Tools::rPOST('pricePerGB');
+            $backupConfig->multiplierForRetention   = Tools::rPOST('multiplierForRetention');
+            $backupConfig->IOBandwidthLimit         = Tools::rPOST('IOBandwidthLimit');
 
             $backupConfig->save();
         }

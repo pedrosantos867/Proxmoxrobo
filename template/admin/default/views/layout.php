@@ -110,7 +110,7 @@
                             </li>
                             <li class="dropdown-submenu">
                                 <a><span class="glyphicon glyphicon-hdd"></span>
-                                    <?=$_->l('VPS\VDS')?>  </a>
+                                    <?=$_->l('Virtual Private Servers')?>  </a>
 
                                 <ul class="dropdown-menu">
                                     <li <?= ($_->link($request) == $_->link('admin/vps-orders') ? 'class="active"' : '') ?>>
@@ -124,8 +124,8 @@
 
                                     <li <?= ($_->link($request) == $_->link('admin/vps-params') ? 'class="active"' : '') ?>>
                                         <a href="<?= $_->link('admin/vps-params') ?>"><span
-                                                class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                                            <?=$_->l('Опции')?></a>
+                                                class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                                            <?=$_->l('Labels')?></a>
                                     </li>
                                     <li <?= ($_->link($request) == $_->link('admin/vps-plans') ? 'class="active"' : '') ?>>
                                         <a href="<?= $_->link('admin/vps-plans') ?>"><span

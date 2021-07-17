@@ -27,7 +27,8 @@
         "Возврат": "Returns",
         "Download Invoice": "",
         "Download invoice": "",
-        "Backup": ""
+        "Backup": "",
+        " Download invoice": ""
     },
     "views\/carcase.php": {
         "Billing Panel": "Billing Panel",
@@ -276,7 +277,10 @@
         "Забыли пароль ?": "Forgot password ?",
         "Регистрация": "Sign Up",
         "Регистрация через соц.сети": "Sin Up with social network",
-        "На Ваш email отправлено сообщение с инструкцией по восстановлению пароля.": "A password recovery email has been sent to your email address."
+        "На Ваш email отправлено сообщение с инструкцией по восстановлению пароля.": "A password recovery email has been sent to your email address.",
+        "username": "",
+        "password": "",
+        "Log in": ""
     },
     "views\/reg.php": {
         "Подтверждение телефона": "Phone confirmation",
@@ -486,7 +490,9 @@
         "Тикет": "Ticket",
         "Backup service": "",
         "Backups": "",
-        "Backup schedule": ""
+        "Backup schedule": "",
+        "Virtual Private Servers": "",
+        "Virtual Private Server": ""
     },
     "views\/vps\/order\/list.php": {
         "Дата": "Date",
@@ -537,7 +543,9 @@
         "Active": "",
         "Disabled": "",
         "Access with VNC client": "",
-        "No orders to show": ""
+        "No orders to show": "",
+        "Subscription status": "",
+        "Service status": ""
     },
     "views\/vps\/order\/new.php": {
         "месяц": "month",
@@ -608,7 +616,10 @@
         "Промокод": "Promo code",
         "Ввести в случае наявности": "Enter if available",
         "Сформировать заказ": "Place an order",
-        "Закрыть": "Close"
+        "Закрыть": "Close",
+        "   Go back": "",
+        "Your login to the Proxmox account": "",
+        "Your password to the Proxmox account": ""
     },
     "views\/service\/order\/list.php": {
         "Дата": "Date",
@@ -679,7 +690,11 @@
         "Full backup": "",
         "Backup mode": "",
         "Maximum number of stored backups": "",
-        "Price to pay": ""
+        "Price to pay": "",
+        "Cancel": "",
+        "Go back": "",
+        "    Go back": "",
+        "   Go back": ""
     },
     "views\/backup\/order\/manage.php": {
         "Data": "",

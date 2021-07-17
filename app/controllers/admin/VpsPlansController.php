@@ -85,29 +85,6 @@ class VpsPlansController extends FrontController{
             
             $Plan->save();
 
-/*
-            $params = Tools::rPOST('params', array());
-
-            $position = 0;
-            foreach($params as $param_id => $value){
-                $PlanDetail = new VpsPlanDetail();
-
-                $PlanDetail->where('plan_id', $Plan->id)->where('param_id', $param_id)->removeRows();
-
-
-                    $PlanDetail->plan_id = $Plan->id;
-                    $PlanDetail->param_id = $param_id;
-                    $PlanDetail->value = $value;
-
-
-
-
-                $PlanDetail->sort_position = $position;
-                $PlanDetail->save();
-
-                $position++;
-            }
-            */
 
             if(!$id_plan){
                 Tools::redirect('admin/vps-plans/edit?plan_id='.$Plan->id);
@@ -130,6 +107,7 @@ class VpsPlansController extends FrontController{
                 $position++;
                 $i++;
             }
+            Tools::redirect('/admin/vps-plans');
         }
 
 

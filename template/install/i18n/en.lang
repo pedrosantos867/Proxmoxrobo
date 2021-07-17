@@ -46,7 +46,15 @@
         "Название базы данных": "DB name",
         "Далее": "Next step",
         "Нет соединения с базой даных!": "No connectin with MySQL",
-        "Название базы даных": "Name of DB"
+        "Название базы даных": "Name of DB",
+        "Server": "",
+        "Username": "",
+        "DB username": "",
+        "Password": "",
+        "DB password": "",
+        "Database name": "",
+        "database name": "",
+        "Next step": ""
     },
     "settings.php": {
         "Внимание! Для правильного функционирования биллинг системы, нужно создать следующую cron запись:": "Attention! For the proper functioning of the billing system, you need to create the following cron record:",
@@ -58,6 +66,11 @@
         "Название": "Name",
         "Краткое название": "Short name",
         "Символ": "Symbol",
-        "Завершить установку": "Finish"
+        "Завершить установку": "Finish",
+        "Attention! For the proper functioning of the billing system, you need to create the following cron record:": "",
+        "Create administrator": "",
+        "Username": "",
+        "Password": "",
+        "Complete installation": ""
     }
 }

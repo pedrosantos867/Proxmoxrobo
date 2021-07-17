@@ -25,7 +25,11 @@
                             </h1>
                         </div>
                         <ul class="list-group text-center">
-                            <li class="list-group-item">Image: <?= $plan->images ?></li>
+                            <? if($plan->type == 0){ ?>
+                                <li class="list-group-item">.ISO file: <?= $plan->images ?></li>    
+                            <? }else if($plan->type == 2){ ?>
+                                <li class="list-group-item">Template: VMID <?= $plan->images ?></li>
+                            <? } ?>
                             <li class="list-group-item"><?= $plan->memory ?> MB RAM</li>
                             <li class="list-group-item"><?= $plan->cores ?> cores</li>
                             <li class="list-group-item"><?= $plan->socket ?> sockets</li>

@@ -6,6 +6,7 @@
     <form method="POST">
         <div class="well">
             <div class="form-group">
+                <input type="hidden" id="backup_prices" value="<?=$backupsConfig["pricePerGB"] . ' ' .$backupsConfig["multiplierForRetention"]?>">
                 <label class="control-label" for="daysOfWeek"><?=$_->l('Days of the week')?></label>
 
                 <? $daysOfWeek = array("sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday") ?>
@@ -25,17 +26,17 @@
                 <? } ?>
                 <br>
                 <div class="form-group">
-                    <label class="control-label" for="vps_list"><?=$_->l('VPS available to backup ')?></label>
+                    <label class="control-label" for="vps_to_backup"><?=$_->l('VPS available to backup ')?></label>
                     <? foreach($vps_list as $vps){?>
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="checkbox" name="check_list_vps[]" aria-label=""
-                                        value="<?= strval($vps->vmid)?>">
+                                    <input type="radio" name="vps_to_backup" aria-label=""
+                                        value="<?= strval($vps->vmid)." ".$vps->disk_size?>">
                                 </span>
                                 <input type="text" class="form-control" aria-label="..." readonly
-                                    value="<?= strval($vps->vmid)?>">
+                                    value="<?= "VPS with vmid: ".strval($vps->vmid)?>">
                             </div>
                         </div>
                     </div>
@@ -124,7 +125,7 @@
                     <div class="row">
                         <div class="col-lg-1">
                             <div class="input-group">
-                                <input type="number" id="retention" name="retention" value="1" min="1" max="5">
+                                <input type="number" id="retention" name="retention" value="1" min="1" max="25">
                             </div>
                         </div>
                     </div>
@@ -144,14 +145,15 @@
                     <label class="control-label" for="price_to_pay"><?=$_->l('Price to pay')?></label>
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value="1">
-                        <span class="input-group-addon">.00</span>
+                        <input type="text" id="price_to_pay" class="form-control" readonly aria-label="Amount (to the nearest dollar)" value="0">
                     </div>
                 </div>
             </div>
         </div>
         <button class="btn btn-success"><?=$_->l('Create')?></button>
     </form>
+    <br>
+    <button class="btn btn-warning glyphicon glyphicon-arrow-left btn-go-back"><?=$_->l('   Go back')?></button>
     <script>
         $(document).ready(function() {
             $('[data-toggle="popover"]').popover();
@@ -159,18 +161,31 @@
 
         $('input[name=retention]').on('change', function () {
             calculatePrice();
-            //alert("asdasd")
         });
 
-        $('input[name=backup_type]').on('change', function () {
-            //alert("select")
+        $('input[name=vps_to_backup]').on('change', function () {
             calculatePrice();
         });
 
         function calculatePrice(){
-            //var backup_type = 
-            //var 
+            var val = $('input[name="vps_to_backup"]:checked').val();
+            var splitted = val.split(' ');
+            var disk_size = splitted[1];
+            var number_of_retentions = $("#retention").val();
+
+            var splitted_backup_prices = $('#backup_prices').val();
+            var backup_prices = splitted_backup_prices.split(' ');
+
+            var pricePerGB = backup_prices[0];
+            var multiplierForRetention = backup_prices[1];
+            var price = disk_size*parseInt(pricePerGB, 10)*1+(parseFloat(multiplierForRetention)*parseInt(number_of_retentions, 10));
+            $('#price_to_pay').val(price);
         }
+
+        $(".btn-go-back").click(function() { 
+            var getUrl = window.location;
+            $(location).attr("href", getUrl .protocol + "//" + getUrl.host + "/bills");
+        });
     </script>
     <style>
     .row {

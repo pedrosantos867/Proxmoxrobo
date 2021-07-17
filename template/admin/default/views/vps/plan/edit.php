@@ -266,7 +266,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="name"><?=$_->l('Доступные для выбора сервера')?></label>
+                    <label class="control-label" for="name"><?=$_->l('Entry point to access the Proxmox Cluster')?></label>
 
                     <select id="available_servers" name="available_servers[]" multiple class="input-xlarge form-control"  data-validate="required">
                         <? foreach ($servers as $server) { ?>
@@ -331,7 +331,7 @@
                     </script>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="name"><?=$_->l('Доступные ноды сервера')?></label>
+                    <label class="control-label" for="name"><?=$_->l('Proxmox node where the VPS will be created')?></label>
 
                     <select id="nodes" name="node" class="input-xlarge form-control"  data-validate="required">
 
@@ -496,45 +496,14 @@
             <div class="form-group">
                 <button class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> <?=$_->l('Сохранить')?></button>
             </div>
-            <?/*<div role="tabpanel" class="tab-pane" id="prices">
-              <table class="table">
-                  <tr>
-                      <td>Период</td>
-                      <td>Цена</td>
-
-                      <td class="text-center">Включен</td>
-                  </tr>
-                  <tr>
-                      <td>Неделя</td>
-                      <td><input class="form-control" type="number"></td>
-
-                      <td  class="text-center"><input type="checkbox"></td>
-                  </tr>
-                  <tr>
-                      <td>Месяц</td>
-                      <td><input class="form-control" type="number"></td>
-
-                      <td  class="text-center"><input type="checkbox"></td>
-                  </tr>
-                  <tr>
-                      <td>Пол года</td>
-                      <td><input class="form-control" type="number"></td>
-
-                      <td  class="text-center"><input type="checkbox"></td>
-                  </tr>
-                  <tr>
-                      <td>Год</td>
-                      <td><input class="form-control" type="number"></td>
-
-                      <td  class="text-center"><input type="checkbox"></td>
-                  </tr>
-              </table>
-            </div>*/?>
         </div>
-
-
-
-
-
     </form>
+    <button class="btn btn-warning glyphicon glyphicon-arrow-left btn-go-back"><?=$_->l('   Go back')?></button>
+    <script>
+        $(".btn-go-back").click(function() { 
+            var getUrl = window.location;
+            $(location).attr("href", getUrl .protocol + "//" + getUrl.host + "/admin");
+        });
+
+    </script>
 </div>

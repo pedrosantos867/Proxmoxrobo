@@ -68,89 +68,98 @@ class BackupOrdersController extends FrontController {
                          ->where(VpsOrder::getInstance(), 'has_backup_configured', 0);
  
          $vps_list = $vpsOrderObject->getRows();
+
+         $VpsServerObject = new VpsServer();
+         $server = $VpsServerObject->select('*')->limit(1)->getRow();
  
+         $api = VPSAPI::selectServer($server->id);
+
+         foreach($vps_list as $vps){
+            $vps->disk_size = round($api->getVPSDiskSize($vps->vmid) / 1024 / 1024 / 1024, 2);
+         }
          $view->backupsConfig = $backupsConfig->options;
          $view->vps_list = $vps_list;
          $this->layout->import('content', $view);
          
         
         if (Tools::rPOST()) {
-            if(!empty($_POST['check_list_vps']) && count($_POST['check_list_days']) > 0 && !empty(Tools::rPOST('backup_type')) && !empty(Tools::rPOST('backup_mode'))){
-                foreach($_POST['check_list_vps'] as $vmid){
-                    $vpsOrderAux = new VpsOrder();
-                    $vpsOrderAux->select('*')->where('vmid', '=', $vmid);
-                    
-                    $row = $vpsOrderAux->getRow();
-                    $dow = array();
-                    
-                    $vpsOrderToChange = new VpsOrder($row->id);
+            if(!empty($_POST['vps_to_backup']) && !empty(Tools::rPOST('backup_type')) && !empty(Tools::rPOST('backup_mode'))){
+                $vmid = $_POST['vps_to_backup'];
 
-                    $vpsOrderToChange->has_backup_configured = 1;
-                    $vpsOrderToChange->save();
+                $vmid = explode(" ", $vmid);
 
-                    //Create backup job via Proxmox API 
-                    //Get the first Proxmox server available so we can make API requests
-                    $VpsServerObject = new VpsServer();
-                    $server = $VpsServerObject->select('*')->limit(1)->getRow();
+                $vmid = $vmid[0];
 
-                    $api = VPSAPI::selectServer($server->id);
+                $vpsOrderAux = new VpsOrder();
+                $vpsOrderAux->select('*')->where('vmid', '=', $vmid);
+                
+                $row = $vpsOrderAux->getRow();
+                $dow = array();
+                
+                $vpsOrderToChange = new VpsOrder($row->id);
 
-                    $backup_type = Tools::rPOST('backup_type'); 
-                    $retention = Tools::rPOST('retention');
+                $vpsOrderToChange->has_backup_configured = 1;
+                $vpsOrderToChange->save();
 
-                    if($backup_type == "incremental"){
-                        $storage = $api->getPBSWithMostStorageAvailable();
-                    }else{
-                        $storage = $api->getNFSWithMostStorageAvailable();
-                    }
+                //Create backup job via Proxmox API 
+                //Get the first Proxmox server available so we can make API requests
+                $VpsServerObject = new VpsServer();
+                $server = $VpsServerObject->select('*')->limit(1)->getRow();
 
-                    if($retention < 1){
-                        $retention = 1;
-                    }elseif($retention > 5){
-                        $retention = 5;
-                    }
+                $api = VPSAPI::selectServer($server->id);
 
-                    $backupOrder                = new BackupOrder();
-                    $backupOrder->storage       = $storage;
-                    $backupOrder->vps_order_id  = $row->id;
-                    $backupOrder->client_id     = $this->client->id;
-                    $backupOrder->time          = Tools::rPOST('time');
-                    $backupOrder->expire_date   = date("Y-m-d H:i:s"); //time will be added when the bill is paid (app\classes\model\Bill.php)
-                    $backupOrder->timestamp     = date("Y-m-d H:i:s");
-                    $backupOrder->mode          = Tools::rPOST('backup_mode');
-                    $backupOrder->retention     = $retention;
-                    
-                    $backupOrder->type = $backup_type;
-                    
-                    foreach($_POST['check_list_days'] as $day){
-                        if($day){
-                            $backupOrder->$day = 1;
-                            array_push($dow, $day);
-                        }
-                    }
+                $backup_type = Tools::rPOST('backup_type'); 
+                $retention = Tools::rPOST('retention');
 
-                    $backupOrder->save();
-                    
-                    $bill                     = new Bill();
-                    $bill->client_id          = $this->client->id;
-
-                    if($backup_type == "incremental"){
-                        $bill->total          = 2 + $backupsConfig->options["pricePBS"]+(count($dow)*0.3)+($retention*0.5);
-                    }else{
-                        $bill->total          = 2 + $backupsConfig->options["priceNAS"]+(count($dow)*0.3)+($retention*0.5);
-                    }
-                    
-                    $bill->price              = $bill->total;
-                    $bill->date               = date("Y-m-d H:i:s");
-                    $bill->type               = Bill::TYPE_BACKUP;
-                    $bill->backup_order_id    = $backupOrder->id;
-                    if ($bill->save()) {
-                        Notifier::NewBill($this->client, $bill);
-                    }
-
-                    $api->createBackupJobForPBS($backupOrder->time, $dow, $vmid, $storage, $backupOrder->mode, $retention, $backupsConfig->options["IOBandwidthLimit"]);      
-                    Tools::redirect('/bill/'.$bill->id);
+                if($backup_type == "incremental"){
+                    $storage = $api->getPBSWithMostStorageAvailable();
+                }else{
+                    $storage = $api->getNFSWithMostStorageAvailable();
                 }
+
+                if($retention < 1){
+                    $retention = 1;
+                }elseif($retention > 5){
+                    $retention = 5;
+                }
+
+                $backupOrder                = new BackupOrder();
+                $backupOrder->storage       = $storage;
+                $backupOrder->vps_order_id  = $row->id;
+                $backupOrder->client_id     = $this->client->id;
+                $backupOrder->time          = Tools::rPOST('time');
+                $backupOrder->expire_date   = date("Y-m-d H:i:s"); //time will be added when the bill is paid (app\classes\model\Bill.php)
+                $backupOrder->timestamp     = date("Y-m-d H:i:s");
+                $backupOrder->mode          = Tools::rPOST('backup_mode');
+                $backupOrder->retention     = $retention;
+                
+                $backupOrder->type = $backup_type;
+                
+                foreach($_POST['check_list_days'] as $day){
+                    if($day){
+                        $backupOrder->$day = 1;
+                        array_push($dow, $day);
+                    }
+                }
+
+                $backupOrder->save();
+                
+                $bill                     = new Bill();
+                $bill->client_id          = $this->client->id;
+
+                $disk_size = round($api->getVPSDiskSize($vps->vmid) / 1024 / 1024 / 1024, 2);
+                $bill->total          =  $backupsConfig->options["pricePerGB"]*$disk_size*1+($backupsConfig->options["multiplierForRetention"])*$backupOrder->retention;
+         
+                $bill->price              = $bill->total;
+                $bill->date               = date("Y-m-d H:i:s");
+                $bill->type               = Bill::TYPE_BACKUP;
+                $bill->backup_order_id    = $backupOrder->id;
+                if ($bill->save()) {
+                    Notifier::NewBill($this->client, $bill);
+                }
+
+                $api->createBackupJobForPBS($backupOrder->time, $dow, $vmid, $storage, $backupOrder->mode, $retention, $backupsConfig->options["IOBandwidthLimit"]);      
+                Tools::redirect('/bill/'.$bill->id);
             }
         }
     }

@@ -29,15 +29,15 @@
                 <? } ?>
                 <form method="post" action="#" role="login">
                     <img src="<?= $_->path('img/logo.png') ?>" class="img-responsive" alt=""/>
-                    <input type="text" name="username" placeholder="<?=$_->l('Логин')?>" required
+                    <input type="text" name="username" placeholder="<?=$_->l('username')?>" required
                            class="form-control input-lg" value=""/>
 
                     <input type="password" name="pass" class="form-control input-lg"
-                           id="pass" placeholder="<?=$_->l('Пароль')?>" required=""/>
+                           id="pass" placeholder="<?=$_->l('password')?>" required=""/>
 
-                    <button type="submit" name="go" class="btn btn-lg btn-primary btn-block"><?=$_->l('Войти')?></button>
+                    <button type="submit" name="go" class="btn btn-lg btn-primary btn-block"><?=$_->l('Log in')?></button>
                     <div>
-                        <a href="<?= $_->link('admin/reminder') ?>"><?=$_->l('Забыли пароль ?')?></a>
+                        <a href="<?= $_->link('admin/reminder') ?>"><?=$_->l('Forgot your password?')?></a>
                     </div>
 
                 </form>

@@ -1,28 +1,20 @@
-# HopeBilling
+# Proxmoxrobo
 
 ## About
 
-HopeBilling is an open-sorce and completely free billing system for hosting providers. It serves as an alternative to paid software while providing competent features, to ensure that you can setup your company while not worrying about the backend.
+Proxmoxrobo is an free and open-sorce management and billing platform for cloud services such as VPS, backups, domain registers and more. It serves as an alternative to paid software while providing competent features, to ensure that you can setup your company while not worrying about the backend.
 
-Official site => <a href="https://hopebilling.com" target="_blank">https://hopebilling.com</a>
+This project is a enchanted version of the project <a href="https://github.com/vityabond/hopebilling/" target="_blank">Hopebilling</a> and focuses more on the management and billing of virtual private servers and backup services.
 
 ## Integrations
 
-The follwing integrations are presently supported - 
-
+This projects integrates with:
+ - Proxmox Backup Server and TrueNAS for the creation of backups
  - Web Hosting  (VestaCP, cPanel, ISPManager, Plesk, ISPConfig, DirectAdmin)
- - VPS/VDS (Proxmox, VMmanager)
+ - VPS (Proxmox, VMmanager)
  - Domain registrars (ResellerClub, Resello, 2domains, Freenom, r01, DRS, REG.ru, UKRnames, Recenter, TLD24.ru and others)
  - Other Billing Services
 
-## Installation and Configuration
-
-An extensive documentation is available <a href="https://github.com/vityabond/hopebilling/wiki" target="_blank">here</a>!
-
-## Donation
-
-If you would like to support the project, consider making a donation <a href="https://www.liqpay.ua/en/checkout/card/hopebilling" target="_blank">here</a>.
-
 ## License
 
-<a href="" target="_blank">MIT</a> - <b>Copyright © 2015-2020 HopeBilling Developers</b>
+<a href="" target="_blank">MIT</a> - <b>Copyright © 2021 • Proxmoxrobo developers</b>
